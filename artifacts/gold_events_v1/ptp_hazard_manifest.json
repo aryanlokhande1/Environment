@@ -1,0 +1,98 @@
+{
+  "backoff_rule": "supported application-age bucket -> global eligible-AIP hazard",
+  "censored_episodes": 31468,
+  "conditioning_keys": [
+    "elapsed_time_since_eligible_aip",
+    "supported_application_age_bucket"
+  ],
+  "denominator_meaning": "risk_set surviving without PTP or censoring to interval start",
+  "eligible_aip_applications": 29582,
+  "eligible_aip_episodes": 55199,
+  "event_delay_p50_seconds": 85.0,
+  "event_delay_p90_seconds": 230.0,
+  "event_delay_p95_seconds": 425.0,
+  "event_delay_sha256": "02d736ba409e382f5c5bda160237a504bc24be4b0e5c0b3bcae2998ec2692e75",
+  "fit_summary_sha256": "2d833deda256682e2a1a5e765924dfe36d03a3de09adb4fec1c95f6265843a9b",
+  "fitting_population": "March-created applications with complete 30-day follow-up",
+  "hazard_sha256": "8d7018fccd94d7742510af4941bd5598833cf429b3e759dcd1c9a82e926da790",
+  "historical_ptp_applications": 28066,
+  "historical_ptp_outcomes_retained": 28066,
+  "mature_applications": 44125,
+  "model_version": "PL_APPLICATION_PTP_PIECEWISE_HAZARD_V2",
+  "population": "eligible AIP risk episodes in mature March-created PL applications",
+  "probability_name": "conditional interval PTP hazard",
+  "product_scope": "PERSONAL_LOAN",
+  "ptp_event_episodes": 23731,
+  "ptp_transaction_excluded_from_natural": true,
+  "ptp_without_observed_eligible_aip": 4335,
+  "runtime_semantics": "conditional residual hazard after latest eligible AIP; a later AIP starts a new observed risk episode; no failed draw is permanent",
+  "source_cohort_sha256": "2c4498b62e6b645904ce8eeaef070fa435b16b078f0c393a0df11f185cb97723",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+  "support_unit": "eligible_aip_episode_at_risk_in_elapsed_interval",
+  "survival_curve": [
+    {
+      "cumulative_incidence": 9.05813511113962e-05,
+      "elapsed_upper_seconds": 60,
+      "survival": 0.9999094186488886
+    },
+    {
+      "cumulative_incidence": 0.5384488134776632,
+      "elapsed_upper_seconds": 300,
+      "survival": 0.46155118652233684
+    },
+    {
+      "cumulative_incidence": 0.5978022655516015,
+      "elapsed_upper_seconds": 900,
+      "survival": 0.4021977344483984
+    },
+    {
+      "cumulative_incidence": 0.6196862107660748,
+      "elapsed_upper_seconds": 1800,
+      "survival": 0.38031378923392517
+    },
+    {
+      "cumulative_incidence": 0.6259728935282469,
+      "elapsed_upper_seconds": 3600,
+      "survival": 0.3740271064717531
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 7200,
+      "survival": 0.37347508220834774
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 21600,
+      "survival": 0.37347508220834774
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 86400,
+      "survival": 0.37347508220834774
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 259200,
+      "survival": 0.37347508220834774
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 604800,
+      "survival": 0.37347508220834774
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 1209600,
+      "survival": 0.37347508220834774
+    },
+    {
+      "cumulative_incidence": 0.6265249177916523,
+      "elapsed_upper_seconds": 2592000,
+      "survival": 0.37347508220834774
+    }
+  ]
+}

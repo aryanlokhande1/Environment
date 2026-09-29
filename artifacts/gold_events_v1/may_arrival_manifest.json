@@ -1,0 +1,240 @@
+{
+  "caveat": "March-April creation volume is highly nonstationary; April 22-30 has zero creations. This is a deterministic historical-day bootstrap, not a calibrated May forecast.",
+  "donor_days_sha256": "4de85801aa5f87419ebe60934a725c51ae6eae58d838b514114f113559911e02",
+  "exact_application_created_donors": 81416,
+  "historical_daily_sha256": "725a3e3dce869fce945b95fe57cfe6ff2388900b41fafac44eb35d7060c3c520",
+  "historical_days_with_creations": 52,
+  "historical_days_without_creations": 9,
+  "historical_source_days": 61,
+  "may_days": 31,
+  "method": "one unused March/April donor day per May date; same weekday and month phase (days 1-7, 8-14, 15-21, 22-31); preserve within-day observed creation time and creation state",
+  "model_version": "PL_CALENDAR_MATCHED_OBSERVED_CREATION_BOOTSTRAP_V1",
+  "observed_creation_applications": 81416,
+  "reference_sha256": "67c7fcc2334d503e20364496f1d2ce20f6868b8fc915dbae898384442c402b0e",
+  "repeat_application_contexts": 0,
+  "schedule_sha256": "6a80d8fb90f12bc838b451841c6deea4fa7063a97e0ef3c95b232ae1b6e3bc4f",
+  "seed": 20260502,
+  "selected_historical_days": [
+    {
+      "application_count": 8342,
+      "historical_date": "2026-04-03",
+      "may_date": "2026-05-01",
+      "month_phase": 0,
+      "weekday": "Friday"
+    },
+    {
+      "application_count": 3580,
+      "historical_date": "2026-03-07",
+      "may_date": "2026-05-02",
+      "month_phase": 0,
+      "weekday": "Saturday"
+    },
+    {
+      "application_count": 594,
+      "historical_date": "2026-04-05",
+      "may_date": "2026-05-03",
+      "month_phase": 0,
+      "weekday": "Sunday"
+    },
+    {
+      "application_count": 7319,
+      "historical_date": "2026-03-02",
+      "may_date": "2026-05-04",
+      "month_phase": 0,
+      "weekday": "Monday"
+    },
+    {
+      "application_count": 4224,
+      "historical_date": "2026-03-03",
+      "may_date": "2026-05-05",
+      "month_phase": 0,
+      "weekday": "Tuesday"
+    },
+    {
+      "application_count": 5879,
+      "historical_date": "2026-04-01",
+      "may_date": "2026-05-06",
+      "month_phase": 0,
+      "weekday": "Wednesday"
+    },
+    {
+      "application_count": 4560,
+      "historical_date": "2026-03-05",
+      "may_date": "2026-05-07",
+      "month_phase": 0,
+      "weekday": "Thursday"
+    },
+    {
+      "application_count": 647,
+      "historical_date": "2026-04-10",
+      "may_date": "2026-05-08",
+      "month_phase": 1,
+      "weekday": "Friday"
+    },
+    {
+      "application_count": 696,
+      "historical_date": "2026-04-11",
+      "may_date": "2026-05-09",
+      "month_phase": 1,
+      "weekday": "Saturday"
+    },
+    {
+      "application_count": 230,
+      "historical_date": "2026-04-12",
+      "may_date": "2026-05-10",
+      "month_phase": 1,
+      "weekday": "Sunday"
+    },
+    {
+      "application_count": 7135,
+      "historical_date": "2026-03-09",
+      "may_date": "2026-05-11",
+      "month_phase": 1,
+      "weekday": "Monday"
+    },
+    {
+      "application_count": 825,
+      "historical_date": "2026-04-14",
+      "may_date": "2026-05-12",
+      "month_phase": 1,
+      "weekday": "Tuesday"
+    },
+    {
+      "application_count": 877,
+      "historical_date": "2026-04-08",
+      "may_date": "2026-05-13",
+      "month_phase": 1,
+      "weekday": "Wednesday"
+    },
+    {
+      "application_count": 841,
+      "historical_date": "2026-04-09",
+      "may_date": "2026-05-14",
+      "month_phase": 1,
+      "weekday": "Thursday"
+    },
+    {
+      "application_count": 159,
+      "historical_date": "2026-03-20",
+      "may_date": "2026-05-15",
+      "month_phase": 2,
+      "weekday": "Friday"
+    },
+    {
+      "application_count": 125,
+      "historical_date": "2026-03-21",
+      "may_date": "2026-05-16",
+      "month_phase": 2,
+      "weekday": "Saturday"
+    },
+    {
+      "application_count": 41,
+      "historical_date": "2026-03-15",
+      "may_date": "2026-05-17",
+      "month_phase": 2,
+      "weekday": "Sunday"
+    },
+    {
+      "application_count": 397,
+      "historical_date": "2026-04-20",
+      "may_date": "2026-05-18",
+      "month_phase": 2,
+      "weekday": "Monday"
+    },
+    {
+      "application_count": 484,
+      "historical_date": "2026-04-21",
+      "may_date": "2026-05-19",
+      "month_phase": 2,
+      "weekday": "Tuesday"
+    },
+    {
+      "application_count": 172,
+      "historical_date": "2026-03-18",
+      "may_date": "2026-05-20",
+      "month_phase": 2,
+      "weekday": "Wednesday"
+    },
+    {
+      "application_count": 548,
+      "historical_date": "2026-04-16",
+      "may_date": "2026-05-21",
+      "month_phase": 2,
+      "weekday": "Thursday"
+    },
+    {
+      "application_count": 118,
+      "historical_date": "2026-03-27",
+      "may_date": "2026-05-22",
+      "month_phase": 3,
+      "weekday": "Friday"
+    },
+    {
+      "application_count": 88,
+      "historical_date": "2026-03-28",
+      "may_date": "2026-05-23",
+      "month_phase": 3,
+      "weekday": "Saturday"
+    },
+    {
+      "application_count": 0,
+      "historical_date": "2026-04-26",
+      "may_date": "2026-05-24",
+      "month_phase": 3,
+      "weekday": "Sunday"
+    },
+    {
+      "application_count": 174,
+      "historical_date": "2026-03-23",
+      "may_date": "2026-05-25",
+      "month_phase": 3,
+      "weekday": "Monday"
+    },
+    {
+      "application_count": 117,
+      "historical_date": "2026-03-24",
+      "may_date": "2026-05-26",
+      "month_phase": 3,
+      "weekday": "Tuesday"
+    },
+    {
+      "application_count": 156,
+      "historical_date": "2026-03-25",
+      "may_date": "2026-05-27",
+      "month_phase": 3,
+      "weekday": "Wednesday"
+    },
+    {
+      "application_count": 0,
+      "historical_date": "2026-04-30",
+      "may_date": "2026-05-28",
+      "month_phase": 3,
+      "weekday": "Thursday"
+    },
+    {
+      "application_count": 0,
+      "historical_date": "2026-04-24",
+      "may_date": "2026-05-29",
+      "month_phase": 3,
+      "weekday": "Friday"
+    },
+    {
+      "application_count": 0,
+      "historical_date": "2026-04-25",
+      "may_date": "2026-05-30",
+      "month_phase": 3,
+      "weekday": "Saturday"
+    },
+    {
+      "application_count": 45,
+      "historical_date": "2026-03-29",
+      "may_date": "2026-05-31",
+      "month_phase": 3,
+      "weekday": "Sunday"
+    }
+  ],
+  "simulated_may_arrivals": 48373,
+  "simulated_may_contexts": 48373,
+  "source_cohort_sha256": "2c4498b62e6b645904ce8eeaef070fa435b16b078f0c393a0df11f185cb97723",
+  "source_period": "2026-03-01 through 2026-04-30; no May data"
+}

@@ -1,0 +1,15 @@
+Metadata-Version: 2.4
+Name: gold-events-environment
+Version: 1.0.0
+Summary: Frozen empirical Personal Loan world model for Transformer/RL integration
+Requires-Python: >=3.11
+Requires-Dist: numpy>=1.26
+Requires-Dist: pandas>=2.1
+Requires-Dist: pyarrow>=14
+Requires-Dist: PyYAML>=6
+Provides-Extra: postgres
+Requires-Dist: psycopg[binary]>=3.1; extra == "postgres"
+Provides-Extra: s3
+Requires-Dist: boto3>=1.34; extra == "s3"
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"

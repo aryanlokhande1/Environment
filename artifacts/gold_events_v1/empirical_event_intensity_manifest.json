@@ -1,0 +1,30 @@
+{
+  "caveat": "No-later-observed-natural-event is telemetry silence, not a proven user decision; complete March lifecycle only.",
+  "daily_sha256": "d1751b6e8cdc09026778f86b9eec7fed7c1d9dae2feb769bbc4f4665eeb22f7f",
+  "gap_p50_seconds": 13.0,
+  "gap_p95_seconds": 155.0,
+  "gap_rows": 444977,
+  "gap_sha256": "52c93c6f8ea8aab9e757f018fa0fae272dbb4aa1d3c6ea3b44c7fbc45df92c66",
+  "mature_application_active_days": 525910,
+  "mature_march_applications": 44125,
+  "max_observed_events_per_active_day": 153,
+  "max_observed_events_per_ten_minute_bin": 79,
+  "model_rows": 134,
+  "model_sha256": "e8b8ad9360e3ff6ab4f661d7134ea4152b683c9b7286cb4793aa8deb480486f3",
+  "model_version": "PL_OBSERVED_OCCURRENCE_AND_GAP_V1",
+  "observed_nonterminal_pairs": 444977,
+  "ptp_transaction_excluded_from_natural_occurrence": true,
+  "same_day_pair_fraction": 0.9971549091301348,
+  "source_cohort_sha256": "2c4498b62e6b645904ce8eeaef070fa435b16b078f0c393a0df11f185cb97723",
+  "source_file_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_files": [
+    "loan_simulation_data\\original\\v2\\events_gold_1_bucket_000_20260331.parquet",
+    "loan_simulation_data\\original\\v2\\events_gold_2_bucket_000_20260430.parquet"
+  ],
+  "source_period": "2026-03-01 through 2026-04-30; no May or simulated rows",
+  "uncensored_nonterminal_rows": 282070,
+  "zero_event_active_days": 481011
+}

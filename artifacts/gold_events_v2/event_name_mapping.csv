@@ -1,0 +1,977 @@
+model_level,journey_stage,journey_substage,source_type,event_name,support_count,probability
+STAGE_SUBSTAGE,AIP,Disb,,AIP,89,1.0
+STAGE_SUBSTAGE,AIP,Post AIP Reject,,AIP,46,1.0
+STAGE_SUBSTAGE,AIP,Professional details,,AIP,5,1.0
+STAGE_SUBSTAGE,AIP,Push to Partner,,AIP,51272,1.0
+STAGE_SUBSTAGE,AIP,listing,,AIP,19401,1.0
+STAGE_SUBSTAGE,Acquisition,Application OTP Verification,,application otp success,88132,1.0
+STAGE_SUBSTAGE,Acquisition,Consent Acceptance,,t&cconsent,168,1.0
+STAGE_SUBSTAGE,Acquisition,Login Complete,,logincomplete_aa,69,0.8214285714285714
+STAGE_SUBSTAGE,Acquisition,Login Complete,,signupcomplete_aa,15,0.17857142857142858
+STAGE_SUBSTAGE,Acquisition,Login Drawer Close,,login_close_aa,58,1.0
+STAGE_SUBSTAGE,Acquisition,Login Initiation,,login_bottomsheet_load_aa,123,1.0
+STAGE_SUBSTAGE,Acquisition,OTP Drop-off,,otp_close_aa,3,1.0
+STAGE_SUBSTAGE,Acquisition,OTP Initiation,,get otp,115,0.2366255144032922
+STAGE_SUBSTAGE,Acquisition,OTP Initiation,,get otp application created,33,0.06790123456790123
+STAGE_SUBSTAGE,Acquisition,OTP Initiation,,login popup get otp,140,0.2880658436213992
+STAGE_SUBSTAGE,Acquisition,OTP Initiation,,login_getotp_aa,123,0.25308641975308643
+STAGE_SUBSTAGE,Acquisition,OTP Initiation,,otp_bottomsheet_load_aa,75,0.15432098765432098
+STAGE_SUBSTAGE,Acquisition,OTP Retry,,login_resendotp_aa,3,1.0
+STAGE_SUBSTAGE,Acquisition,OTP Verification,,login popup otp verify,101,0.3079268292682927
+STAGE_SUBSTAGE,Acquisition,OTP Verification,,login_otp_verify_aa,89,0.27134146341463417
+STAGE_SUBSTAGE,Acquisition,OTP Verification,,login_verifyotp_aa,2,0.006097560975609756
+STAGE_SUBSTAGE,Acquisition,OTP Verification,,preapproved otp verify,30,0.09146341463414634
+STAGE_SUBSTAGE,Acquisition,OTP Verification,,proceed to otp,106,0.3231707317073171
+STAGE_SUBSTAGE,Acquisition,Pre-approved Offer Check,,preapproved proceed otp,3,1.0
+STAGE_SUBSTAGE,Awareness,Academy Engagement,,marketsacademy_aa,60,1.0
+STAGE_SUBSTAGE,Awareness,Banner Engagement,,banner interaction,150,0.9868421052631579
+STAGE_SUBSTAGE,Awareness,Banner Engagement,,bannerclick,2,0.013157894736842105
+STAGE_SUBSTAGE,Awareness,Bottom Navigation,,bottomdock_aa,5293,1.0
+STAGE_SUBSTAGE,Awareness,CTA Interaction,,cta interaction,127,0.9921875
+STAGE_SUBSTAGE,Awareness,CTA Interaction,,ctaclick,1,0.0078125
+STAGE_SUBSTAGE,Awareness,Calculator Tool,,emi calculator,12,1.0
+STAGE_SUBSTAGE,Awareness,Content Engagement,,intextfield_video_aa,6,1.0
+STAGE_SUBSTAGE,Awareness,FAQ / Help,,faq question clicked,8,0.03669724770642202
+STAGE_SUBSTAGE,Awareness,FAQ / Help,,pdp_frequentlyaskedquestion_aa,210,0.963302752293578
+STAGE_SUBSTAGE,Awareness,Footer Navigation,,footer_home_iconclick_aa,1,1.0
+STAGE_SUBSTAGE,Awareness,Header Navigation,,header icon click,74,1.0
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,appupdate_aa,77,0.0247032402951556
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,appupdatetooltip,422,0.13538658966955405
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,bottomdock_tooltip,160,0.05133140840551813
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,inapp_review_aa,21,0.006737247353224254
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,notificationpopup_aa,209,0.06705165222970805
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,shortcut_appicon_aa,1,0.0003208213025344883
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,tooltip_aa,2218,0.711581649021495
+STAGE_SUBSTAGE,Awareness,Help / Tooltip,,tooltip_small_video_aa,9,0.0028873917228103944
+STAGE_SUBSTAGE,Awareness,Home Page Interaction,,home page interaction,3,1.0
+STAGE_SUBSTAGE,Awareness,Icon Interaction,,iconclick,117,1.0
+STAGE_SUBSTAGE,Awareness,Menu / Navigation,,menu interaction,91,0.9680851063829787
+STAGE_SUBSTAGE,Awareness,Menu / Navigation,,navigation bar,3,0.031914893617021274
+STAGE_SUBSTAGE,Awareness,Menu Navigation,,ourproducts_aa,489,0.8373287671232876
+STAGE_SUBSTAGE,Awareness,Menu Navigation,,ourservices_aa,95,0.16267123287671234
+STAGE_SUBSTAGE,Awareness,ONDC Banner,,ondc_e2ebanner_aa,48,1.0
+STAGE_SUBSTAGE,Awareness,ONDC Category Browse,,ondc_discovercategories_aa,41,1.0
+STAGE_SUBSTAGE,Awareness,ONDC Product Discovery,,ondc_trendingproducts_aa,159,1.0
+STAGE_SUBSTAGE,Awareness,Partner Discovery,,ourtrustedpartners_aa,475,1.0
+STAGE_SUBSTAGE,Awareness,Product Discovery,,product detail category click,58,1.0
+STAGE_SUBSTAGE,Awareness,Quick Action,,universalcomponent_aa,6105,1.0
+STAGE_SUBSTAGE,Awareness,Scroll / Depth,,scroll-event-35%,793,0.4720238095238095
+STAGE_SUBSTAGE,Awareness,Scroll / Depth,,scroll-event-75%,887,0.5279761904761905
+STAGE_SUBSTAGE,Awareness,Search Behaviour,,searchclick,8,1.0
+STAGE_SUBSTAGE,Awareness,Secondary Navigation,,roundnavigationicon_aa,3089,1.0
+STAGE_SUBSTAGE,Awareness,Sticky CTA Engagement,,docker sticky bottom click,745,0.8723653395784543
+STAGE_SUBSTAGE,Awareness,Sticky CTA Engagement,,sticky cta click,109,0.12763466042154567
+STAGE_SUBSTAGE,Awareness,Stock Market Discovery,,stockmarketinsight_aa,12,0.75
+STAGE_SUBSTAGE,Awareness,Stock Market Discovery,,stockmarketinvestment_aa,4,0.25
+STAGE_SUBSTAGE,Awareness,Tab Navigation,,tab interaction,10,1.0
+STAGE_SUBSTAGE,Awareness,Top Navigation,,topdock_aa,2910,1.0
+STAGE_SUBSTAGE,Awareness,Widget Interaction,,e2ebanner_aa,503,1.0
+STAGE_SUBSTAGE,Commerce (ONDC),Cart Addition,,add to cart,4,1.0
+STAGE_SUBSTAGE,Commerce (ONDC),Coupon Apply,,apply-coupon,2,1.0
+STAGE_SUBSTAGE,Commerce (ONDC),Ecomm CTA Interaction,,ecomm cta interaction,3,1.0
+STAGE_SUBSTAGE,Consent & Linking,AA Bank Linking,,aa_addmoreaccounts_aa,985,0.5140918580375783
+STAGE_SUBSTAGE,Consent & Linking,AA Bank Linking,,accountaggregator_aa,931,0.4859081419624217
+STAGE_SUBSTAGE,Consent & Linking,AA OTP Verification,,finvu otp verify,1,1.0
+STAGE_SUBSTAGE,Consent & Linking,Account Approval,,account approve click,28,1.0
+STAGE_SUBSTAGE,Consent & Linking,Bank Account Selection,,bank account selection proceed,227,1.0
+STAGE_SUBSTAGE,Consent & Linking,Bank Approval,,bank selection approve click,16,1.0
+STAGE_SUBSTAGE,Consent & Linking,Consent Page Load,,consent approval page load,27,1.0
+STAGE_SUBSTAGE,Consideration,Calculator,,onclick_relatedcalculator_aa,8,1.0
+STAGE_SUBSTAGE,Consideration,Card Product Browse,,ourcardvariants_aa,19,0.11377245508982035
+STAGE_SUBSTAGE,Consideration,Card Product Browse,,popularcards_aa,18,0.10778443113772455
+STAGE_SUBSTAGE,Consideration,Card Product Browse,,quickapprovalcards_aa,21,0.12574850299401197
+STAGE_SUBSTAGE,Consideration,Card Product Browse,,topratedcards_aa,67,0.40119760479041916
+STAGE_SUBSTAGE,Consideration,Card Product Browse,,trendingcards_aa,42,0.25149700598802394
+STAGE_SUBSTAGE,Consideration,Credit Score Check,,chr_asset,539,1.0
+STAGE_SUBSTAGE,Consideration,Credit Score Cross-sell,,chr_asset_aa,23,1.0
+STAGE_SUBSTAGE,Consideration,Input Field Interaction,,input field interaction,213,1.0
+STAGE_SUBSTAGE,Consideration,Insurance Product Browse,,ourinsuranceofferings_aa,6,1.0
+STAGE_SUBSTAGE,Consideration,Investment Product Browse,,ourinvestmentofferings_aa,4,0.4444444444444444
+STAGE_SUBSTAGE,Consideration,Investment Product Browse,,topinvestmentoptions_aa,5,0.5555555555555556
+STAGE_SUBSTAGE,Consideration,Loan Product Browse,,bestsellerpersonalloan_aa,238,0.05981402362402614
+STAGE_SUBSTAGE,Consideration,Loan Product Browse,,excitingloanoffersforyou_aa,13,0.003267152550892184
+STAGE_SUBSTAGE,Consideration,Loan Product Browse,,greatpersonalloandealsforyou_aa,57,0.014325207338527268
+STAGE_SUBSTAGE,Consideration,Loan Product Browse,,ourloanofferings_aa,3340,0.8394068861522995
+STAGE_SUBSTAGE,Consideration,Loan Product Browse,,ourloanvariants_aa,76,0.01910027645136969
+STAGE_SUBSTAGE,Consideration,Loan Product Browse,,trendingloanproducts_aa,255,0.06408645388288514
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,blp_partneroffering_knowmore_aa,35,0.01585144927536232
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,blp_partnerofferings_aa,742,0.33605072463768115
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,dealsforyou_aa,22,0.009963768115942028
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,dynamicoffers_aa,895,0.4053442028985507
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,exciting_offerforyou_aa,5,0.0022644927536231885
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,offers_offersforyou_aa,10,0.004528985507246377
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,offersforyou_aa,21,0.009510869565217392
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,ourcardofferings_aa,282,0.12771739130434784
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,ouroffering_aa,112,0.050724637681159424
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,productblp_offerings_aa,1,0.0004528985507246377
+STAGE_SUBSTAGE,Consideration,Offer Discovery,,productblp_partnerofferings_aa,83,0.03759057971014493
+STAGE_SUBSTAGE,Consideration,PDP Banner,,pdp_e2ebanner_aa,175,1.0
+STAGE_SUBSTAGE,Consideration,Partner Selection,,pdp_partnerselection_aa,48,1.0
+STAGE_SUBSTAGE,Consideration,Pocket Insurance Browse,,pocketinsuranceofferings_aa,1,0.09090909090909091
+STAGE_SUBSTAGE,Consideration,Pocket Insurance Browse,,pocketpricebadacoverage_aa,10,0.9090909090909091
+STAGE_SUBSTAGE,Consideration,Pre-approved Offer,,aa_offerforyou_aa,11,0.009220452640402346
+STAGE_SUBSTAGE,Consideration,Pre-approved Offer,,offerforyou_aa,1182,0.9907795473595976
+STAGE_SUBSTAGE,Consideration,Product Browse,,app_apnclicks_aa,1407,0.9710144927536232
+STAGE_SUBSTAGE,Consideration,Product Browse,,loans_ourpartners_aa,2,0.0013802622498274672
+STAGE_SUBSTAGE,Consideration,Product Browse,,quickapprovalpersonalloans_aa,8,0.005521048999309869
+STAGE_SUBSTAGE,Consideration,Product Browse,,youmightalsolike_aa,32,0.022084195997239476
+STAGE_SUBSTAGE,Consideration,Product Category Browse,,loan_lob_screen_aa,1,1.0
+STAGE_SUBSTAGE,Consideration,Product Comparison,,compare button click,1,1.0
+STAGE_SUBSTAGE,Consideration,Product Detail View,,pdp_selectedplan_aa,890,0.9988776655443322
+STAGE_SUBSTAGE,Consideration,Product Detail View,,productblp_knowmore_aa,1,0.001122334455667789
+STAGE_SUBSTAGE,Consideration,Product Selection,,product apply,71406,1.0
+STAGE_SUBSTAGE,Consideration,Value Added Services,,valueaddedservices_aa,1,1.0
+STAGE_SUBSTAGE,Credit Decision,AIP Approved,,aip  ok,125999,0.9989693091993118
+STAGE_SUBSTAGE,Credit Decision,AIP Approved,,aip ok,130,0.0010306908006881843
+STAGE_SUBSTAGE,Credit Decision,AIP Declined,,aip not ok,390,1.0
+STAGE_SUBSTAGE,Credit Decision,Bank Approval Pending,,bank approval pending,18912,1.0
+STAGE_SUBSTAGE,Credit Decision,Bank Approved,,bank approved,47102,1.0
+STAGE_SUBSTAGE,Disbursed,Disb,,Disbursed,762,1.0
+STAGE_SUBSTAGE,Disbursed,Post AIP Reject,,Disbursed,1,1.0
+STAGE_SUBSTAGE,Disbursed,Push to Partner,,Disbursed,784,1.0
+STAGE_SUBSTAGE,Disbursed,listing,,Disbursed,27,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - CTA Interaction,,chatbot cta interaction,99,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - Exit,,chat exit click,4,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - Layer 1,,pd layer1 click,10,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - Layer 2,,pd layer2 click,80,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - Menu,,chat menu,1,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - Suggestive Pills,,suggestive pills,160,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot - Text Input,,text input send,36,1.0
+STAGE_SUBSTAGE,Engagement,Chatbot Exit,,cross_mb,128,1.0
+STAGE_SUBSTAGE,Inprogress,Application created/Login,,Inprogress,3307,1.0
+STAGE_SUBSTAGE,Inprogress,Form filled,,Inprogress,100,1.0
+STAGE_SUBSTAGE,Inprogress,Professional details,,Inprogress,4442,1.0
+STAGE_SUBSTAGE,Inprogress,Push to Partner,,Inprogress,64,1.0
+STAGE_SUBSTAGE,Inprogress,listing,,Inprogress,166,1.0
+STAGE_SUBSTAGE,Onboarding,Address OTP Verification,,otp submit,33,1.0
+STAGE_SUBSTAGE,Onboarding,Address Submission,,address detail created,21389,1.0
+STAGE_SUBSTAGE,Onboarding,Application Created,,application created success,80852,0.990093190139724
+STAGE_SUBSTAGE,Onboarding,Application Created,,applicationcreated,809,0.00990680986027602
+STAGE_SUBSTAGE,Onboarding,Application Resume,,application resume complete,46143,0.9613525563565148
+STAGE_SUBSTAGE,Onboarding,Application Resume,,application resume start,1855,0.038647443643485144
+STAGE_SUBSTAGE,Onboarding,Application Start,,loans_ourtrustedpartners_applynow,1,0.041666666666666664
+STAGE_SUBSTAGE,Onboarding,Application Start,,pdp_compareapply_aa,23,0.9583333333333334
+STAGE_SUBSTAGE,Onboarding,Connection Error,,connection error,13186,1.0
+STAGE_SUBSTAGE,Onboarding,Journey Close,,journeyclose_aa,33984,1.0
+STAGE_SUBSTAGE,Onboarding,Journey Complete,,journeycomplete,1,1.0
+STAGE_SUBSTAGE,Onboarding,Journey Start,,journeystart,1,0.3333333333333333
+STAGE_SUBSTAGE,Onboarding,Journey Start,,transactionstart,2,0.6666666666666666
+STAGE_SUBSTAGE,Onboarding,Loan Confirmation,,loan confirmation details,340,1.0
+STAGE_SUBSTAGE,Onboarding,Loan Summary View,,loan summary page,32,1.0
+STAGE_SUBSTAGE,Onboarding,Pending Application,,pendingactions_aa,2037,1.0
+STAGE_SUBSTAGE,Onboarding,Professional Details Submission,,professional details submit,57837,1.0
+STAGE_SUBSTAGE,Other,Other,,aa_bankselection_aa,1484,0.5698924731182796
+STAGE_SUBSTAGE,Other,Other,,aa_budget_aa,14,0.005376344086021506
+STAGE_SUBSTAGE,Other,Other,,aa_expensehistory_aa,37,0.014208909370199693
+STAGE_SUBSTAGE,Other,Other,,aa_maintab_aa,401,0.15399385560675882
+STAGE_SUBSTAGE,Other,Other,,bestinsurancedealsforyou_aa,1,0.00038402457757296467
+STAGE_SUBSTAGE,Other,Other,,bestloandealsforyou_aa,64,0.02457757296466974
+STAGE_SUBSTAGE,Other,Other,,clp_ourproducts_aa,139,0.05337941628264209
+STAGE_SUBSTAGE,Other,Other,,customerstories_aa,118,0.04531490015360983
+STAGE_SUBSTAGE,Other,Other,,discover_aa,11,0.004224270353302612
+STAGE_SUBSTAGE,Other,Other,,greatbusinessloandealsforyou_aa,7,0.002688172043010753
+STAGE_SUBSTAGE,Other,Other,,greathomeloandealsforyou_aa,5,0.0019201228878648233
+STAGE_SUBSTAGE,Other,Other,,insuranceplansstarting_aa,5,0.0019201228878648233
+STAGE_SUBSTAGE,Other,Other,,mob_validation_aa,78,0.029953917050691243
+STAGE_SUBSTAGE,Other,Other,,pdp_selectedpartner_aa,2,0.0007680491551459293
+STAGE_SUBSTAGE,Other,Other,,popularpersonalloans_aa,12,0.004608294930875576
+STAGE_SUBSTAGE,Other,Other,,setreminder_aa,3,0.001152073732718894
+STAGE_SUBSTAGE,Other,Other,,trendingcreditcards_aa,4,0.0015360983102918587
+STAGE_SUBSTAGE,Other,Other,,trendingpersonalloans_aa,135,0.05184331797235023
+STAGE_SUBSTAGE,Other,Other,,useraccount_aa,84,0.03225806451612903
+STAGE_SUBSTAGE,Rejected,Form filled-Rejected,,Rejected,529,1.0
+STAGE_SUBSTAGE,Rejected,Post AIP Reject,,Rejected,1,1.0
+STAGE_SUBSTAGE,Rejected,Push to Partner,,Rejected,4,1.0
+STAGE_SUBSTAGE,Rejected,listing,,Rejected,3,1.0
+STAGE_SUBSTAGE,Servicing,Account View,,aa_youraccounts_aa,185,1.0
+STAGE_SUBSTAGE,Servicing,Bill Reminder,,set_reminder_aa,23,0.575
+STAGE_SUBSTAGE,Servicing,Bill Reminder,,set_reminder_edit_aa,10,0.25
+STAGE_SUBSTAGE,Servicing,Bill Reminder,,set_reminder_new_aa,2,0.05
+STAGE_SUBSTAGE,Servicing,Bill Reminder,,set_reminder_update_aa,5,0.125
+STAGE_SUBSTAGE,Servicing,Budget Management,,aa_budgetset_aa,4,1.0
+STAGE_SUBSTAGE,Servicing,Credit Account Summary,,accsummary_aa,619,1.0
+STAGE_SUBSTAGE,Servicing,Credit Education,,app_chr_dyk_checkresult_aa,17,0.26153846153846155
+STAGE_SUBSTAGE,Servicing,Credit Education,,dyk_aa,48,0.7384615384615385
+STAGE_SUBSTAGE,Servicing,Credit Factors,,creditfactor_aa,49,0.026746724890829694
+STAGE_SUBSTAGE,Servicing,Credit Factors,,creditfactors_aa,1783,0.9732532751091703
+STAGE_SUBSTAGE,Servicing,Credit Score Check,,app_chr_acsum_loans_aa,2,0.012903225806451613
+STAGE_SUBSTAGE,Servicing,Credit Score Check,,app_chr_cibilscore_generated,10,0.06451612903225806
+STAGE_SUBSTAGE,Servicing,Credit Score Check,,chr_success_aa,120,0.7741935483870968
+STAGE_SUBSTAGE,Servicing,Credit Score Check,,fhcr_multiprofile_switch,23,0.14838709677419354
+STAGE_SUBSTAGE,Servicing,Credit-Score OTP,,chr_otp_verification_aa,7,0.3181818181818182
+STAGE_SUBSTAGE,Servicing,Credit-Score OTP,,chr_submit_otp_aa,9,0.4090909090909091
+STAGE_SUBSTAGE,Servicing,Credit-Score OTP,,fhcr_emailotp_submit_aa,4,0.18181818181818182
+STAGE_SUBSTAGE,Servicing,Credit-Score OTP,,fhcrgetotp,2,0.09090909090909091
+STAGE_SUBSTAGE,Servicing,Customer Portal Login,,loginclick,31,1.0
+STAGE_SUBSTAGE,Servicing,DNC Preference,,dnc_submit_aa,41,1.0
+STAGE_SUBSTAGE,Servicing,Dashboard Interaction,,dashboard_aa,246,1.0
+STAGE_SUBSTAGE,Servicing,Deep-link Redirection,,san_ddl_aa,5,0.5555555555555556
+STAGE_SUBSTAGE,Servicing,Deep-link Redirection,,san_ddl_redirection_aa,4,0.4444444444444444
+STAGE_SUBSTAGE,Servicing,Expense Breakdown,,aa_breakdown_aa,337,1.0
+STAGE_SUBSTAGE,Servicing,Help / FAQ,,aa_faq_aa,50,0.05656108597285068
+STAGE_SUBSTAGE,Servicing,Help / FAQ,,help_faqs_aa,193,0.21832579185520362
+STAGE_SUBSTAGE,Servicing,Help / FAQ,,help_faqs_yn_aa,212,0.2398190045248869
+STAGE_SUBSTAGE,Servicing,Help / FAQ,,help_srtype_aa,308,0.34841628959276016
+STAGE_SUBSTAGE,Servicing,Help / FAQ,,helpandsupport_aa,121,0.13687782805429866
+STAGE_SUBSTAGE,Servicing,Legal & Compliance,,legal_aa,184,1.0
+STAGE_SUBSTAGE,Servicing,Logout,,logout_aa,274,1.0
+STAGE_SUBSTAGE,Servicing,PFM Tab Navigation,,aa_sub_maintab_aa,894,1.0
+STAGE_SUBSTAGE,Servicing,Profile Management,,addressdetails_aa,476,0.163855421686747
+STAGE_SUBSTAGE,Servicing,Profile Management,,personaldetails_aa,2070,0.7125645438898451
+STAGE_SUBSTAGE,Servicing,Profile Management,,profileswitch_aa,140,0.04819277108433735
+STAGE_SUBSTAGE,Servicing,Profile Management,,profileupdate_aa,219,0.07538726333907057
+STAGE_SUBSTAGE,Servicing,Profile Portfolio,,profileportfolio_aa,951,1.0
+STAGE_SUBSTAGE,Servicing,Report Download,,pdp_downloadreport_aa,45,0.7142857142857143
+STAGE_SUBSTAGE,Servicing,Report Download,,reportanerror_aa,18,0.2857142857142857
+STAGE_SUBSTAGE,Servicing,Score Generation / Refresh,,chr_generation_aa,733,0.25701262272089764
+STAGE_SUBSTAGE,Servicing,Score Generation / Refresh,,chr_get_score_aa,619,0.2170406732117812
+STAGE_SUBSTAGE,Servicing,Score Generation / Refresh,,chr_refresh_aa,1500,0.5259467040673211
+STAGE_SUBSTAGE,Servicing,Score History,,scoretrend_aa,50,1.0
+STAGE_SUBSTAGE,Servicing,Score Improvement,,app_chr_improvescore_suggestions_aa,15,0.35714285714285715
+STAGE_SUBSTAGE,Servicing,Score Improvement,,improve_your_score_calculateagain_aa,8,0.19047619047619047
+STAGE_SUBSTAGE,Servicing,Score Improvement,,improve_your_score_page_aa,19,0.4523809523809524
+STAGE_SUBSTAGE,Servicing,Score Refresh,,aa_dailyrefresh_aa,169,1.0
+STAGE_SUBSTAGE,Servicing,Social Share,,app_chr_sharenow_aa,8,0.125
+STAGE_SUBSTAGE,Servicing,Social Share,,share_aa,56,0.875
+STAGE_SUBSTAGE,Tech / Tracking,App Lifecycle,,lifecycle,437,1.0
+STAGE_SUBSTAGE,Tech / Tracking,Deep-link / Attribution,,system.event.utmdeeplink,26,1.0
+STAGE_SUBSTAGE,Tech / Tracking,Language Selection,,select language,4934,1.0
+STAGE_SUBSTAGE,Tech / Tracking,SDK Initialization,,initplotline,248,1.0
+STAGE_SUBSTAGE,Tech / Tracking,System / Error Telemetry,,chr_service_failure,353,0.524517087667162
+STAGE_SUBSTAGE,Tech / Tracking,System / Error Telemetry,,exp_aop_onboarding_fallback,1,0.0014858841010401188
+STAGE_SUBSTAGE,Tech / Tracking,System / Error Telemetry,,flutter_service_failure,82,0.12184249628528974
+STAGE_SUBSTAGE,Tech / Tracking,System / Error Telemetry,,install_event_aa,224,0.3328380386329866
+STAGE_SUBSTAGE,Tech / Tracking,System / Error Telemetry,,onboarding_vapt_rooted_aa,12,0.017830609212481426
+STAGE_SUBSTAGE,Tech / Tracking,System / Error Telemetry,,transectionfailed,1,0.0014858841010401188
+STAGE_SUBSTAGE_SOURCE,AIP,Disb,transaction,AIP,89,1.0
+STAGE_SUBSTAGE_SOURCE,AIP,Post AIP Reject,transaction,AIP,46,1.0
+STAGE_SUBSTAGE_SOURCE,AIP,Professional details,transaction,AIP,5,1.0
+STAGE_SUBSTAGE_SOURCE,AIP,Push to Partner,transaction,AIP,51272,1.0
+STAGE_SUBSTAGE_SOURCE,AIP,listing,transaction,AIP,19401,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,Application OTP Verification,adobe,application otp success,88132,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,Consent Acceptance,adobe,t&cconsent,168,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,Login Complete,adobe,logincomplete_aa,69,0.8214285714285714
+STAGE_SUBSTAGE_SOURCE,Acquisition,Login Complete,adobe,signupcomplete_aa,15,0.17857142857142858
+STAGE_SUBSTAGE_SOURCE,Acquisition,Login Drawer Close,adobe,login_close_aa,58,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,Login Initiation,adobe,login_bottomsheet_load_aa,123,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Drop-off,adobe,otp_close_aa,3,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Initiation,adobe,get otp,115,0.2366255144032922
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Initiation,adobe,get otp application created,33,0.06790123456790123
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Initiation,adobe,login popup get otp,140,0.2880658436213992
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Initiation,adobe,login_getotp_aa,123,0.25308641975308643
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Initiation,adobe,otp_bottomsheet_load_aa,75,0.15432098765432098
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Retry,adobe,login_resendotp_aa,3,1.0
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Verification,adobe,login popup otp verify,101,0.3079268292682927
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Verification,adobe,login_otp_verify_aa,89,0.27134146341463417
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Verification,adobe,login_verifyotp_aa,2,0.006097560975609756
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Verification,adobe,preapproved otp verify,30,0.09146341463414634
+STAGE_SUBSTAGE_SOURCE,Acquisition,OTP Verification,adobe,proceed to otp,106,0.3231707317073171
+STAGE_SUBSTAGE_SOURCE,Acquisition,Pre-approved Offer Check,adobe,preapproved proceed otp,3,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Academy Engagement,adobe,marketsacademy_aa,60,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Banner Engagement,adobe,banner interaction,150,0.9868421052631579
+STAGE_SUBSTAGE_SOURCE,Awareness,Banner Engagement,adobe,bannerclick,2,0.013157894736842105
+STAGE_SUBSTAGE_SOURCE,Awareness,Bottom Navigation,adobe,bottomdock_aa,5293,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,CTA Interaction,adobe,cta interaction,127,0.9921875
+STAGE_SUBSTAGE_SOURCE,Awareness,CTA Interaction,adobe,ctaclick,1,0.0078125
+STAGE_SUBSTAGE_SOURCE,Awareness,Calculator Tool,adobe,emi calculator,12,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Content Engagement,adobe,intextfield_video_aa,6,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,FAQ / Help,adobe,faq question clicked,8,0.03669724770642202
+STAGE_SUBSTAGE_SOURCE,Awareness,FAQ / Help,adobe,pdp_frequentlyaskedquestion_aa,210,0.963302752293578
+STAGE_SUBSTAGE_SOURCE,Awareness,Footer Navigation,adobe,footer_home_iconclick_aa,1,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Header Navigation,adobe,header icon click,74,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,appupdate_aa,77,0.0247032402951556
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,appupdatetooltip,422,0.13538658966955405
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,bottomdock_tooltip,160,0.05133140840551813
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,inapp_review_aa,21,0.006737247353224254
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,notificationpopup_aa,209,0.06705165222970805
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,shortcut_appicon_aa,1,0.0003208213025344883
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,tooltip_aa,2218,0.711581649021495
+STAGE_SUBSTAGE_SOURCE,Awareness,Help / Tooltip,adobe,tooltip_small_video_aa,9,0.0028873917228103944
+STAGE_SUBSTAGE_SOURCE,Awareness,Home Page Interaction,adobe,home page interaction,3,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Icon Interaction,adobe,iconclick,117,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Menu / Navigation,adobe,menu interaction,91,0.9680851063829787
+STAGE_SUBSTAGE_SOURCE,Awareness,Menu / Navigation,adobe,navigation bar,3,0.031914893617021274
+STAGE_SUBSTAGE_SOURCE,Awareness,Menu Navigation,adobe,ourproducts_aa,489,0.8373287671232876
+STAGE_SUBSTAGE_SOURCE,Awareness,Menu Navigation,adobe,ourservices_aa,95,0.16267123287671234
+STAGE_SUBSTAGE_SOURCE,Awareness,ONDC Banner,adobe,ondc_e2ebanner_aa,48,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,ONDC Category Browse,adobe,ondc_discovercategories_aa,41,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,ONDC Product Discovery,adobe,ondc_trendingproducts_aa,159,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Partner Discovery,adobe,ourtrustedpartners_aa,475,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Product Discovery,adobe,product detail category click,58,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Quick Action,adobe,universalcomponent_aa,6105,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Scroll / Depth,adobe,scroll-event-35%,793,0.4720238095238095
+STAGE_SUBSTAGE_SOURCE,Awareness,Scroll / Depth,adobe,scroll-event-75%,887,0.5279761904761905
+STAGE_SUBSTAGE_SOURCE,Awareness,Search Behaviour,adobe,searchclick,8,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Secondary Navigation,adobe,roundnavigationicon_aa,3089,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Sticky CTA Engagement,adobe,docker sticky bottom click,745,0.8723653395784543
+STAGE_SUBSTAGE_SOURCE,Awareness,Sticky CTA Engagement,adobe,sticky cta click,109,0.12763466042154567
+STAGE_SUBSTAGE_SOURCE,Awareness,Stock Market Discovery,adobe,stockmarketinsight_aa,12,0.75
+STAGE_SUBSTAGE_SOURCE,Awareness,Stock Market Discovery,adobe,stockmarketinvestment_aa,4,0.25
+STAGE_SUBSTAGE_SOURCE,Awareness,Tab Navigation,adobe,tab interaction,10,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Top Navigation,adobe,topdock_aa,2910,1.0
+STAGE_SUBSTAGE_SOURCE,Awareness,Widget Interaction,adobe,e2ebanner_aa,503,1.0
+STAGE_SUBSTAGE_SOURCE,Commerce (ONDC),Cart Addition,adobe,add to cart,4,1.0
+STAGE_SUBSTAGE_SOURCE,Commerce (ONDC),Coupon Apply,adobe,apply-coupon,2,1.0
+STAGE_SUBSTAGE_SOURCE,Commerce (ONDC),Ecomm CTA Interaction,adobe,ecomm cta interaction,3,1.0
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,AA Bank Linking,adobe,aa_addmoreaccounts_aa,985,0.5140918580375783
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,AA Bank Linking,adobe,accountaggregator_aa,931,0.4859081419624217
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,AA OTP Verification,adobe,finvu otp verify,1,1.0
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,Account Approval,adobe,account approve click,28,1.0
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,Bank Account Selection,adobe,bank account selection proceed,227,1.0
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,Bank Approval,adobe,bank selection approve click,16,1.0
+STAGE_SUBSTAGE_SOURCE,Consent & Linking,Consent Page Load,adobe,consent approval page load,27,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Calculator,adobe,onclick_relatedcalculator_aa,8,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Card Product Browse,adobe,ourcardvariants_aa,19,0.11377245508982035
+STAGE_SUBSTAGE_SOURCE,Consideration,Card Product Browse,adobe,popularcards_aa,18,0.10778443113772455
+STAGE_SUBSTAGE_SOURCE,Consideration,Card Product Browse,adobe,quickapprovalcards_aa,21,0.12574850299401197
+STAGE_SUBSTAGE_SOURCE,Consideration,Card Product Browse,adobe,topratedcards_aa,67,0.40119760479041916
+STAGE_SUBSTAGE_SOURCE,Consideration,Card Product Browse,adobe,trendingcards_aa,42,0.25149700598802394
+STAGE_SUBSTAGE_SOURCE,Consideration,Credit Score Check,adobe,chr_asset,539,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Credit Score Cross-sell,adobe,chr_asset_aa,23,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Input Field Interaction,adobe,input field interaction,213,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Insurance Product Browse,adobe,ourinsuranceofferings_aa,6,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Investment Product Browse,adobe,ourinvestmentofferings_aa,4,0.4444444444444444
+STAGE_SUBSTAGE_SOURCE,Consideration,Investment Product Browse,adobe,topinvestmentoptions_aa,5,0.5555555555555556
+STAGE_SUBSTAGE_SOURCE,Consideration,Loan Product Browse,adobe,bestsellerpersonalloan_aa,238,0.05981402362402614
+STAGE_SUBSTAGE_SOURCE,Consideration,Loan Product Browse,adobe,excitingloanoffersforyou_aa,13,0.003267152550892184
+STAGE_SUBSTAGE_SOURCE,Consideration,Loan Product Browse,adobe,greatpersonalloandealsforyou_aa,57,0.014325207338527268
+STAGE_SUBSTAGE_SOURCE,Consideration,Loan Product Browse,adobe,ourloanofferings_aa,3340,0.8394068861522995
+STAGE_SUBSTAGE_SOURCE,Consideration,Loan Product Browse,adobe,ourloanvariants_aa,76,0.01910027645136969
+STAGE_SUBSTAGE_SOURCE,Consideration,Loan Product Browse,adobe,trendingloanproducts_aa,255,0.06408645388288514
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,blp_partneroffering_knowmore_aa,35,0.01585144927536232
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,blp_partnerofferings_aa,742,0.33605072463768115
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,dealsforyou_aa,22,0.009963768115942028
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,dynamicoffers_aa,895,0.4053442028985507
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,exciting_offerforyou_aa,5,0.0022644927536231885
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,offers_offersforyou_aa,10,0.004528985507246377
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,offersforyou_aa,21,0.009510869565217392
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,ourcardofferings_aa,282,0.12771739130434784
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,ouroffering_aa,112,0.050724637681159424
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,productblp_offerings_aa,1,0.0004528985507246377
+STAGE_SUBSTAGE_SOURCE,Consideration,Offer Discovery,adobe,productblp_partnerofferings_aa,83,0.03759057971014493
+STAGE_SUBSTAGE_SOURCE,Consideration,PDP Banner,adobe,pdp_e2ebanner_aa,175,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Partner Selection,adobe,pdp_partnerselection_aa,48,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Pocket Insurance Browse,adobe,pocketinsuranceofferings_aa,1,0.09090909090909091
+STAGE_SUBSTAGE_SOURCE,Consideration,Pocket Insurance Browse,adobe,pocketpricebadacoverage_aa,10,0.9090909090909091
+STAGE_SUBSTAGE_SOURCE,Consideration,Pre-approved Offer,adobe,aa_offerforyou_aa,11,0.009220452640402346
+STAGE_SUBSTAGE_SOURCE,Consideration,Pre-approved Offer,adobe,offerforyou_aa,1182,0.9907795473595976
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Browse,adobe,app_apnclicks_aa,1407,0.9710144927536232
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Browse,adobe,loans_ourpartners_aa,2,0.0013802622498274672
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Browse,adobe,quickapprovalpersonalloans_aa,8,0.005521048999309869
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Browse,adobe,youmightalsolike_aa,32,0.022084195997239476
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Category Browse,adobe,loan_lob_screen_aa,1,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Comparison,adobe,compare button click,1,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Detail View,adobe,pdp_selectedplan_aa,890,0.9988776655443322
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Detail View,adobe,productblp_knowmore_aa,1,0.001122334455667789
+STAGE_SUBSTAGE_SOURCE,Consideration,Product Selection,adobe,product apply,71406,1.0
+STAGE_SUBSTAGE_SOURCE,Consideration,Value Added Services,adobe,valueaddedservices_aa,1,1.0
+STAGE_SUBSTAGE_SOURCE,Credit Decision,AIP Approved,adobe,aip  ok,125999,0.9989693091993118
+STAGE_SUBSTAGE_SOURCE,Credit Decision,AIP Approved,adobe,aip ok,130,0.0010306908006881843
+STAGE_SUBSTAGE_SOURCE,Credit Decision,AIP Declined,adobe,aip not ok,390,1.0
+STAGE_SUBSTAGE_SOURCE,Credit Decision,Bank Approval Pending,adobe,bank approval pending,18912,1.0
+STAGE_SUBSTAGE_SOURCE,Credit Decision,Bank Approved,adobe,bank approved,47102,1.0
+STAGE_SUBSTAGE_SOURCE,Disbursed,Disb,transaction,Disbursed,762,1.0
+STAGE_SUBSTAGE_SOURCE,Disbursed,Post AIP Reject,transaction,Disbursed,1,1.0
+STAGE_SUBSTAGE_SOURCE,Disbursed,Push to Partner,transaction,Disbursed,784,1.0
+STAGE_SUBSTAGE_SOURCE,Disbursed,listing,transaction,Disbursed,27,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - CTA Interaction,adobe,chatbot cta interaction,99,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - Exit,adobe,chat exit click,4,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - Layer 1,adobe,pd layer1 click,10,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - Layer 2,adobe,pd layer2 click,80,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - Menu,adobe,chat menu,1,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - Suggestive Pills,adobe,suggestive pills,160,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot - Text Input,adobe,text input send,36,1.0
+STAGE_SUBSTAGE_SOURCE,Engagement,Chatbot Exit,adobe,cross_mb,128,1.0
+STAGE_SUBSTAGE_SOURCE,Inprogress,Application created/Login,transaction,Inprogress,3307,1.0
+STAGE_SUBSTAGE_SOURCE,Inprogress,Form filled,transaction,Inprogress,100,1.0
+STAGE_SUBSTAGE_SOURCE,Inprogress,Professional details,transaction,Inprogress,4442,1.0
+STAGE_SUBSTAGE_SOURCE,Inprogress,Push to Partner,transaction,Inprogress,64,1.0
+STAGE_SUBSTAGE_SOURCE,Inprogress,listing,transaction,Inprogress,166,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Address OTP Verification,adobe,otp submit,33,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Address Submission,adobe,address detail created,21389,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Application Created,adobe,application created success,80852,0.990093190139724
+STAGE_SUBSTAGE_SOURCE,Onboarding,Application Created,adobe,applicationcreated,809,0.00990680986027602
+STAGE_SUBSTAGE_SOURCE,Onboarding,Application Resume,adobe,application resume complete,46143,0.9613525563565148
+STAGE_SUBSTAGE_SOURCE,Onboarding,Application Resume,adobe,application resume start,1855,0.038647443643485144
+STAGE_SUBSTAGE_SOURCE,Onboarding,Application Start,adobe,loans_ourtrustedpartners_applynow,1,0.041666666666666664
+STAGE_SUBSTAGE_SOURCE,Onboarding,Application Start,adobe,pdp_compareapply_aa,23,0.9583333333333334
+STAGE_SUBSTAGE_SOURCE,Onboarding,Connection Error,adobe,connection error,13186,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Journey Close,adobe,journeyclose_aa,33984,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Journey Complete,adobe,journeycomplete,1,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Journey Start,adobe,journeystart,1,0.3333333333333333
+STAGE_SUBSTAGE_SOURCE,Onboarding,Journey Start,adobe,transactionstart,2,0.6666666666666666
+STAGE_SUBSTAGE_SOURCE,Onboarding,Loan Confirmation,adobe,loan confirmation details,340,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Loan Summary View,adobe,loan summary page,32,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Pending Application,adobe,pendingactions_aa,2037,1.0
+STAGE_SUBSTAGE_SOURCE,Onboarding,Professional Details Submission,adobe,professional details submit,57837,1.0
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,aa_bankselection_aa,1484,0.5698924731182796
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,aa_budget_aa,14,0.005376344086021506
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,aa_expensehistory_aa,37,0.014208909370199693
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,aa_maintab_aa,401,0.15399385560675882
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,bestinsurancedealsforyou_aa,1,0.00038402457757296467
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,bestloandealsforyou_aa,64,0.02457757296466974
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,clp_ourproducts_aa,139,0.05337941628264209
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,customerstories_aa,118,0.04531490015360983
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,discover_aa,11,0.004224270353302612
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,greatbusinessloandealsforyou_aa,7,0.002688172043010753
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,greathomeloandealsforyou_aa,5,0.0019201228878648233
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,insuranceplansstarting_aa,5,0.0019201228878648233
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,mob_validation_aa,78,0.029953917050691243
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,pdp_selectedpartner_aa,2,0.0007680491551459293
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,popularpersonalloans_aa,12,0.004608294930875576
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,setreminder_aa,3,0.001152073732718894
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,trendingcreditcards_aa,4,0.0015360983102918587
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,trendingpersonalloans_aa,135,0.05184331797235023
+STAGE_SUBSTAGE_SOURCE,Other,Other,adobe,useraccount_aa,84,0.03225806451612903
+STAGE_SUBSTAGE_SOURCE,Rejected,Form filled-Rejected,transaction,Rejected,529,1.0
+STAGE_SUBSTAGE_SOURCE,Rejected,Post AIP Reject,transaction,Rejected,1,1.0
+STAGE_SUBSTAGE_SOURCE,Rejected,Push to Partner,transaction,Rejected,4,1.0
+STAGE_SUBSTAGE_SOURCE,Rejected,listing,transaction,Rejected,3,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Account View,adobe,aa_youraccounts_aa,185,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Bill Reminder,adobe,set_reminder_aa,23,0.575
+STAGE_SUBSTAGE_SOURCE,Servicing,Bill Reminder,adobe,set_reminder_edit_aa,10,0.25
+STAGE_SUBSTAGE_SOURCE,Servicing,Bill Reminder,adobe,set_reminder_new_aa,2,0.05
+STAGE_SUBSTAGE_SOURCE,Servicing,Bill Reminder,adobe,set_reminder_update_aa,5,0.125
+STAGE_SUBSTAGE_SOURCE,Servicing,Budget Management,adobe,aa_budgetset_aa,4,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Account Summary,adobe,accsummary_aa,619,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Education,adobe,app_chr_dyk_checkresult_aa,17,0.26153846153846155
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Education,adobe,dyk_aa,48,0.7384615384615385
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Factors,adobe,creditfactor_aa,49,0.026746724890829694
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Factors,adobe,creditfactors_aa,1783,0.9732532751091703
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Score Check,adobe,app_chr_acsum_loans_aa,2,0.012903225806451613
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Score Check,adobe,app_chr_cibilscore_generated,10,0.06451612903225806
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Score Check,adobe,chr_success_aa,120,0.7741935483870968
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit Score Check,adobe,fhcr_multiprofile_switch,23,0.14838709677419354
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit-Score OTP,adobe,chr_otp_verification_aa,7,0.3181818181818182
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit-Score OTP,adobe,chr_submit_otp_aa,9,0.4090909090909091
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit-Score OTP,adobe,fhcr_emailotp_submit_aa,4,0.18181818181818182
+STAGE_SUBSTAGE_SOURCE,Servicing,Credit-Score OTP,adobe,fhcrgetotp,2,0.09090909090909091
+STAGE_SUBSTAGE_SOURCE,Servicing,Customer Portal Login,adobe,loginclick,31,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,DNC Preference,adobe,dnc_submit_aa,41,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Dashboard Interaction,adobe,dashboard_aa,246,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Deep-link Redirection,adobe,san_ddl_aa,5,0.5555555555555556
+STAGE_SUBSTAGE_SOURCE,Servicing,Deep-link Redirection,adobe,san_ddl_redirection_aa,4,0.4444444444444444
+STAGE_SUBSTAGE_SOURCE,Servicing,Expense Breakdown,adobe,aa_breakdown_aa,337,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Help / FAQ,adobe,aa_faq_aa,50,0.05656108597285068
+STAGE_SUBSTAGE_SOURCE,Servicing,Help / FAQ,adobe,help_faqs_aa,193,0.21832579185520362
+STAGE_SUBSTAGE_SOURCE,Servicing,Help / FAQ,adobe,help_faqs_yn_aa,212,0.2398190045248869
+STAGE_SUBSTAGE_SOURCE,Servicing,Help / FAQ,adobe,help_srtype_aa,308,0.34841628959276016
+STAGE_SUBSTAGE_SOURCE,Servicing,Help / FAQ,adobe,helpandsupport_aa,121,0.13687782805429866
+STAGE_SUBSTAGE_SOURCE,Servicing,Legal & Compliance,adobe,legal_aa,184,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Logout,adobe,logout_aa,274,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,PFM Tab Navigation,adobe,aa_sub_maintab_aa,894,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Profile Management,adobe,addressdetails_aa,476,0.163855421686747
+STAGE_SUBSTAGE_SOURCE,Servicing,Profile Management,adobe,personaldetails_aa,2070,0.7125645438898451
+STAGE_SUBSTAGE_SOURCE,Servicing,Profile Management,adobe,profileswitch_aa,140,0.04819277108433735
+STAGE_SUBSTAGE_SOURCE,Servicing,Profile Management,adobe,profileupdate_aa,219,0.07538726333907057
+STAGE_SUBSTAGE_SOURCE,Servicing,Profile Portfolio,adobe,profileportfolio_aa,951,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Report Download,adobe,pdp_downloadreport_aa,45,0.7142857142857143
+STAGE_SUBSTAGE_SOURCE,Servicing,Report Download,adobe,reportanerror_aa,18,0.2857142857142857
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Generation / Refresh,adobe,chr_generation_aa,733,0.25701262272089764
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Generation / Refresh,adobe,chr_get_score_aa,619,0.2170406732117812
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Generation / Refresh,adobe,chr_refresh_aa,1500,0.5259467040673211
+STAGE_SUBSTAGE_SOURCE,Servicing,Score History,adobe,scoretrend_aa,50,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Improvement,adobe,app_chr_improvescore_suggestions_aa,15,0.35714285714285715
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Improvement,adobe,improve_your_score_calculateagain_aa,8,0.19047619047619047
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Improvement,adobe,improve_your_score_page_aa,19,0.4523809523809524
+STAGE_SUBSTAGE_SOURCE,Servicing,Score Refresh,adobe,aa_dailyrefresh_aa,169,1.0
+STAGE_SUBSTAGE_SOURCE,Servicing,Social Share,adobe,app_chr_sharenow_aa,8,0.125
+STAGE_SUBSTAGE_SOURCE,Servicing,Social Share,adobe,share_aa,56,0.875
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,App Lifecycle,adobe,lifecycle,437,1.0
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,Deep-link / Attribution,adobe,system.event.utmdeeplink,26,1.0
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,Language Selection,adobe,select language,4934,1.0
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,SDK Initialization,adobe,initplotline,248,1.0
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,System / Error Telemetry,adobe,chr_service_failure,353,0.524517087667162
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,System / Error Telemetry,adobe,exp_aop_onboarding_fallback,1,0.0014858841010401188
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,System / Error Telemetry,adobe,flutter_service_failure,82,0.12184249628528974
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,System / Error Telemetry,adobe,install_event_aa,224,0.3328380386329866
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,System / Error Telemetry,adobe,onboarding_vapt_rooted_aa,12,0.017830609212481426
+STAGE_SUBSTAGE_SOURCE,Tech / Tracking,System / Error Telemetry,adobe,transectionfailed,1,0.0014858841010401188
+SUBSTAGE,,AA Bank Linking,,aa_addmoreaccounts_aa,985,0.5140918580375783
+SUBSTAGE,,AA Bank Linking,,accountaggregator_aa,931,0.4859081419624217
+SUBSTAGE,,AA OTP Verification,,finvu otp verify,1,1.0
+SUBSTAGE,,AIP Approved,,aip  ok,125999,0.9989693091993118
+SUBSTAGE,,AIP Approved,,aip ok,130,0.0010306908006881843
+SUBSTAGE,,AIP Declined,,aip not ok,390,1.0
+SUBSTAGE,,Academy Engagement,,marketsacademy_aa,60,1.0
+SUBSTAGE,,Account Approval,,account approve click,28,1.0
+SUBSTAGE,,Account View,,aa_youraccounts_aa,185,1.0
+SUBSTAGE,,Address OTP Verification,,otp submit,33,1.0
+SUBSTAGE,,Address Submission,,address detail created,21389,1.0
+SUBSTAGE,,App Lifecycle,,lifecycle,437,1.0
+SUBSTAGE,,Application Created,,application created success,80852,0.990093190139724
+SUBSTAGE,,Application Created,,applicationcreated,809,0.00990680986027602
+SUBSTAGE,,Application OTP Verification,,application otp success,88132,1.0
+SUBSTAGE,,Application Resume,,application resume complete,46143,0.9613525563565148
+SUBSTAGE,,Application Resume,,application resume start,1855,0.038647443643485144
+SUBSTAGE,,Application Start,,loans_ourtrustedpartners_applynow,1,0.041666666666666664
+SUBSTAGE,,Application Start,,pdp_compareapply_aa,23,0.9583333333333334
+SUBSTAGE,,Application created/Login,,Inprogress,3307,1.0
+SUBSTAGE,,Bank Account Selection,,bank account selection proceed,227,1.0
+SUBSTAGE,,Bank Approval,,bank selection approve click,16,1.0
+SUBSTAGE,,Bank Approval Pending,,bank approval pending,18912,1.0
+SUBSTAGE,,Bank Approved,,bank approved,47102,1.0
+SUBSTAGE,,Banner Engagement,,banner interaction,150,0.9868421052631579
+SUBSTAGE,,Banner Engagement,,bannerclick,2,0.013157894736842105
+SUBSTAGE,,Bill Reminder,,set_reminder_aa,23,0.575
+SUBSTAGE,,Bill Reminder,,set_reminder_edit_aa,10,0.25
+SUBSTAGE,,Bill Reminder,,set_reminder_new_aa,2,0.05
+SUBSTAGE,,Bill Reminder,,set_reminder_update_aa,5,0.125
+SUBSTAGE,,Bottom Navigation,,bottomdock_aa,5293,1.0
+SUBSTAGE,,Budget Management,,aa_budgetset_aa,4,1.0
+SUBSTAGE,,CTA Interaction,,cta interaction,127,0.9921875
+SUBSTAGE,,CTA Interaction,,ctaclick,1,0.0078125
+SUBSTAGE,,Calculator,,onclick_relatedcalculator_aa,8,1.0
+SUBSTAGE,,Calculator Tool,,emi calculator,12,1.0
+SUBSTAGE,,Card Product Browse,,ourcardvariants_aa,19,0.11377245508982035
+SUBSTAGE,,Card Product Browse,,popularcards_aa,18,0.10778443113772455
+SUBSTAGE,,Card Product Browse,,quickapprovalcards_aa,21,0.12574850299401197
+SUBSTAGE,,Card Product Browse,,topratedcards_aa,67,0.40119760479041916
+SUBSTAGE,,Card Product Browse,,trendingcards_aa,42,0.25149700598802394
+SUBSTAGE,,Cart Addition,,add to cart,4,1.0
+SUBSTAGE,,Chatbot - CTA Interaction,,chatbot cta interaction,99,1.0
+SUBSTAGE,,Chatbot - Exit,,chat exit click,4,1.0
+SUBSTAGE,,Chatbot - Layer 1,,pd layer1 click,10,1.0
+SUBSTAGE,,Chatbot - Layer 2,,pd layer2 click,80,1.0
+SUBSTAGE,,Chatbot - Menu,,chat menu,1,1.0
+SUBSTAGE,,Chatbot - Suggestive Pills,,suggestive pills,160,1.0
+SUBSTAGE,,Chatbot - Text Input,,text input send,36,1.0
+SUBSTAGE,,Chatbot Exit,,cross_mb,128,1.0
+SUBSTAGE,,Connection Error,,connection error,13186,1.0
+SUBSTAGE,,Consent Acceptance,,t&cconsent,168,1.0
+SUBSTAGE,,Consent Page Load,,consent approval page load,27,1.0
+SUBSTAGE,,Content Engagement,,intextfield_video_aa,6,1.0
+SUBSTAGE,,Coupon Apply,,apply-coupon,2,1.0
+SUBSTAGE,,Credit Account Summary,,accsummary_aa,619,1.0
+SUBSTAGE,,Credit Education,,app_chr_dyk_checkresult_aa,17,0.26153846153846155
+SUBSTAGE,,Credit Education,,dyk_aa,48,0.7384615384615385
+SUBSTAGE,,Credit Factors,,creditfactor_aa,49,0.026746724890829694
+SUBSTAGE,,Credit Factors,,creditfactors_aa,1783,0.9732532751091703
+SUBSTAGE,,Credit Score Check,,app_chr_acsum_loans_aa,2,0.002881844380403458
+SUBSTAGE,,Credit Score Check,,app_chr_cibilscore_generated,10,0.01440922190201729
+SUBSTAGE,,Credit Score Check,,chr_asset,539,0.776657060518732
+SUBSTAGE,,Credit Score Check,,chr_success_aa,120,0.1729106628242075
+SUBSTAGE,,Credit Score Check,,fhcr_multiprofile_switch,23,0.03314121037463977
+SUBSTAGE,,Credit Score Cross-sell,,chr_asset_aa,23,1.0
+SUBSTAGE,,Credit-Score OTP,,chr_otp_verification_aa,7,0.3181818181818182
+SUBSTAGE,,Credit-Score OTP,,chr_submit_otp_aa,9,0.4090909090909091
+SUBSTAGE,,Credit-Score OTP,,fhcr_emailotp_submit_aa,4,0.18181818181818182
+SUBSTAGE,,Credit-Score OTP,,fhcrgetotp,2,0.09090909090909091
+SUBSTAGE,,Customer Portal Login,,loginclick,31,1.0
+SUBSTAGE,,DNC Preference,,dnc_submit_aa,41,1.0
+SUBSTAGE,,Dashboard Interaction,,dashboard_aa,246,1.0
+SUBSTAGE,,Deep-link / Attribution,,system.event.utmdeeplink,26,1.0
+SUBSTAGE,,Deep-link Redirection,,san_ddl_aa,5,0.5555555555555556
+SUBSTAGE,,Deep-link Redirection,,san_ddl_redirection_aa,4,0.4444444444444444
+SUBSTAGE,,Disb,,AIP,89,0.1045828437132785
+SUBSTAGE,,Disb,,Disbursed,762,0.8954171562867215
+SUBSTAGE,,Ecomm CTA Interaction,,ecomm cta interaction,3,1.0
+SUBSTAGE,,Expense Breakdown,,aa_breakdown_aa,337,1.0
+SUBSTAGE,,FAQ / Help,,faq question clicked,8,0.03669724770642202
+SUBSTAGE,,FAQ / Help,,pdp_frequentlyaskedquestion_aa,210,0.963302752293578
+SUBSTAGE,,Footer Navigation,,footer_home_iconclick_aa,1,1.0
+SUBSTAGE,,Form filled,,Inprogress,100,1.0
+SUBSTAGE,,Form filled-Rejected,,Rejected,529,1.0
+SUBSTAGE,,Header Navigation,,header icon click,74,1.0
+SUBSTAGE,,Help / FAQ,,aa_faq_aa,50,0.05656108597285068
+SUBSTAGE,,Help / FAQ,,help_faqs_aa,193,0.21832579185520362
+SUBSTAGE,,Help / FAQ,,help_faqs_yn_aa,212,0.2398190045248869
+SUBSTAGE,,Help / FAQ,,help_srtype_aa,308,0.34841628959276016
+SUBSTAGE,,Help / FAQ,,helpandsupport_aa,121,0.13687782805429866
+SUBSTAGE,,Help / Tooltip,,appupdate_aa,77,0.0247032402951556
+SUBSTAGE,,Help / Tooltip,,appupdatetooltip,422,0.13538658966955405
+SUBSTAGE,,Help / Tooltip,,bottomdock_tooltip,160,0.05133140840551813
+SUBSTAGE,,Help / Tooltip,,inapp_review_aa,21,0.006737247353224254
+SUBSTAGE,,Help / Tooltip,,notificationpopup_aa,209,0.06705165222970805
+SUBSTAGE,,Help / Tooltip,,shortcut_appicon_aa,1,0.0003208213025344883
+SUBSTAGE,,Help / Tooltip,,tooltip_aa,2218,0.711581649021495
+SUBSTAGE,,Help / Tooltip,,tooltip_small_video_aa,9,0.0028873917228103944
+SUBSTAGE,,Home Page Interaction,,home page interaction,3,1.0
+SUBSTAGE,,Icon Interaction,,iconclick,117,1.0
+SUBSTAGE,,Input Field Interaction,,input field interaction,213,1.0
+SUBSTAGE,,Insurance Product Browse,,ourinsuranceofferings_aa,6,1.0
+SUBSTAGE,,Investment Product Browse,,ourinvestmentofferings_aa,4,0.4444444444444444
+SUBSTAGE,,Investment Product Browse,,topinvestmentoptions_aa,5,0.5555555555555556
+SUBSTAGE,,Journey Close,,journeyclose_aa,33984,1.0
+SUBSTAGE,,Journey Complete,,journeycomplete,1,1.0
+SUBSTAGE,,Journey Start,,journeystart,1,0.3333333333333333
+SUBSTAGE,,Journey Start,,transactionstart,2,0.6666666666666666
+SUBSTAGE,,Language Selection,,select language,4934,1.0
+SUBSTAGE,,Legal & Compliance,,legal_aa,184,1.0
+SUBSTAGE,,Loan Confirmation,,loan confirmation details,340,1.0
+SUBSTAGE,,Loan Product Browse,,bestsellerpersonalloan_aa,238,0.05981402362402614
+SUBSTAGE,,Loan Product Browse,,excitingloanoffersforyou_aa,13,0.003267152550892184
+SUBSTAGE,,Loan Product Browse,,greatpersonalloandealsforyou_aa,57,0.014325207338527268
+SUBSTAGE,,Loan Product Browse,,ourloanofferings_aa,3340,0.8394068861522995
+SUBSTAGE,,Loan Product Browse,,ourloanvariants_aa,76,0.01910027645136969
+SUBSTAGE,,Loan Product Browse,,trendingloanproducts_aa,255,0.06408645388288514
+SUBSTAGE,,Loan Summary View,,loan summary page,32,1.0
+SUBSTAGE,,Login Complete,,logincomplete_aa,69,0.8214285714285714
+SUBSTAGE,,Login Complete,,signupcomplete_aa,15,0.17857142857142858
+SUBSTAGE,,Login Drawer Close,,login_close_aa,58,1.0
+SUBSTAGE,,Login Initiation,,login_bottomsheet_load_aa,123,1.0
+SUBSTAGE,,Logout,,logout_aa,274,1.0
+SUBSTAGE,,Menu / Navigation,,menu interaction,91,0.9680851063829787
+SUBSTAGE,,Menu / Navigation,,navigation bar,3,0.031914893617021274
+SUBSTAGE,,Menu Navigation,,ourproducts_aa,489,0.8373287671232876
+SUBSTAGE,,Menu Navigation,,ourservices_aa,95,0.16267123287671234
+SUBSTAGE,,ONDC Banner,,ondc_e2ebanner_aa,48,1.0
+SUBSTAGE,,ONDC Category Browse,,ondc_discovercategories_aa,41,1.0
+SUBSTAGE,,ONDC Product Discovery,,ondc_trendingproducts_aa,159,1.0
+SUBSTAGE,,OTP Drop-off,,otp_close_aa,3,1.0
+SUBSTAGE,,OTP Initiation,,get otp,115,0.2366255144032922
+SUBSTAGE,,OTP Initiation,,get otp application created,33,0.06790123456790123
+SUBSTAGE,,OTP Initiation,,login popup get otp,140,0.2880658436213992
+SUBSTAGE,,OTP Initiation,,login_getotp_aa,123,0.25308641975308643
+SUBSTAGE,,OTP Initiation,,otp_bottomsheet_load_aa,75,0.15432098765432098
+SUBSTAGE,,OTP Retry,,login_resendotp_aa,3,1.0
+SUBSTAGE,,OTP Verification,,login popup otp verify,101,0.3079268292682927
+SUBSTAGE,,OTP Verification,,login_otp_verify_aa,89,0.27134146341463417
+SUBSTAGE,,OTP Verification,,login_verifyotp_aa,2,0.006097560975609756
+SUBSTAGE,,OTP Verification,,preapproved otp verify,30,0.09146341463414634
+SUBSTAGE,,OTP Verification,,proceed to otp,106,0.3231707317073171
+SUBSTAGE,,Offer Discovery,,blp_partneroffering_knowmore_aa,35,0.01585144927536232
+SUBSTAGE,,Offer Discovery,,blp_partnerofferings_aa,742,0.33605072463768115
+SUBSTAGE,,Offer Discovery,,dealsforyou_aa,22,0.009963768115942028
+SUBSTAGE,,Offer Discovery,,dynamicoffers_aa,895,0.4053442028985507
+SUBSTAGE,,Offer Discovery,,exciting_offerforyou_aa,5,0.0022644927536231885
+SUBSTAGE,,Offer Discovery,,offers_offersforyou_aa,10,0.004528985507246377
+SUBSTAGE,,Offer Discovery,,offersforyou_aa,21,0.009510869565217392
+SUBSTAGE,,Offer Discovery,,ourcardofferings_aa,282,0.12771739130434784
+SUBSTAGE,,Offer Discovery,,ouroffering_aa,112,0.050724637681159424
+SUBSTAGE,,Offer Discovery,,productblp_offerings_aa,1,0.0004528985507246377
+SUBSTAGE,,Offer Discovery,,productblp_partnerofferings_aa,83,0.03759057971014493
+SUBSTAGE,,Other,,aa_bankselection_aa,1484,0.5698924731182796
+SUBSTAGE,,Other,,aa_budget_aa,14,0.005376344086021506
+SUBSTAGE,,Other,,aa_expensehistory_aa,37,0.014208909370199693
+SUBSTAGE,,Other,,aa_maintab_aa,401,0.15399385560675882
+SUBSTAGE,,Other,,bestinsurancedealsforyou_aa,1,0.00038402457757296467
+SUBSTAGE,,Other,,bestloandealsforyou_aa,64,0.02457757296466974
+SUBSTAGE,,Other,,clp_ourproducts_aa,139,0.05337941628264209
+SUBSTAGE,,Other,,customerstories_aa,118,0.04531490015360983
+SUBSTAGE,,Other,,discover_aa,11,0.004224270353302612
+SUBSTAGE,,Other,,greatbusinessloandealsforyou_aa,7,0.002688172043010753
+SUBSTAGE,,Other,,greathomeloandealsforyou_aa,5,0.0019201228878648233
+SUBSTAGE,,Other,,insuranceplansstarting_aa,5,0.0019201228878648233
+SUBSTAGE,,Other,,mob_validation_aa,78,0.029953917050691243
+SUBSTAGE,,Other,,pdp_selectedpartner_aa,2,0.0007680491551459293
+SUBSTAGE,,Other,,popularpersonalloans_aa,12,0.004608294930875576
+SUBSTAGE,,Other,,setreminder_aa,3,0.001152073732718894
+SUBSTAGE,,Other,,trendingcreditcards_aa,4,0.0015360983102918587
+SUBSTAGE,,Other,,trendingpersonalloans_aa,135,0.05184331797235023
+SUBSTAGE,,Other,,useraccount_aa,84,0.03225806451612903
+SUBSTAGE,,PDP Banner,,pdp_e2ebanner_aa,175,1.0
+SUBSTAGE,,PFM Tab Navigation,,aa_sub_maintab_aa,894,1.0
+SUBSTAGE,,Partner Discovery,,ourtrustedpartners_aa,475,1.0
+SUBSTAGE,,Partner Selection,,pdp_partnerselection_aa,48,1.0
+SUBSTAGE,,Pending Application,,pendingactions_aa,2037,1.0
+SUBSTAGE,,Pocket Insurance Browse,,pocketinsuranceofferings_aa,1,0.09090909090909091
+SUBSTAGE,,Pocket Insurance Browse,,pocketpricebadacoverage_aa,10,0.9090909090909091
+SUBSTAGE,,Post AIP Reject,,AIP,46,0.9583333333333334
+SUBSTAGE,,Post AIP Reject,,Disbursed,1,0.020833333333333332
+SUBSTAGE,,Post AIP Reject,,Rejected,1,0.020833333333333332
+SUBSTAGE,,Pre-approved Offer,,aa_offerforyou_aa,11,0.009220452640402346
+SUBSTAGE,,Pre-approved Offer,,offerforyou_aa,1182,0.9907795473595976
+SUBSTAGE,,Pre-approved Offer Check,,preapproved proceed otp,3,1.0
+SUBSTAGE,,Product Browse,,app_apnclicks_aa,1407,0.9710144927536232
+SUBSTAGE,,Product Browse,,loans_ourpartners_aa,2,0.0013802622498274672
+SUBSTAGE,,Product Browse,,quickapprovalpersonalloans_aa,8,0.005521048999309869
+SUBSTAGE,,Product Browse,,youmightalsolike_aa,32,0.022084195997239476
+SUBSTAGE,,Product Category Browse,,loan_lob_screen_aa,1,1.0
+SUBSTAGE,,Product Comparison,,compare button click,1,1.0
+SUBSTAGE,,Product Detail View,,pdp_selectedplan_aa,890,0.9988776655443322
+SUBSTAGE,,Product Detail View,,productblp_knowmore_aa,1,0.001122334455667789
+SUBSTAGE,,Product Discovery,,product detail category click,58,1.0
+SUBSTAGE,,Product Selection,,product apply,71406,1.0
+SUBSTAGE,,Professional Details Submission,,professional details submit,57837,1.0
+SUBSTAGE,,Professional details,,AIP,5,0.001124353496739375
+SUBSTAGE,,Professional details,,Inprogress,4442,0.9988756465032607
+SUBSTAGE,,Profile Management,,addressdetails_aa,476,0.163855421686747
+SUBSTAGE,,Profile Management,,personaldetails_aa,2070,0.7125645438898451
+SUBSTAGE,,Profile Management,,profileswitch_aa,140,0.04819277108433735
+SUBSTAGE,,Profile Management,,profileupdate_aa,219,0.07538726333907057
+SUBSTAGE,,Profile Portfolio,,profileportfolio_aa,951,1.0
+SUBSTAGE,,Push to Partner,,AIP,51272,0.9836543626736244
+SUBSTAGE,,Push to Partner,,Disbursed,784,0.0150410559435193
+SUBSTAGE,,Push to Partner,,Inprogress,64,0.0012278413015117797
+SUBSTAGE,,Push to Partner,,Rejected,4,7.674008134448623e-05
+SUBSTAGE,,Quick Action,,universalcomponent_aa,6105,1.0
+SUBSTAGE,,Report Download,,pdp_downloadreport_aa,45,0.7142857142857143
+SUBSTAGE,,Report Download,,reportanerror_aa,18,0.2857142857142857
+SUBSTAGE,,SDK Initialization,,initplotline,248,1.0
+SUBSTAGE,,Score Generation / Refresh,,chr_generation_aa,733,0.25701262272089764
+SUBSTAGE,,Score Generation / Refresh,,chr_get_score_aa,619,0.2170406732117812
+SUBSTAGE,,Score Generation / Refresh,,chr_refresh_aa,1500,0.5259467040673211
+SUBSTAGE,,Score History,,scoretrend_aa,50,1.0
+SUBSTAGE,,Score Improvement,,app_chr_improvescore_suggestions_aa,15,0.35714285714285715
+SUBSTAGE,,Score Improvement,,improve_your_score_calculateagain_aa,8,0.19047619047619047
+SUBSTAGE,,Score Improvement,,improve_your_score_page_aa,19,0.4523809523809524
+SUBSTAGE,,Score Refresh,,aa_dailyrefresh_aa,169,1.0
+SUBSTAGE,,Scroll / Depth,,scroll-event-35%,793,0.4720238095238095
+SUBSTAGE,,Scroll / Depth,,scroll-event-75%,887,0.5279761904761905
+SUBSTAGE,,Search Behaviour,,searchclick,8,1.0
+SUBSTAGE,,Secondary Navigation,,roundnavigationicon_aa,3089,1.0
+SUBSTAGE,,Social Share,,app_chr_sharenow_aa,8,0.125
+SUBSTAGE,,Social Share,,share_aa,56,0.875
+SUBSTAGE,,Sticky CTA Engagement,,docker sticky bottom click,745,0.8723653395784543
+SUBSTAGE,,Sticky CTA Engagement,,sticky cta click,109,0.12763466042154567
+SUBSTAGE,,Stock Market Discovery,,stockmarketinsight_aa,12,0.75
+SUBSTAGE,,Stock Market Discovery,,stockmarketinvestment_aa,4,0.25
+SUBSTAGE,,System / Error Telemetry,,chr_service_failure,353,0.524517087667162
+SUBSTAGE,,System / Error Telemetry,,exp_aop_onboarding_fallback,1,0.0014858841010401188
+SUBSTAGE,,System / Error Telemetry,,flutter_service_failure,82,0.12184249628528974
+SUBSTAGE,,System / Error Telemetry,,install_event_aa,224,0.3328380386329866
+SUBSTAGE,,System / Error Telemetry,,onboarding_vapt_rooted_aa,12,0.017830609212481426
+SUBSTAGE,,System / Error Telemetry,,transectionfailed,1,0.0014858841010401188
+SUBSTAGE,,Tab Navigation,,tab interaction,10,1.0
+SUBSTAGE,,Top Navigation,,topdock_aa,2910,1.0
+SUBSTAGE,,Value Added Services,,valueaddedservices_aa,1,1.0
+SUBSTAGE,,Widget Interaction,,e2ebanner_aa,503,1.0
+SUBSTAGE,,listing,,AIP,19401,0.9899984691534418
+SUBSTAGE,,listing,,Disbursed,27,0.0013777619023319896
+SUBSTAGE,,listing,,Inprogress,166,0.008470684288411492
+SUBSTAGE,,listing,,Rejected,3,0.0001530846558146655
+SUBSTAGE_SOURCE,,AA Bank Linking,adobe,aa_addmoreaccounts_aa,985,0.5140918580375783
+SUBSTAGE_SOURCE,,AA Bank Linking,adobe,accountaggregator_aa,931,0.4859081419624217
+SUBSTAGE_SOURCE,,AA OTP Verification,adobe,finvu otp verify,1,1.0
+SUBSTAGE_SOURCE,,AIP Approved,adobe,aip  ok,125999,0.9989693091993118
+SUBSTAGE_SOURCE,,AIP Approved,adobe,aip ok,130,0.0010306908006881843
+SUBSTAGE_SOURCE,,AIP Declined,adobe,aip not ok,390,1.0
+SUBSTAGE_SOURCE,,Academy Engagement,adobe,marketsacademy_aa,60,1.0
+SUBSTAGE_SOURCE,,Account Approval,adobe,account approve click,28,1.0
+SUBSTAGE_SOURCE,,Account View,adobe,aa_youraccounts_aa,185,1.0
+SUBSTAGE_SOURCE,,Address OTP Verification,adobe,otp submit,33,1.0
+SUBSTAGE_SOURCE,,Address Submission,adobe,address detail created,21389,1.0
+SUBSTAGE_SOURCE,,App Lifecycle,adobe,lifecycle,437,1.0
+SUBSTAGE_SOURCE,,Application Created,adobe,application created success,80852,0.990093190139724
+SUBSTAGE_SOURCE,,Application Created,adobe,applicationcreated,809,0.00990680986027602
+SUBSTAGE_SOURCE,,Application OTP Verification,adobe,application otp success,88132,1.0
+SUBSTAGE_SOURCE,,Application Resume,adobe,application resume complete,46143,0.9613525563565148
+SUBSTAGE_SOURCE,,Application Resume,adobe,application resume start,1855,0.038647443643485144
+SUBSTAGE_SOURCE,,Application Start,adobe,loans_ourtrustedpartners_applynow,1,0.041666666666666664
+SUBSTAGE_SOURCE,,Application Start,adobe,pdp_compareapply_aa,23,0.9583333333333334
+SUBSTAGE_SOURCE,,Application created/Login,transaction,Inprogress,3307,1.0
+SUBSTAGE_SOURCE,,Bank Account Selection,adobe,bank account selection proceed,227,1.0
+SUBSTAGE_SOURCE,,Bank Approval,adobe,bank selection approve click,16,1.0
+SUBSTAGE_SOURCE,,Bank Approval Pending,adobe,bank approval pending,18912,1.0
+SUBSTAGE_SOURCE,,Bank Approved,adobe,bank approved,47102,1.0
+SUBSTAGE_SOURCE,,Banner Engagement,adobe,banner interaction,150,0.9868421052631579
+SUBSTAGE_SOURCE,,Banner Engagement,adobe,bannerclick,2,0.013157894736842105
+SUBSTAGE_SOURCE,,Bill Reminder,adobe,set_reminder_aa,23,0.575
+SUBSTAGE_SOURCE,,Bill Reminder,adobe,set_reminder_edit_aa,10,0.25
+SUBSTAGE_SOURCE,,Bill Reminder,adobe,set_reminder_new_aa,2,0.05
+SUBSTAGE_SOURCE,,Bill Reminder,adobe,set_reminder_update_aa,5,0.125
+SUBSTAGE_SOURCE,,Bottom Navigation,adobe,bottomdock_aa,5293,1.0
+SUBSTAGE_SOURCE,,Budget Management,adobe,aa_budgetset_aa,4,1.0
+SUBSTAGE_SOURCE,,CTA Interaction,adobe,cta interaction,127,0.9921875
+SUBSTAGE_SOURCE,,CTA Interaction,adobe,ctaclick,1,0.0078125
+SUBSTAGE_SOURCE,,Calculator,adobe,onclick_relatedcalculator_aa,8,1.0
+SUBSTAGE_SOURCE,,Calculator Tool,adobe,emi calculator,12,1.0
+SUBSTAGE_SOURCE,,Card Product Browse,adobe,ourcardvariants_aa,19,0.11377245508982035
+SUBSTAGE_SOURCE,,Card Product Browse,adobe,popularcards_aa,18,0.10778443113772455
+SUBSTAGE_SOURCE,,Card Product Browse,adobe,quickapprovalcards_aa,21,0.12574850299401197
+SUBSTAGE_SOURCE,,Card Product Browse,adobe,topratedcards_aa,67,0.40119760479041916
+SUBSTAGE_SOURCE,,Card Product Browse,adobe,trendingcards_aa,42,0.25149700598802394
+SUBSTAGE_SOURCE,,Cart Addition,adobe,add to cart,4,1.0
+SUBSTAGE_SOURCE,,Chatbot - CTA Interaction,adobe,chatbot cta interaction,99,1.0
+SUBSTAGE_SOURCE,,Chatbot - Exit,adobe,chat exit click,4,1.0
+SUBSTAGE_SOURCE,,Chatbot - Layer 1,adobe,pd layer1 click,10,1.0
+SUBSTAGE_SOURCE,,Chatbot - Layer 2,adobe,pd layer2 click,80,1.0
+SUBSTAGE_SOURCE,,Chatbot - Menu,adobe,chat menu,1,1.0
+SUBSTAGE_SOURCE,,Chatbot - Suggestive Pills,adobe,suggestive pills,160,1.0
+SUBSTAGE_SOURCE,,Chatbot - Text Input,adobe,text input send,36,1.0
+SUBSTAGE_SOURCE,,Chatbot Exit,adobe,cross_mb,128,1.0
+SUBSTAGE_SOURCE,,Connection Error,adobe,connection error,13186,1.0
+SUBSTAGE_SOURCE,,Consent Acceptance,adobe,t&cconsent,168,1.0
+SUBSTAGE_SOURCE,,Consent Page Load,adobe,consent approval page load,27,1.0
+SUBSTAGE_SOURCE,,Content Engagement,adobe,intextfield_video_aa,6,1.0
+SUBSTAGE_SOURCE,,Coupon Apply,adobe,apply-coupon,2,1.0
+SUBSTAGE_SOURCE,,Credit Account Summary,adobe,accsummary_aa,619,1.0
+SUBSTAGE_SOURCE,,Credit Education,adobe,app_chr_dyk_checkresult_aa,17,0.26153846153846155
+SUBSTAGE_SOURCE,,Credit Education,adobe,dyk_aa,48,0.7384615384615385
+SUBSTAGE_SOURCE,,Credit Factors,adobe,creditfactor_aa,49,0.026746724890829694
+SUBSTAGE_SOURCE,,Credit Factors,adobe,creditfactors_aa,1783,0.9732532751091703
+SUBSTAGE_SOURCE,,Credit Score Check,adobe,app_chr_acsum_loans_aa,2,0.002881844380403458
+SUBSTAGE_SOURCE,,Credit Score Check,adobe,app_chr_cibilscore_generated,10,0.01440922190201729
+SUBSTAGE_SOURCE,,Credit Score Check,adobe,chr_asset,539,0.776657060518732
+SUBSTAGE_SOURCE,,Credit Score Check,adobe,chr_success_aa,120,0.1729106628242075
+SUBSTAGE_SOURCE,,Credit Score Check,adobe,fhcr_multiprofile_switch,23,0.03314121037463977
+SUBSTAGE_SOURCE,,Credit Score Cross-sell,adobe,chr_asset_aa,23,1.0
+SUBSTAGE_SOURCE,,Credit-Score OTP,adobe,chr_otp_verification_aa,7,0.3181818181818182
+SUBSTAGE_SOURCE,,Credit-Score OTP,adobe,chr_submit_otp_aa,9,0.4090909090909091
+SUBSTAGE_SOURCE,,Credit-Score OTP,adobe,fhcr_emailotp_submit_aa,4,0.18181818181818182
+SUBSTAGE_SOURCE,,Credit-Score OTP,adobe,fhcrgetotp,2,0.09090909090909091
+SUBSTAGE_SOURCE,,Customer Portal Login,adobe,loginclick,31,1.0
+SUBSTAGE_SOURCE,,DNC Preference,adobe,dnc_submit_aa,41,1.0
+SUBSTAGE_SOURCE,,Dashboard Interaction,adobe,dashboard_aa,246,1.0
+SUBSTAGE_SOURCE,,Deep-link / Attribution,adobe,system.event.utmdeeplink,26,1.0
+SUBSTAGE_SOURCE,,Deep-link Redirection,adobe,san_ddl_aa,5,0.5555555555555556
+SUBSTAGE_SOURCE,,Deep-link Redirection,adobe,san_ddl_redirection_aa,4,0.4444444444444444
+SUBSTAGE_SOURCE,,Disb,transaction,AIP,89,0.1045828437132785
+SUBSTAGE_SOURCE,,Disb,transaction,Disbursed,762,0.8954171562867215
+SUBSTAGE_SOURCE,,Ecomm CTA Interaction,adobe,ecomm cta interaction,3,1.0
+SUBSTAGE_SOURCE,,Expense Breakdown,adobe,aa_breakdown_aa,337,1.0
+SUBSTAGE_SOURCE,,FAQ / Help,adobe,faq question clicked,8,0.03669724770642202
+SUBSTAGE_SOURCE,,FAQ / Help,adobe,pdp_frequentlyaskedquestion_aa,210,0.963302752293578
+SUBSTAGE_SOURCE,,Footer Navigation,adobe,footer_home_iconclick_aa,1,1.0
+SUBSTAGE_SOURCE,,Form filled,transaction,Inprogress,100,1.0
+SUBSTAGE_SOURCE,,Form filled-Rejected,transaction,Rejected,529,1.0
+SUBSTAGE_SOURCE,,Header Navigation,adobe,header icon click,74,1.0
+SUBSTAGE_SOURCE,,Help / FAQ,adobe,aa_faq_aa,50,0.05656108597285068
+SUBSTAGE_SOURCE,,Help / FAQ,adobe,help_faqs_aa,193,0.21832579185520362
+SUBSTAGE_SOURCE,,Help / FAQ,adobe,help_faqs_yn_aa,212,0.2398190045248869
+SUBSTAGE_SOURCE,,Help / FAQ,adobe,help_srtype_aa,308,0.34841628959276016
+SUBSTAGE_SOURCE,,Help / FAQ,adobe,helpandsupport_aa,121,0.13687782805429866
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,appupdate_aa,77,0.0247032402951556
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,appupdatetooltip,422,0.13538658966955405
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,bottomdock_tooltip,160,0.05133140840551813
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,inapp_review_aa,21,0.006737247353224254
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,notificationpopup_aa,209,0.06705165222970805
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,shortcut_appicon_aa,1,0.0003208213025344883
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,tooltip_aa,2218,0.711581649021495
+SUBSTAGE_SOURCE,,Help / Tooltip,adobe,tooltip_small_video_aa,9,0.0028873917228103944
+SUBSTAGE_SOURCE,,Home Page Interaction,adobe,home page interaction,3,1.0
+SUBSTAGE_SOURCE,,Icon Interaction,adobe,iconclick,117,1.0
+SUBSTAGE_SOURCE,,Input Field Interaction,adobe,input field interaction,213,1.0
+SUBSTAGE_SOURCE,,Insurance Product Browse,adobe,ourinsuranceofferings_aa,6,1.0
+SUBSTAGE_SOURCE,,Investment Product Browse,adobe,ourinvestmentofferings_aa,4,0.4444444444444444
+SUBSTAGE_SOURCE,,Investment Product Browse,adobe,topinvestmentoptions_aa,5,0.5555555555555556
+SUBSTAGE_SOURCE,,Journey Close,adobe,journeyclose_aa,33984,1.0
+SUBSTAGE_SOURCE,,Journey Complete,adobe,journeycomplete,1,1.0
+SUBSTAGE_SOURCE,,Journey Start,adobe,journeystart,1,0.3333333333333333
+SUBSTAGE_SOURCE,,Journey Start,adobe,transactionstart,2,0.6666666666666666
+SUBSTAGE_SOURCE,,Language Selection,adobe,select language,4934,1.0
+SUBSTAGE_SOURCE,,Legal & Compliance,adobe,legal_aa,184,1.0
+SUBSTAGE_SOURCE,,Loan Confirmation,adobe,loan confirmation details,340,1.0
+SUBSTAGE_SOURCE,,Loan Product Browse,adobe,bestsellerpersonalloan_aa,238,0.05981402362402614
+SUBSTAGE_SOURCE,,Loan Product Browse,adobe,excitingloanoffersforyou_aa,13,0.003267152550892184
+SUBSTAGE_SOURCE,,Loan Product Browse,adobe,greatpersonalloandealsforyou_aa,57,0.014325207338527268
+SUBSTAGE_SOURCE,,Loan Product Browse,adobe,ourloanofferings_aa,3340,0.8394068861522995
+SUBSTAGE_SOURCE,,Loan Product Browse,adobe,ourloanvariants_aa,76,0.01910027645136969
+SUBSTAGE_SOURCE,,Loan Product Browse,adobe,trendingloanproducts_aa,255,0.06408645388288514
+SUBSTAGE_SOURCE,,Loan Summary View,adobe,loan summary page,32,1.0
+SUBSTAGE_SOURCE,,Login Complete,adobe,logincomplete_aa,69,0.8214285714285714
+SUBSTAGE_SOURCE,,Login Complete,adobe,signupcomplete_aa,15,0.17857142857142858
+SUBSTAGE_SOURCE,,Login Drawer Close,adobe,login_close_aa,58,1.0
+SUBSTAGE_SOURCE,,Login Initiation,adobe,login_bottomsheet_load_aa,123,1.0
+SUBSTAGE_SOURCE,,Logout,adobe,logout_aa,274,1.0
+SUBSTAGE_SOURCE,,Menu / Navigation,adobe,menu interaction,91,0.9680851063829787
+SUBSTAGE_SOURCE,,Menu / Navigation,adobe,navigation bar,3,0.031914893617021274
+SUBSTAGE_SOURCE,,Menu Navigation,adobe,ourproducts_aa,489,0.8373287671232876
+SUBSTAGE_SOURCE,,Menu Navigation,adobe,ourservices_aa,95,0.16267123287671234
+SUBSTAGE_SOURCE,,ONDC Banner,adobe,ondc_e2ebanner_aa,48,1.0
+SUBSTAGE_SOURCE,,ONDC Category Browse,adobe,ondc_discovercategories_aa,41,1.0
+SUBSTAGE_SOURCE,,ONDC Product Discovery,adobe,ondc_trendingproducts_aa,159,1.0
+SUBSTAGE_SOURCE,,OTP Drop-off,adobe,otp_close_aa,3,1.0
+SUBSTAGE_SOURCE,,OTP Initiation,adobe,get otp,115,0.2366255144032922
+SUBSTAGE_SOURCE,,OTP Initiation,adobe,get otp application created,33,0.06790123456790123
+SUBSTAGE_SOURCE,,OTP Initiation,adobe,login popup get otp,140,0.2880658436213992
+SUBSTAGE_SOURCE,,OTP Initiation,adobe,login_getotp_aa,123,0.25308641975308643
+SUBSTAGE_SOURCE,,OTP Initiation,adobe,otp_bottomsheet_load_aa,75,0.15432098765432098
+SUBSTAGE_SOURCE,,OTP Retry,adobe,login_resendotp_aa,3,1.0
+SUBSTAGE_SOURCE,,OTP Verification,adobe,login popup otp verify,101,0.3079268292682927
+SUBSTAGE_SOURCE,,OTP Verification,adobe,login_otp_verify_aa,89,0.27134146341463417
+SUBSTAGE_SOURCE,,OTP Verification,adobe,login_verifyotp_aa,2,0.006097560975609756
+SUBSTAGE_SOURCE,,OTP Verification,adobe,preapproved otp verify,30,0.09146341463414634
+SUBSTAGE_SOURCE,,OTP Verification,adobe,proceed to otp,106,0.3231707317073171
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,blp_partneroffering_knowmore_aa,35,0.01585144927536232
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,blp_partnerofferings_aa,742,0.33605072463768115
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,dealsforyou_aa,22,0.009963768115942028
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,dynamicoffers_aa,895,0.4053442028985507
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,exciting_offerforyou_aa,5,0.0022644927536231885
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,offers_offersforyou_aa,10,0.004528985507246377
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,offersforyou_aa,21,0.009510869565217392
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,ourcardofferings_aa,282,0.12771739130434784
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,ouroffering_aa,112,0.050724637681159424
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,productblp_offerings_aa,1,0.0004528985507246377
+SUBSTAGE_SOURCE,,Offer Discovery,adobe,productblp_partnerofferings_aa,83,0.03759057971014493
+SUBSTAGE_SOURCE,,Other,adobe,aa_bankselection_aa,1484,0.5698924731182796
+SUBSTAGE_SOURCE,,Other,adobe,aa_budget_aa,14,0.005376344086021506
+SUBSTAGE_SOURCE,,Other,adobe,aa_expensehistory_aa,37,0.014208909370199693
+SUBSTAGE_SOURCE,,Other,adobe,aa_maintab_aa,401,0.15399385560675882
+SUBSTAGE_SOURCE,,Other,adobe,bestinsurancedealsforyou_aa,1,0.00038402457757296467
+SUBSTAGE_SOURCE,,Other,adobe,bestloandealsforyou_aa,64,0.02457757296466974
+SUBSTAGE_SOURCE,,Other,adobe,clp_ourproducts_aa,139,0.05337941628264209
+SUBSTAGE_SOURCE,,Other,adobe,customerstories_aa,118,0.04531490015360983
+SUBSTAGE_SOURCE,,Other,adobe,discover_aa,11,0.004224270353302612
+SUBSTAGE_SOURCE,,Other,adobe,greatbusinessloandealsforyou_aa,7,0.002688172043010753
+SUBSTAGE_SOURCE,,Other,adobe,greathomeloandealsforyou_aa,5,0.0019201228878648233
+SUBSTAGE_SOURCE,,Other,adobe,insuranceplansstarting_aa,5,0.0019201228878648233
+SUBSTAGE_SOURCE,,Other,adobe,mob_validation_aa,78,0.029953917050691243
+SUBSTAGE_SOURCE,,Other,adobe,pdp_selectedpartner_aa,2,0.0007680491551459293
+SUBSTAGE_SOURCE,,Other,adobe,popularpersonalloans_aa,12,0.004608294930875576
+SUBSTAGE_SOURCE,,Other,adobe,setreminder_aa,3,0.001152073732718894
+SUBSTAGE_SOURCE,,Other,adobe,trendingcreditcards_aa,4,0.0015360983102918587
+SUBSTAGE_SOURCE,,Other,adobe,trendingpersonalloans_aa,135,0.05184331797235023
+SUBSTAGE_SOURCE,,Other,adobe,useraccount_aa,84,0.03225806451612903
+SUBSTAGE_SOURCE,,PDP Banner,adobe,pdp_e2ebanner_aa,175,1.0
+SUBSTAGE_SOURCE,,PFM Tab Navigation,adobe,aa_sub_maintab_aa,894,1.0
+SUBSTAGE_SOURCE,,Partner Discovery,adobe,ourtrustedpartners_aa,475,1.0
+SUBSTAGE_SOURCE,,Partner Selection,adobe,pdp_partnerselection_aa,48,1.0
+SUBSTAGE_SOURCE,,Pending Application,adobe,pendingactions_aa,2037,1.0
+SUBSTAGE_SOURCE,,Pocket Insurance Browse,adobe,pocketinsuranceofferings_aa,1,0.09090909090909091
+SUBSTAGE_SOURCE,,Pocket Insurance Browse,adobe,pocketpricebadacoverage_aa,10,0.9090909090909091
+SUBSTAGE_SOURCE,,Post AIP Reject,transaction,AIP,46,0.9583333333333334
+SUBSTAGE_SOURCE,,Post AIP Reject,transaction,Disbursed,1,0.020833333333333332
+SUBSTAGE_SOURCE,,Post AIP Reject,transaction,Rejected,1,0.020833333333333332
+SUBSTAGE_SOURCE,,Pre-approved Offer,adobe,aa_offerforyou_aa,11,0.009220452640402346
+SUBSTAGE_SOURCE,,Pre-approved Offer,adobe,offerforyou_aa,1182,0.9907795473595976
+SUBSTAGE_SOURCE,,Pre-approved Offer Check,adobe,preapproved proceed otp,3,1.0
+SUBSTAGE_SOURCE,,Product Browse,adobe,app_apnclicks_aa,1407,0.9710144927536232
+SUBSTAGE_SOURCE,,Product Browse,adobe,loans_ourpartners_aa,2,0.0013802622498274672
+SUBSTAGE_SOURCE,,Product Browse,adobe,quickapprovalpersonalloans_aa,8,0.005521048999309869
+SUBSTAGE_SOURCE,,Product Browse,adobe,youmightalsolike_aa,32,0.022084195997239476
+SUBSTAGE_SOURCE,,Product Category Browse,adobe,loan_lob_screen_aa,1,1.0
+SUBSTAGE_SOURCE,,Product Comparison,adobe,compare button click,1,1.0
+SUBSTAGE_SOURCE,,Product Detail View,adobe,pdp_selectedplan_aa,890,0.9988776655443322
+SUBSTAGE_SOURCE,,Product Detail View,adobe,productblp_knowmore_aa,1,0.001122334455667789
+SUBSTAGE_SOURCE,,Product Discovery,adobe,product detail category click,58,1.0
+SUBSTAGE_SOURCE,,Product Selection,adobe,product apply,71406,1.0
+SUBSTAGE_SOURCE,,Professional Details Submission,adobe,professional details submit,57837,1.0
+SUBSTAGE_SOURCE,,Professional details,transaction,AIP,5,0.001124353496739375
+SUBSTAGE_SOURCE,,Professional details,transaction,Inprogress,4442,0.9988756465032607
+SUBSTAGE_SOURCE,,Profile Management,adobe,addressdetails_aa,476,0.163855421686747
+SUBSTAGE_SOURCE,,Profile Management,adobe,personaldetails_aa,2070,0.7125645438898451
+SUBSTAGE_SOURCE,,Profile Management,adobe,profileswitch_aa,140,0.04819277108433735
+SUBSTAGE_SOURCE,,Profile Management,adobe,profileupdate_aa,219,0.07538726333907057
+SUBSTAGE_SOURCE,,Profile Portfolio,adobe,profileportfolio_aa,951,1.0
+SUBSTAGE_SOURCE,,Push to Partner,transaction,AIP,51272,0.9836543626736244
+SUBSTAGE_SOURCE,,Push to Partner,transaction,Disbursed,784,0.0150410559435193
+SUBSTAGE_SOURCE,,Push to Partner,transaction,Inprogress,64,0.0012278413015117797
+SUBSTAGE_SOURCE,,Push to Partner,transaction,Rejected,4,7.674008134448623e-05
+SUBSTAGE_SOURCE,,Quick Action,adobe,universalcomponent_aa,6105,1.0
+SUBSTAGE_SOURCE,,Report Download,adobe,pdp_downloadreport_aa,45,0.7142857142857143
+SUBSTAGE_SOURCE,,Report Download,adobe,reportanerror_aa,18,0.2857142857142857
+SUBSTAGE_SOURCE,,SDK Initialization,adobe,initplotline,248,1.0
+SUBSTAGE_SOURCE,,Score Generation / Refresh,adobe,chr_generation_aa,733,0.25701262272089764
+SUBSTAGE_SOURCE,,Score Generation / Refresh,adobe,chr_get_score_aa,619,0.2170406732117812
+SUBSTAGE_SOURCE,,Score Generation / Refresh,adobe,chr_refresh_aa,1500,0.5259467040673211
+SUBSTAGE_SOURCE,,Score History,adobe,scoretrend_aa,50,1.0
+SUBSTAGE_SOURCE,,Score Improvement,adobe,app_chr_improvescore_suggestions_aa,15,0.35714285714285715
+SUBSTAGE_SOURCE,,Score Improvement,adobe,improve_your_score_calculateagain_aa,8,0.19047619047619047
+SUBSTAGE_SOURCE,,Score Improvement,adobe,improve_your_score_page_aa,19,0.4523809523809524
+SUBSTAGE_SOURCE,,Score Refresh,adobe,aa_dailyrefresh_aa,169,1.0
+SUBSTAGE_SOURCE,,Scroll / Depth,adobe,scroll-event-35%,793,0.4720238095238095
+SUBSTAGE_SOURCE,,Scroll / Depth,adobe,scroll-event-75%,887,0.5279761904761905
+SUBSTAGE_SOURCE,,Search Behaviour,adobe,searchclick,8,1.0
+SUBSTAGE_SOURCE,,Secondary Navigation,adobe,roundnavigationicon_aa,3089,1.0
+SUBSTAGE_SOURCE,,Social Share,adobe,app_chr_sharenow_aa,8,0.125
+SUBSTAGE_SOURCE,,Social Share,adobe,share_aa,56,0.875
+SUBSTAGE_SOURCE,,Sticky CTA Engagement,adobe,docker sticky bottom click,745,0.8723653395784543
+SUBSTAGE_SOURCE,,Sticky CTA Engagement,adobe,sticky cta click,109,0.12763466042154567
+SUBSTAGE_SOURCE,,Stock Market Discovery,adobe,stockmarketinsight_aa,12,0.75
+SUBSTAGE_SOURCE,,Stock Market Discovery,adobe,stockmarketinvestment_aa,4,0.25
+SUBSTAGE_SOURCE,,System / Error Telemetry,adobe,chr_service_failure,353,0.524517087667162
+SUBSTAGE_SOURCE,,System / Error Telemetry,adobe,exp_aop_onboarding_fallback,1,0.0014858841010401188
+SUBSTAGE_SOURCE,,System / Error Telemetry,adobe,flutter_service_failure,82,0.12184249628528974
+SUBSTAGE_SOURCE,,System / Error Telemetry,adobe,install_event_aa,224,0.3328380386329866
+SUBSTAGE_SOURCE,,System / Error Telemetry,adobe,onboarding_vapt_rooted_aa,12,0.017830609212481426
+SUBSTAGE_SOURCE,,System / Error Telemetry,adobe,transectionfailed,1,0.0014858841010401188
+SUBSTAGE_SOURCE,,Tab Navigation,adobe,tab interaction,10,1.0
+SUBSTAGE_SOURCE,,Top Navigation,adobe,topdock_aa,2910,1.0
+SUBSTAGE_SOURCE,,Value Added Services,adobe,valueaddedservices_aa,1,1.0
+SUBSTAGE_SOURCE,,Widget Interaction,adobe,e2ebanner_aa,503,1.0
+SUBSTAGE_SOURCE,,listing,transaction,AIP,19401,0.9899984691534418
+SUBSTAGE_SOURCE,,listing,transaction,Disbursed,27,0.0013777619023319896
+SUBSTAGE_SOURCE,,listing,transaction,Inprogress,166,0.008470684288411492
+SUBSTAGE_SOURCE,,listing,transaction,Rejected,3,0.0001530846558146655

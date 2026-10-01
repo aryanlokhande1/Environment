@@ -1,8 +1,17 @@
 # Data Placement
 
-- Starting cumulative history: `data/input/gold_history/gold_events_start.parquet`
+- Historical input: one combined Parquet or multiple March-April Parquets under `data/input/gold_history/`
 - Frozen models: `artifacts/gold_events_v1/`
-- Local outputs and checkpoints: `data/output/`
-- Optional non-model runtime references: `data/reference/`
+- Run-isolated outputs and checkpoints: `data/output/runs/<run_id>/`
+- Immutable fitting/validation references: `data/reference/` (not read by normal runtime)
 
-For S3, set `ENVIRONMENT_INPUT_URI`, `ENVIRONMENT_OUTPUT_URI`, and `ENVIRONMENT_ARTIFACT_URI`. Credentials and bucket names are never committed. Normal inference needs starting cumulative history plus the frozen bundle; it does not need raw March-April training data.
+Local sources may be passed repeatedly with `--historical`, supplied as a
+directory, or configured in `config/environment.yaml`. S3 source URIs use the
+standard AWS credential chain and are cached inside the run directory. Large
+historical files remain outside Git and are never modified.
+
+The mandatory combined export is
+`data/output/runs/<run_id>/combined_gold_events.parquet`. Daily May partitions
+retain simulation row keys for restart/deduplication; the combined export has
+exactly the canonical Gold columns. Fitting/validation input filenames and
+schemas are separately declared in `config/reference_inputs.json`.

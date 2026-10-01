@@ -1,4 +1,5 @@
 from pathlib import Path
+import json
 import pandas as pd
 from environment import Environment, EnvironmentAction, EnvironmentState
 
@@ -24,3 +25,23 @@ def test_campaign_action_contract_and_opportunity_api():
     state = EnvironmentState({"done": False})
     points = Environment.get_decision_opportunities(state, "2026-05-02", "2026-05-03")
     assert len(points) == 1
+
+
+def test_checkpoint_resume_matches_uninterrupted_execution():
+    first = Environment(BUNDLE, run_id="checkpoint-equivalence")
+    raw = first._runtime.initial_population()[0]
+    payload = first._runtime.new_state(raw, activation=pd.Timestamp("2026-05-01"))
+    state = EnvironmentState(payload)
+    first.step(state, EnvironmentAction.no_action(), "2026-05-01")
+    serialized = json.loads(json.dumps({
+        "payload": state.payload, "pending": state.pending_events,
+    }, default=str))
+
+    uninterrupted = first.step(state, EnvironmentAction.no_action(), "2026-05-02")
+    resumed_state = EnvironmentState(serialized["payload"], serialized["pending"])
+    resumed = Environment(BUNDLE, run_id="checkpoint-equivalence").step(
+        resumed_state, EnvironmentAction.no_action(), "2026-05-02")
+    assert uninterrupted.events == resumed.events
+    assert uninterrupted.decisions == resumed.decisions
+    assert uninterrupted.pending_events == resumed.pending_events
+    assert uninterrupted.state.payload == resumed.state.payload

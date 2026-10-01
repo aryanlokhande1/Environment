@@ -3,7 +3,10 @@ from __future__ import annotations
 from pathlib import Path
 from tempfile import TemporaryDirectory
 from urllib.parse import urlparse
+import json
 import pandas as pd
+
+from environment.models.artifact_loader import ArtifactLoader
 
 class S3IO:
     def __init__(self, client=None):
@@ -42,10 +45,26 @@ class S3IO:
         bucket, key = self._parts(uri)
         self.client.put_object(Bucket=bucket, Key=key, Body=payload)
 
+    def load_checkpoint(self, uri: str) -> bytes:
+        bucket, key = self._parts(uri)
+        response = self.client.get_object(Bucket=bucket, Key=key)
+        return response["Body"].read()
+
     def download_artifact_bundle(self, manifest_uri: str, target: str | Path) -> Path:
-        """Download a caller-enumerated manifest; artifact keys remain manifest-driven."""
+        """Download and hash-validate every file declared by an S3 manifest."""
         bucket, key = self._parts(manifest_uri)
         target = Path(target)
         target.mkdir(parents=True, exist_ok=True)
-        self.client.download_file(bucket, key, str(target / "manifest.json"))
+        manifest_path = target / "manifest.json"
+        self.client.download_file(bucket, key, str(manifest_path))
+        manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+        prefix = key.rsplit("/", 1)[0] if "/" in key else ""
+        for row in manifest.get("artifacts", []):
+            filename = str(row.get("filename", ""))
+            relative = Path(filename)
+            if not filename or relative.is_absolute() or ".." in relative.parts or relative.name != filename:
+                raise ValueError(f"unsafe artifact filename in manifest: {filename!r}")
+            artifact_key = f"{prefix}/{filename}" if prefix else filename
+            self.client.download_file(bucket, artifact_key, str(target / filename))
+        ArtifactLoader(target).validate()
         return target

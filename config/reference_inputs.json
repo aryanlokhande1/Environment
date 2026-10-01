@@ -1,0 +1,47 @@
+{
+  "schema_version": "environment_reference_inputs_v1",
+  "base_directory": "data/reference",
+  "files": [
+    {
+      "name": "march_gold",
+      "filename": "events_gold_1_bucket_000_20260331.parquet",
+      "purpose": "immutable March Gold Events",
+      "required_columns": [
+        "application_id", "context_id", "event_datetime", "event_name",
+        "journey_stage", "journey_substage", "product_id", "trigger_type",
+        "time_bucket", "source_type", "channel", "initiated_by"
+      ]
+    },
+    {
+      "name": "april_gold",
+      "filename": "events_gold_2_bucket_000_20260430.parquet",
+      "purpose": "immutable April Gold Events",
+      "required_columns": [
+        "application_id", "context_id", "event_datetime", "event_name",
+        "journey_stage", "journey_substage", "product_id", "trigger_type",
+        "time_bucket", "source_type", "channel", "initiated_by"
+      ]
+    },
+    {
+      "name": "campaign_decision_log",
+      "filename": "campaign_decision_opportunities_20260301_20260430.parquet",
+      "purpose": "observable campaign decision opportunities, including NO_ACTION and suppressed sends",
+      "required_columns": [
+        "decision_id", "context_id", "application_id", "opportunity_datetime",
+        "product_id", "eligibility_status", "ineligibility_reason", "action",
+        "channel", "theme", "time_bucket", "scheduled_send_datetime",
+        "realized_send_datetime", "outcome_status", "suppression_reason",
+        "policy_id", "source_system"
+      ]
+    },
+    {
+      "name": "reference_manifest",
+      "filename": "reference_manifest.json",
+      "purpose": "source lineage and SHA-256 inventory",
+      "required_json_fields": [
+        "schema_version", "created_at", "timezone", "source_period",
+        "extraction_query_version", "files"
+      ]
+    }
+  ]
+}

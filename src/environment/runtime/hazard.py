@@ -43,19 +43,19 @@ class _PiecewiseHazard:
                 "model_level": model_level, "support_key": support_key,
                 "reason": "NO_AT_RISK_TIME_IN_WINDOW", "candidate_hazards": evaluated,
             })
-        rows = rows.sort_values("elapsed_lower_seconds", kind="stable")
+        if not rows.elapsed_lower_seconds.is_monotonic_increasing:
+            rows = rows.sort_values("elapsed_lower_seconds", kind="stable")
+        donor_durations = donors.duration_seconds.to_numpy(dtype=float, copy=False)
         for row in rows.itertuples(index=False):
             lower, upper = float(row.elapsed_lower_seconds), float(row.elapsed_upper_seconds)
             overlap_start, overlap_stop = max(start, lower), min(stop, upper)
             if overlap_stop <= overlap_start or int(row.risk_set) <= 0:
                 continue
-            eligible = donors.loc[
-                donors.duration_seconds.ge(overlap_start)
-                & donors.duration_seconds.lt(overlap_stop)
-            ]
+            eligible_indices = np.flatnonzero(
+                (donor_durations >= overlap_start) & (donor_durations < overlap_stop))
             fraction = (overlap_stop - overlap_start) / (upper - lower)
             probability = (self._partial_probability(float(row.hazard), fraction)
-                           if not eligible.empty else 0.0)
+                           if len(eligible_indices) else 0.0)
             draw = float(rng.random())
             item = {
                 "elapsed_lower_seconds": int(lower), "elapsed_upper_seconds": int(upper),
@@ -67,12 +67,12 @@ class _PiecewiseHazard:
             evaluated.append(item)
             if draw >= probability:
                 continue
-            if eligible.empty:
+            if not len(eligible_indices):
                 # An interval with positive empirical events should always have
                 # a corresponding donor.  Failing is safer than inventing time.
                 raise RuntimeError("positive empirical hazard has no in-window timing donor")
-            donor_index = int(rng.integers(0, len(eligible)))
-            delay = float(eligible.iloc[donor_index].duration_seconds)
+            donor_index = int(rng.integers(0, len(eligible_indices)))
+            delay = float(donor_durations[eligible_indices[donor_index]])
             when = origin + pd.Timedelta(seconds=delay)
             item["timing_donor_index"] = donor_index
             return HazardResult(when, {
@@ -102,6 +102,12 @@ class PtpHazardModel(_PiecewiseHazard):
                 or sha256(donor_path.read_bytes()).hexdigest() != manifest.get("event_delay_sha256")):
             raise ValueError("PTP hazard artifact hash mismatch")
         super().__init__(pd.read_csv(hazard_path).fillna(""), pd.read_parquet(donor_path), manifest)
+        self._age_rows = {str(key): group for key, group in
+                          self.rows.loc[self.rows.model_level.eq("APPLICATION_AGE")]
+                          .groupby("application_age_bucket", observed=True, sort=False)}
+        self._age_donors = {str(key): group for key, group in
+                            self.donors.groupby("application_age_bucket", observed=True, sort=False)}
+        self._global_rows = self.rows.loc[self.rows.model_level.eq("GLOBAL")]
 
     @staticmethod
     def age_bucket(state: dict[str, Any], aip: pd.Timestamp) -> str:
@@ -112,14 +118,11 @@ class PtpHazardModel(_PiecewiseHazard):
                       rng: np.random.Generator) -> HazardResult:
         aip = pd.Timestamp(state["latest_aip_datetime"])
         bucket = self.age_bucket(state, aip)
-        rows = self.rows.loc[
-            self.rows.model_level.eq("APPLICATION_AGE")
-            & self.rows.application_age_bucket.eq(bucket)
-        ]
+        rows = self._age_rows.get(bucket, self.rows.iloc[0:0])
         level = "APPLICATION_AGE"
-        donors = self.donors.loc[self.donors.application_age_bucket.eq(bucket)]
+        donors = self._age_donors.get(bucket, self.donors.iloc[0:0])
         if rows.empty:
-            rows = self.rows.loc[self.rows.model_level.eq("GLOBAL")]
+            rows = self._global_rows
             donors = self.donors
             level = "GLOBAL"
         return self._sample(rows, donors, origin=aip, now=now, horizon=horizon,
@@ -141,21 +144,30 @@ class StageContinuationModel(_PiecewiseHazard):
                 or sha256(donor_path.read_bytes()).hexdigest() != manifest.get("delay_sha256")):
             raise ValueError("continuation artifact hash mismatch")
         super().__init__(pd.read_csv(hazard_path).fillna(""), pd.read_parquet(donor_path), manifest)
+        state_rows = self.rows.loc[self.rows.model_level.eq("STATE")]
+        stage_rows = self.rows.loc[self.rows.model_level.eq("STAGE")]
+        self._state_rows = {str(key): group for key, group in
+                            state_rows.groupby("journey_substage", observed=True, sort=False)}
+        self._stage_rows = {str(key): group for key, group in
+                            stage_rows.groupby("journey_stage", observed=True, sort=False)}
+        self._state_donors = {str(key): group for key, group in
+                              self.donors.groupby("journey_substage", observed=True, sort=False)}
+        self._stage_donors = {str(key): group for key, group in
+                              self.donors.groupby("journey_stage", observed=True, sort=False)}
+        self._global_rows = self.rows.loc[self.rows.model_level.eq("GLOBAL")]
 
     def sample_window(self, state: dict[str, Any], now: pd.Timestamp, horizon: pd.Timestamp,
                       rng: np.random.Generator) -> HazardResult:
         substage, stage = str(state["journey_substage"]), str(state["journey_stage"])
-        rows = self.rows.loc[self.rows.model_level.eq("STATE")
-                             & self.rows.journey_substage.eq(substage)]
-        donors = self.donors.loc[self.donors.journey_substage.eq(substage)]
+        rows = self._state_rows.get(substage, self.rows.iloc[0:0])
+        donors = self._state_donors.get(substage, self.donors.iloc[0:0])
         level, key = "STATE", {"journey_substage": substage}
         if rows.empty:
-            rows = self.rows.loc[self.rows.model_level.eq("STAGE")
-                                 & self.rows.journey_stage.eq(stage)]
-            donors = self.donors.loc[self.donors.journey_stage.eq(stage)]
+            rows = self._stage_rows.get(stage, self.rows.iloc[0:0])
+            donors = self._stage_donors.get(stage, self.donors.iloc[0:0])
             level, key = "STAGE", {"journey_stage": stage}
         if rows.empty:
-            rows = self.rows.loc[self.rows.model_level.eq("GLOBAL")]
+            rows = self._global_rows
             donors = self.donors
             level, key = "GLOBAL", {}
         return self._sample(rows, donors, origin=pd.Timestamp(state["last_journey_datetime"]),

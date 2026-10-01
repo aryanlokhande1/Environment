@@ -122,6 +122,7 @@ class DailyClosedLoopEnvironment:
             "last_journey_datetime": _iso(raw.get("snapshot_event_datetime", activation)),
             "ptp_generation": 0,
             "done": False, "success": False, "termination_reason": None,
+            "terminal_datetime": None,
             "event_sequence": int(context_sequence), "decision_sequence": 0,
             "pending_sequence": 0, "natural_generation": 0, "random_counter": 0,
             "audit_sequence": 0,
@@ -211,7 +212,8 @@ class DailyClosedLoopEnvironment:
         transition_draw = float(rng.random())
         selected_index = min(int(np.searchsorted(np.cumsum(weights), transition_draw, side="right")), len(options) - 1)
         selected = options[selected_index]
-        blocked_reason = ("PTP_NATURAL_TRANSITION_FORBIDDEN" if selected["response"] == "Push to Partner" else
+        blocked_reason = ("ACTIVE_LIFECYCLE_ALREADY_CREATED" if selected["response"] == "Application Created" else
+                          "PTP_NATURAL_TRANSITION_FORBIDDEN" if selected["response"] == "Push to Partner" else
                           "AIP_PREREQUISITE_NOT_OBSERVED" if selected["response"] == "AIP Approved"
                           and not can_approve_aip(state) else None)
         if blocked_reason is not None:
@@ -325,7 +327,8 @@ class DailyClosedLoopEnvironment:
             if len(recent) > self.max_events_per_ten_minute_bin:
                 raise RuntimeError("simulated ten-minute journey intensity exceeds observed PL maximum")
         return {
-            "event_key": f"{self.run_id}|{state['context_id']}|{state['event_sequence']}",
+            "event_key": (f"{self.run_id}|{state['context_id']}|"
+                          f"{state['application_id']}|{state['event_sequence']}"),
             "run_id": self.run_id, "context_id": state["context_id"],
             "application_id": state["application_id"], "product_scope": PRODUCT_SCOPE,
             "creation_datetime": _timestamp(state["creation_datetime"]), "event_datetime": when,
@@ -349,12 +352,17 @@ class DailyClosedLoopEnvironment:
 
     def process_day(self, state: dict[str, Any], pending: list[dict[str, Any]], day: pd.Timestamp,
                     *, newly_activated: bool = False,
-                    policy: Callable[[Mapping[str, Any], pd.Timestamp], PolicyChoice] | None = None
+                    policy: Callable[[Mapping[str, Any], pd.Timestamp], PolicyChoice] | None = None,
+                    decision_time: pd.Timestamp | None = None,
+                    horizon: pd.Timestamp | None = None,
+                    action_at_decision_time: bool = False,
                     ) -> tuple[list[dict], list[dict], dict[str, dict]]:
         day = day.normalize()
         if not pd.Timestamp("2026-05-01") <= day < DAY_END:
             raise ValueError("daily environment may execute May 1-31 only")
-        following = day + pd.Timedelta(days=1)
+        following = day + pd.Timedelta(days=1) if horizon is None else _timestamp(horizon)
+        if following.tzinfo is not None or not day < following <= DAY_END:
+            raise ValueError("simulation horizon must be timezone-naive, after day start, and no later than June 1")
         events: list[dict] = []
         decisions: list[dict] = []
         actions: dict[str, dict] = {}
@@ -366,9 +374,14 @@ class DailyClosedLoopEnvironment:
         state.setdefault("last_journey_datetime", state.get("activation_datetime", day.isoformat()))
         if state["events_today_date"] != day.date().isoformat():
             state["events_today_date"], state["events_today"] = day.date().isoformat(), 0
-        now = max(day, _timestamp(state["activation_datetime"])) if newly_activated else day
+        requested = day if decision_time is None else _timestamp(decision_time)
+        if requested.tzinfo is not None or requested.normalize() != day or requested >= following:
+            raise ValueError("decision_time must be timezone-naive and within the simulation day")
+        now = max(requested, _timestamp(state["activation_datetime"])) if newly_activated else requested
         if newly_activated:
-            if state["population_origin"] == "EMPIRICAL_MAY_ARRIVAL":
+            if state["population_origin"] in {
+                "EMPIRICAL_MAY_ARRIVAL", "EMPIRICAL_MAY_ARRIVAL_V2"
+            }:
                 events.append(self._emit(state, now, "JOURNEY_EVENT", source_type="arrival",
                                          model_source="PL_EMPIRICAL_MAY_ARRIVAL"))
             self._schedule(state, pending, state["deadline"], "TERMINAL_EVENT")
@@ -418,17 +431,18 @@ class DailyClosedLoopEnvironment:
                             state, state["context_id"], state["application_id"], state["decision_sequence"])
                         choice = PolicyChoice(action, policy_source=f"EMPIRICAL_SEND_{level}")
             else:
-                choice = policy(dict(state), day)
+                choice = policy(dict(state), now)
                 opportunity_evidence = {
                     "model": "deterministic_active_day_opportunity",
                     "opportunity": "ACTIVE_APPLICATION_DAY", "support_count": None,
                     "selected_outcome": "EXTERNAL_POLICY_DECISION", "backoff_level": "NOT_APPLICABLE",
                 }
             action = choice.action
-            resolved = (None if action is None else resolve_bucket_time(
-                now, action.time_bucket, _timestamp(state["deadline"]),
-                np.random.default_rng(stable_seed(self.seed, state["application_id"],
-                                                      state["decision_sequence"], "send_bucket"))))
+            resolved = (None if action is None else now if action_at_decision_time and now < _timestamp(state["deadline"])
+                        else resolve_bucket_time(
+                            now, action.time_bucket, _timestamp(state["deadline"]),
+                            np.random.default_rng(stable_seed(self.seed, state["application_id"],
+                                                              state["decision_sequence"], "send_bucket"))))
             decision = {
                 "run_id": self.run_id, "decision_id": choice.decision_id or decision_id,
                 "decision_sequence": state["decision_sequence"], "context_id": state["context_id"],
@@ -439,6 +453,8 @@ class DailyClosedLoopEnvironment:
                 "time_bucket": None if action is None else action.time_bucket,
                 "resolved_send_time": resolved, "policy_source": choice.policy_source,
                 "status": "NO_ACTION" if action is None else "UNSCHEDULABLE_BEFORE_EXPIRY" if resolved is None else "SCHEDULED",
+                "eligible": True, "realized_send_time": None,
+                "suppression_reason": None,
                 "reason": "PENDING_SEND" if action is None and pending_send else None,
                 "reward": None, "cost": None, "is_synthetic": False,
             }
@@ -481,21 +497,58 @@ class DailyClosedLoopEnvironment:
                     and payload.get("ptp_generation") != state["ptp_generation"]):
                 continue
             if kind == "TERMINAL_EVENT":
+                suppressed = [row for row in pending if row["kind"] == "CAMPAIGN_SEND_EVENT"]
+                for row in suppressed:
+                    suppressed_decision = row["payload"].get("decision_id")
+                    for decision in decisions:
+                        if decision["decision_id"] == suppressed_decision:
+                            decision["status"] = "SUPPRESSED_BY_TERMINAL"
+                            decision["suppression_reason"] = EXPIRY_REASON
+                    self._audit(state, when, "CAMPAIGN_SUPPRESSION", {
+                        "scheduled_send_time": row["when"],
+                        "selected_outcome": "SUPPRESSED",
+                        "reason": EXPIRY_REASON,
+                    }, decision_id=suppressed_decision)
                 state.update(done=True, success=False, termination_reason=EXPIRY_REASON)
+                state["terminal_datetime"] = _iso(when)
                 events.append(self._emit(state, when, kind, source_type="lifecycle",
                                          model_source="OBSERVED_CREATION_PLUS_30_CALENDAR_DAYS"))
                 pending.clear()
                 break
             if kind == "CAMPAIGN_SEND_EVENT":
                 decision_time = _timestamp(payload["decision_time"])
+                # A new exposure censors unresolved responses attributed to an
+                # earlier send. Those outcomes are unknown, not permanent
+                # no-response observations.
+                prior_exposure = [row for row in pending
+                    if row["kind"] in {"CAMPAIGN_RESPONSE_EVENT", "ACTION_CONDITIONED_JOURNEY_EVENT",
+                                       "CAMPAIGN_MOTIF_RELEASE_EVENT"}
+                    and row.get("payload", {}).get("decision_id")
+                    and row["payload"].get("decision_id") != payload.get("decision_id")]
+                if prior_exposure:
+                    censored_ids = sorted({row["payload"]["decision_id"] for row in prior_exposure})
+                    pending[:] = [row for row in pending if row not in prior_exposure]
+                    self._audit(state, when, "CAMPAIGN_RESPONSE_CENSORING", {
+                        "selected_outcome": "CENSORED_BY_COMPETING_SEND",
+                        "censored_decision_ids": censored_ids,
+                        "censored_pending_events": len(prior_exposure),
+                        "reason": "COMPETING_SEND_BOUNDARY",
+                    }, decision_id=payload.get("decision_id"))
                 events.append(self._emit(state, when, kind, **{**payload,
                     "decision_time": decision_time, "resolved_send_time": when,
-                    "source_type": "campaign", "model_source": "EMPIRICAL_DAILY_POLICY"}))
+                    "source_type": "campaign",
+                    "model_source": ("EXTERNAL_RL_ACTION" if payload.get("policy_source") == "EXTERNAL_RL_ACTION"
+                                     else "EMPIRICAL_DAILY_POLICY")}))
                 state["campaign_sends_seen"] += 1
                 state["last_campaign_send_datetime"] = _iso(when)
+                for decision in decisions:
+                    if decision["decision_id"] == payload.get("decision_id"):
+                        decision["status"] = "REALIZED"
+                        decision["realized_send_time"] = when
                 next_journey_time = None
                 if self.sim.campaign_motif is not None:
                     forbidden = set()
+                    forbidden.add("Application Created")
                     if not can_approve_aip(state):
                         forbidden.add("AIP Approved")
                     forbidden.add("Push to Partner")
@@ -524,7 +577,8 @@ class DailyClosedLoopEnvironment:
                         release = min(when + pd.Timedelta(seconds=motif.release_delay_seconds),
                                       _timestamp(state["deadline"]))
                         self._schedule(state, pending, release, "CAMPAIGN_MOTIF_RELEASE_EVENT", {
-                            "natural_generation": state["natural_generation"], "motif": True})
+                            "natural_generation": state["natural_generation"], "motif": True,
+                            "decision_id": payload["decision_id"]})
                     self._audit(state, when, "CAMPAIGN_RESPONSE_MOTIF", {
                         "pathway": "ACTION_CONDITIONED", "action": {
                             "channel_id": payload["channel"], "theme": payload["theme"],
@@ -539,6 +593,7 @@ class DailyClosedLoopEnvironment:
                     }, decision_id=payload["decision_id"])
                 elif self.sim.action_model is not None:
                     forbidden = set()
+                    forbidden.add("Application Created")
                     if not can_push_to_partner(state):
                         forbidden.add("Push to Partner")
                     if not can_approve_aip(state):
@@ -605,6 +660,16 @@ class DailyClosedLoopEnvironment:
                     "model_source": "PL_OBSERVATIONAL_CAMPAIGN_RESPONSE"}))
                 continue
             response = str(payload["response"])
+            if response == "Application Created":
+                self._audit(state, when, "ORGANIC_CONTINUATION", {
+                    "pathway": "ORGANIC" if not payload.get("action_id") else "ACTION_CONDITIONED",
+                    "selected_outcome": "TEMPORARY_INACTIVITY",
+                    "blocked_candidate": response,
+                    "reason": "ACTIVE_LIFECYCLE_ALREADY_CREATED",
+                    "business_guards": {"blocked_mass_renormalized": False},
+                }, decision_id=payload.get("decision_id"))
+                self._schedule_natural(state, pending, when, following)
+                continue
             if response == "Push to Partner" and not can_push_to_partner(state):
                 raise RuntimeError("PTP without Form Filled, Professional Details and AIP")
             state["journey_substage"] = response
@@ -622,6 +687,7 @@ class DailyClosedLoopEnvironment:
                 state["journey_close_seen"] = True
             if response == "Push to Partner":
                 state.update(done=True, success=True, termination_reason=SUCCESS_REASON)
+                state["terminal_datetime"] = _iso(when)
             state["last_journey_datetime"] = _iso(when)
             conditioned = bool(payload.get("action_id"))
             events.append(self._emit(state, when, kind,
@@ -637,6 +703,18 @@ class DailyClosedLoopEnvironment:
                 model_level=payload.get("model_level"), support_count=payload.get("support_count"),
                 transition_mode="ACTION_CONDITIONED_DIRECT" if conditioned else "NATURAL"))
             if state["done"]:
+                suppressed = [row for row in pending if row["kind"] == "CAMPAIGN_SEND_EVENT"]
+                for row in suppressed:
+                    suppressed_decision = row["payload"].get("decision_id")
+                    for decision in decisions:
+                        if decision["decision_id"] == suppressed_decision:
+                            decision["status"] = "SUPPRESSED_BY_TERMINAL"
+                            decision["suppression_reason"] = SUCCESS_REASON
+                    self._audit(state, when, "CAMPAIGN_SUPPRESSION", {
+                        "scheduled_send_time": row["when"],
+                        "selected_outcome": "SUPPRESSED",
+                        "reason": SUCCESS_REASON,
+                    }, decision_id=suppressed_decision)
                 pending.clear()
                 break
             self._schedule_natural(state, pending, when, following)

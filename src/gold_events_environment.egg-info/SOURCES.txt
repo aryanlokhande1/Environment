@@ -2,6 +2,9 @@ README.md
 pyproject.toml
 src/environment/__init__.py
 src/environment/cli.py
+src/environment/integration.py
+src/environment/reference_inputs.py
+src/environment/simulation.py
 src/environment/contracts/__init__.py
 src/environment/contracts/action.py
 src/environment/contracts/integration.py
@@ -25,6 +28,7 @@ src/environment/persistence/__init__.py
 src/environment/persistence/checkpoint.py
 src/environment/persistence/local_io.py
 src/environment/persistence/postgres.py
+src/environment/persistence/postgres_demo.py
 src/environment/persistence/s3_io.py
 src/environment/runtime/__init__.py
 src/environment/runtime/base.py
@@ -43,8 +47,13 @@ src/gold_events_environment.egg-info/dependency_links.txt
 src/gold_events_environment.egg-info/entry_points.txt
 src/gold_events_environment.egg-info/requires.txt
 src/gold_events_environment.egg-info/top_level.txt
+tests/test_contracts_and_state.py
 tests/test_environment.py
 tests/test_guards.py
+tests/test_integration.py
+tests/test_may_simulation.py
 tests/test_migration_parity.py
 tests/test_models.py
 tests/test_persistence.py
+tests/test_postgres_demo.py
+tests/test_runtime_semantics.py

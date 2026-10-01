@@ -1,0 +1,47 @@
+{
+  "accepted_groups": 5,
+  "backoff_rule": "supported state+regime -> supported pooled focus-state+regime -> validated unconditioned state",
+  "base_natural_sha256": "6f796f7859c46a7658f2ece513e9b2cf548fe69d74f255ba7eff84ee472eb49c",
+  "classification_downstream_states": [
+    "AIP Approved",
+    "Address Submission",
+    "Bank Approval Pending",
+    "Bank Approved",
+    "Product Selection",
+    "Professional Details Submission",
+    "Professional details",
+    "Push to Partner",
+    "listing"
+  ],
+  "conditioning_keys": [
+    "state",
+    "regime"
+  ],
+  "cotemporal_successor_sets_excluded": true,
+  "model_sha256": "c773613d94634966128396ae223d133ffda430ba66e7f61fbb59a785c9cd768b",
+  "model_version": "PL_APPLICATION_NATURAL_STATE_REGIME_V1",
+  "observed_substages_sha256": "dc4f76c4aae5569a75540c1e9732cb34f11dca8caf4582d7a4fd87cdf0cdd6fb",
+  "population": "proven PL application-owned immutable March-April history within lifecycle",
+  "ptp_transaction_excluded": true,
+  "regimes": [
+    "FIRST_PASS",
+    "REVISIT",
+    "AMBIGUOUS"
+  ],
+  "rejected_groups": 4,
+  "source_cohort_sha256": "2c4498b62e6b645904ce8eeaef070fa435b16b078f0c393a0df11f185cb97723",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "2026-03-01 through 2026-04-30; no May, simulated, or synthetic rows",
+  "stability_sha256": "fee437c93dea2c56350ad73a5ae1f94df864a8adb22f650e485aa43e3540372f",
+  "support_thresholds": {
+    "april": 50,
+    "march": 100,
+    "max_tv_distance": 0.25,
+    "total": 200
+  },
+  "support_unit": "strictly ordered visible non-PTP journey transition",
+  "transition_support": 172681
+}

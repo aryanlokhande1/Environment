@@ -6,7 +6,11 @@ and lifecycle expiry markers are never disguised as historical Gold telemetry.
 from __future__ import annotations
 
 from hashlib import sha256
+from pathlib import Path
 from typing import Any, Mapping
+
+import numpy as np
+import pandas as pd
 
 GOLD_COLUMNS = (
     "application_id", "context_id", "event_datetime", "event_name", "journey_stage",
@@ -18,6 +22,40 @@ GOLD_COLUMNS = (
 ENGAGEMENT_LABELS = frozenset({"campaign_open_read", "campaign_clicked"})
 
 
+class EventNameMapper:
+    """Deterministic sampler of historical Gold event-name semantics."""
+
+    def __init__(self, path: str | Path, *, seed: int):
+        rows = pd.read_csv(path, keep_default_na=False)
+        self.seed = int(seed)
+        self.mapping: dict[tuple[str, str, str, str], list[tuple[str, float]]] = {}
+        keys = ["model_level", "journey_stage", "journey_substage", "source_type"]
+        for key, group in rows.groupby(keys, sort=False, dropna=False):
+            probabilities = group.probability.astype(float).to_numpy(copy=True)
+            probabilities /= probabilities.sum()
+            self.mapping[tuple(map(str, key))] = list(zip(
+                group.event_name.astype(str), np.cumsum(probabilities), strict=True))
+
+    def sample(self, event: Mapping[str, Any]) -> str:
+        stage = str(event.get("journey_stage") or "")
+        substage = str(event.get("journey_substage") or "")
+        source = str(event.get("source_type") or "")
+        candidates = (
+            ("STAGE_SUBSTAGE_SOURCE", stage, substage, source),
+            ("STAGE_SUBSTAGE", stage, substage, ""),
+            ("SUBSTAGE_SOURCE", "", substage, source),
+            ("SUBSTAGE", "", substage, ""),
+        )
+        options = next((self.mapping[key] for key in candidates if key in self.mapping), None)
+        if not options:
+            raise ValueError(f"no historical event_name support for {stage!r}/{substage!r}")
+        digest = sha256(
+            f"{self.seed}|event-name|{event['event_key']}".encode("utf-8")
+        ).digest()
+        draw = int.from_bytes(digest[:8], "big") / 2**64
+        return next(name for name, cumulative in options if draw < cumulative)
+
+
 def historical_row_key(source_name: str, source_row: int) -> str:
     return "H|" + sha256(f"{source_name}|{source_row}".encode()).hexdigest()
 
@@ -26,7 +64,7 @@ def simulated_row_key(run_id: str, event_key: str) -> str:
     return "S|" + sha256(f"{run_id}|{event_key}".encode()).hexdigest()
 
 
-def to_gold_row(event: Mapping[str, Any]) -> dict[str, Any] | None:
+def to_gold_row(event: Mapping[str, Any], event_name_mapper: EventNameMapper | None = None) -> dict[str, Any] | None:
     kind = str(event["event_type"])
     if kind in {"SIMULATION_START_EVENT", "TERMINAL_EVENT"}:
         return None
@@ -39,8 +77,9 @@ def to_gold_row(event: Mapping[str, Any]) -> dict[str, Any] | None:
         name = label
     elif kind in {"JOURNEY_EVENT", "ACTION_CONDITIONED_JOURNEY_EVENT", "TRANSACTION_EVENT"}:
         label = str(event["journey_substage"])
-        # Gold event_name is not determined by journey_substage (including PTP).
-        name = None
+        # The distribution is conditional: PTP and several other substages have
+        # multiple historically valid event names.
+        name = event_name_mapper.sample(event) if event_name_mapper is not None else None
     else:
         raise ValueError(f"unsupported event type for Gold adapter: {kind}")
     row = {column: None for column in GOLD_COLUMNS}

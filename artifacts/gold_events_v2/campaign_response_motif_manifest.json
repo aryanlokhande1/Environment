@@ -44,7 +44,7 @@
     "send_count": 236561
   },
   "horizon_days": 7,
-  "model_sha256": "13ffc0a72712b77d9b4b9780510cbf44af0daa4f9450750c42d70894357a39e6",
+  "model_sha256": "b99e8645a6881c23350320b583c6430baf66277ae0540c228a33f1e805bdc9c2",
   "model_version": "PL_JOINT_CAMPAIGN_RESPONSE_MOTIF_V2",
   "population": "uniquely application-owned historical campaign sends with observable exposure windows",
   "probability_name": "joint engagement-sequence and next-visible-journey motif probability",

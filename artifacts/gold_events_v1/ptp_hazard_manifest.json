@@ -14,7 +14,7 @@
   "event_delay_sha256": "02d736ba409e382f5c5bda160237a504bc24be4b0e5c0b3bcae2998ec2692e75",
   "fit_summary_sha256": "2d833deda256682e2a1a5e765924dfe36d03a3de09adb4fec1c95f6265843a9b",
   "fitting_population": "March-created applications with complete 30-day follow-up",
-  "hazard_sha256": "8d7018fccd94d7742510af4941bd5598833cf429b3e759dcd1c9a82e926da790",
+  "hazard_sha256": "282e7269336bc05517eea14495e5237b35ff2b9af4a6b94d4b4cbd34e0a72e67",
   "historical_ptp_applications": 28066,
   "historical_ptp_outcomes_retained": 28066,
   "mature_applications": 44125,

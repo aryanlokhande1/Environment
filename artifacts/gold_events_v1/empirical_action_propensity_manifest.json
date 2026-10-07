@@ -7,7 +7,7 @@
   "global_joint_tv": 0.22034450368106362,
   "meaning": "Observational policy propensity, not a treatment-effect model",
   "model_rows": 168,
-  "model_sha256": "5902c945f457b2ba7dfce709f13373572fa537a211be729af7bd305b535f3904",
+  "model_sha256": "20edf867ec4d8a44f516bfc752c86bc1c449591f49785f963a8db22c3e6de1fb",
   "model_version": "PL_EMPIRICAL_ACTION_PROPENSITY_V1",
   "sends_with_pre_send_state": 236507,
   "source_campaign_path": "artifacts\\v3\\pl\\uniquely_attributed_campaign_events.parquet",

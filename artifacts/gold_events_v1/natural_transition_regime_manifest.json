@@ -1,7 +1,7 @@
 {
   "accepted_groups": 5,
   "backoff_rule": "supported state+regime -> supported pooled focus-state+regime -> validated unconditioned state",
-  "base_natural_sha256": "6f796f7859c46a7658f2ece513e9b2cf548fe69d74f255ba7eff84ee472eb49c",
+  "base_natural_sha256": "34e47f0e39e8d68b230dfab2bb202a3fbb909b9e79ce9f07075ee1665a41ad0f",
   "classification_downstream_states": [
     "AIP Approved",
     "Address Submission",
@@ -18,7 +18,7 @@
     "regime"
   ],
   "cotemporal_successor_sets_excluded": true,
-  "model_sha256": "c773613d94634966128396ae223d133ffda430ba66e7f61fbb59a785c9cd768b",
+  "model_sha256": "823920b3cefde7bb104c44862682cb9bafff19c050bb26f284396deb1b092a1b",
   "model_version": "PL_APPLICATION_NATURAL_STATE_REGIME_V1",
   "observed_substages_sha256": "dc4f76c4aae5569a75540c1e9732cb34f11dca8caf4582d7a4fd87cdf0cdd6fb",
   "population": "proven PL application-owned immutable March-April history within lifecycle",

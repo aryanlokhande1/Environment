@@ -8,7 +8,7 @@
   "fitting_rows": 754174,
   "mapping_rows": 976,
   "missing_event_name_rows": 0,
-  "model_sha256": "ce667e1358571555a43021d33525acb9d6ab0982f64ebfa731a63a5b732742b5",
+  "model_sha256": "296426c36d54a2c155fe731653511c4618ee49ebd8c0f864be3988c569e14a00",
   "model_version": "PL_GOLD_EVENT_NAME_CONDITIONAL_V1",
   "population": "Personal Loan application-owned events",
   "source_files_sha256": {

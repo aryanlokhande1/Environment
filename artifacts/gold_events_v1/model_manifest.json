@@ -14,7 +14,7 @@
   "journey_close_outgoing_support": 4842,
   "journey_rows": 526402,
   "model_pairs": 732,
-  "natural_model_sha256": "6f796f7859c46a7658f2ece513e9b2cf548fe69d74f255ba7eff84ee472eb49c",
+  "natural_model_sha256": "34e47f0e39e8d68b230dfab2bb202a3fbb909b9e79ce9f07075ee1665a41ad0f",
   "natural_model_source": "proven PL applications; transaction PTP retained as outcome evidence but excluded from natural successors; co-temporal PD/AIP pair order omitted",
   "natural_temporally_supported_states": 25,
   "old_mixed_model_sha256": "a54066db0952a90f905c4b2d009586db7c96f872c10bcfd17a6dc7008b189567",

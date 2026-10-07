@@ -42,7 +42,7 @@
   "denominator_meaning": "one deterministic daily decision opportunity while application is active",
   "future_rl_semantics": "RL replaces temporary SEND/NO_ACTION and channel/time policy at the same opportunity",
   "global_send_probability": 0.2053956378036057,
-  "model_sha256": "ace3b9535d4a1d8d75b49aa498210e4050616a915b29dc4b48b6dce78722d5f9",
+  "model_sha256": "301df82e2c2ca5a0360cb3a55914ada3a21c91ee91279b30fab09ecb0c34d89a",
   "model_version": "PL_ACTIVE_DAY_SEND_NO_ACTION_POLICY_V2",
   "opportunity_semantics": "every active application-day is one observable decision opportunity",
   "phase1_audit_sha256": "fef852c5332c69eed07df22556b8c6eb82e88d1f71aeb3bd4ac9eeac0bbce13f",

@@ -315,3 +315,59 @@ This repository was extracted from the current V3 research runtime with PTP prov
 - `application_id` is the lifecycle boundary; `context_id` is customer identity.
 - Future events are never exposed before their scheduled time.
 - Model updates require a new versioned manifest and hashes.
+
+## Runtime semantics and recovery
+
+Runtime code semantics are independent of the frozen empirical bundle. New
+`Environment` and `MaySimulationRunner` instances default to `corrected-v1`,
+configured by `environment.runtime_version` or `--runtime-version`. Explicit
+`legacy-v2r2` retains the accepted V2r2 hazard and expiry behavior for reproduction:
+
+```bash
+environment run-may --run-id may-no-action-v2r2-20260502 \
+  --runtime-version legacy-v2r2 --output-root data/output/phase1-legacy-validation
+```
+
+Use a separate output root; never overwrite the accepted AWS run. Runtime
+version is saved in run manifests, summaries, checkpoints and stepped application
+state and checked on resume. Older metadata without this field means legacy;
+opening an old run preserves that choice. New corrected checkpoints cannot
+resume as legacy or vice versa. Explicit CLI resume overrides must match saved
+metadata. The frozen bundle and historical Parquets are unchanged.
+
+The hazard assets contain **conditional interval probabilities** (events divided
+by the risk set at the bin start), plus empirical conditional timing donors.
+Corrected mode allocates each bin's hazard mass across its donors and conditions
+on survival to the current elapsed time. It samples the remaining event time
+once per continuation/AIP episode through the lifecycle deadline. Future events
+and no-event outcomes are persisted; dividing a WAIT does not redraw exposure or
+consume extra model RNG draws. New journey observations, a new eligible AIP or
+campaign interruption/release can start a new applicable episode. This removes
+the legacy combination of fractional-bin hazard and empty-window donor
+suppression without fitting or scaling probabilities. Corrected output counts
+are not required to equal legacy counts.
+
+Corrected mode processes expiry even when WAIT ends exactly at creation plus
+30 days. Ordinary Gold events retain half-open interval execution. Existing
+transaction-before-expiry priority is retained for an already queued terminal
+PTP exactly at the deadline; it wins that tie and clears the queue. Expiry emits
+no Gold row. Later pending events are suppressed, and further advances of a
+terminal application are rejected. Frozen V2 hazard draws and campaign motifs
+schedule their realized outcomes strictly before expiry and the May endpoint.
+
+The corrected local loop follows the day-wise runner's **manifest-last commit**
+pattern: stage immutable history and checkpoint snapshots, flush their files and
+directory entries, then atomically publish the checkpoint commit marker. The
+public cumulative history is a projection of that committed snapshot. A crash
+before the marker leaves staging uncommitted and ignored; a crash after it is
+recovered by publishing the validated snapshot. Same-boundary retries return
+without calling the controller or appending Gold again. Recovery validates both
+snapshot hashes, checkpoint state, seed, runtime version, artifact hashes and
+input history identity. Arbitrary history/checkpoint disagreement fails closed;
+the immediately previous history projection is recognized as incomplete
+publication and repaired. Pending events, RNG counters and simulated time are
+part of the committed state. This single-application adapter uses a filesystem
+lock for cooperating writers sharing its checkpoint; each loop owns its history
+and checkpoint paths. Snapshot directories must remain beside their checkpoint.
+No PostgreSQL transaction is required. Legacy mode retains its old local-loop
+commit semantics solely for replay.

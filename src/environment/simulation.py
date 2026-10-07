@@ -18,9 +18,11 @@ import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
 from environment.contracts.action import EnvironmentAction
+from environment.runtime.semantics import CORRECTED, LEGACY, validate_runtime_version
 from environment.core.environment import Environment
 from environment.core.state import EnvironmentState, active_application_for_context
 from environment.runtime.gold_events_adapter import GOLD_COLUMNS
+from environment.persistence.checkpoint import atomic_bytes, durable_replace, ensure_directory
 
 START = pd.Timestamp("2026-05-01")
 END = pd.Timestamp("2026-06-01")
@@ -76,20 +78,18 @@ def _json_bytes(value: Any) -> bytes:
 
 
 def _atomic_json(path: Path, value: Any) -> None:
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_bytes(_json_bytes(value) + b"\n")
-    temporary.replace(path)
+    ensure_directory(path.parent)
+    atomic_bytes(path, _json_bytes(value) + b"\n")
 
 
 def _atomic_gzip_json(path: Path, value: Any) -> str:
-    path.parent.mkdir(parents=True, exist_ok=True)
+    ensure_directory(path.parent)
     temporary = path.with_suffix(path.suffix + ".tmp")
     with temporary.open("wb") as stream:
         with gzip.GzipFile(filename="", mode="wb", fileobj=stream, mtime=0) as compressed:
             compressed.write(_json_bytes(value))
     digest = sha256(temporary.read_bytes()).hexdigest()
-    temporary.replace(path)
+    durable_replace(temporary, path)
     return digest
 
 
@@ -107,26 +107,26 @@ def _sha256(path: Path) -> str:
 
 
 def _atomic_parquet(path: Path, rows: list[dict[str, Any]], columns: Iterable[str]) -> str:
-    path.parent.mkdir(parents=True, exist_ok=True)
+    ensure_directory(path.parent)
     frame = pd.DataFrame(rows).reindex(columns=list(columns))
     if "event_datetime" in frame:
         frame["event_datetime"] = pd.to_datetime(frame["event_datetime"])
     temporary = path.with_suffix(path.suffix + ".tmp")
     frame.to_parquet(temporary, index=False, compression="zstd")
     digest = _sha256(temporary)
-    temporary.replace(path)
+    durable_replace(temporary, path)
     return digest
 
 
 def _atomic_jsonl_gzip(path: Path, rows: list[dict[str, Any]]) -> str:
-    path.parent.mkdir(parents=True, exist_ok=True)
+    ensure_directory(path.parent)
     temporary = path.with_suffix(path.suffix + ".tmp")
     with temporary.open("wb") as stream:
         with gzip.GzipFile(filename="", mode="wb", fileobj=stream, mtime=0) as compressed:
             for row in rows:
                 compressed.write(_json_bytes(row) + b"\n")
     digest = _sha256(temporary)
-    temporary.replace(path)
+    durable_replace(temporary, path)
     return digest
 
 
@@ -164,9 +164,11 @@ class MaySimulationRunner:
                  artifact_dir: str | Path = "artifacts/gold_events_v2",
                  output_root: str | Path = "data/output/runs", seed: int = 20260502,
                  initial_limit: int | None = None, arrival_limit: int | None = None,
-                 scripted_sends: Iterable[ScriptedSend] = (), send_example: bool = False):
+                 scripted_sends: Iterable[ScriptedSend] = (), send_example: bool = False,
+                 runtime_version: str = CORRECTED):
         if not run_id or any(character in run_id for character in "\\/:*?\"<>|"):
             raise ValueError("run_id must be a non-empty filesystem-safe name")
+        self.runtime_version = validate_runtime_version(runtime_version)
         self.run_id = run_id
         self.run_dir = Path(output_root) / run_id
         self.artifact_dir = Path(artifact_dir)
@@ -176,11 +178,13 @@ class MaySimulationRunner:
         self.requested_sources = tuple(map(str, historical_sources))
         self.scripted_sends = tuple(scripted_sends)
         self.send_example = bool(send_example)
-        self.environment = Environment(self.artifact_dir, seed=self.seed, run_id=self.run_id)
+        self.environment = Environment(self.artifact_dir, seed=self.seed, run_id=self.run_id,
+                                       runtime_version=self.runtime_version)
         if initial_limit is not None or arrival_limit is not None:
             self.environment._runtime = self.environment._runtime.__class__(
                 self.artifact_dir, seed=self.seed, run_id=self.run_id,
-                initial_limit=initial_limit, arrival_limit=arrival_limit)
+                initial_limit=initial_limit, arrival_limit=arrival_limit,
+                runtime_version=self.runtime_version)
 
     @classmethod
     def open(cls, run_id: str, *, output_root: str | Path = "data/output/runs") -> "MaySimulationRunner":
@@ -192,6 +196,7 @@ class MaySimulationRunner:
             run_id=run_id,
             historical_sources=[row["source_uri"] for row in manifest["historical_files"]],
             artifact_dir=manifest["artifact_dir"], output_root=output_root,
+            runtime_version=manifest.get("runtime_version", LEGACY),
             seed=int(manifest["seed"]), initial_limit=manifest.get("initial_limit"),
             arrival_limit=manifest.get("arrival_limit"),
             scripted_sends=[ScriptedSend(**row) for row in manifest.get("scripted_sends", [])],
@@ -308,7 +313,7 @@ class MaySimulationRunner:
             _register_lifecycle(lifecycle_registry, state)
         manifest = {
             "checkpoint_version": CHECKPOINT_VERSION,
-            "run_id": self.run_id, "seed": self.seed,
+            "run_id": self.run_id, "seed": self.seed, "runtime_version": self.runtime_version,
             "artifact_dir": str(self.artifact_dir.resolve()),
             "artifact_hashes": self.environment.artifact_hashes,
             "historical_files": [asdict(row) for row in historical],
@@ -324,6 +329,7 @@ class MaySimulationRunner:
         _atomic_json(self.manifest_path, manifest)
         checkpoint = {
             "checkpoint_version": CHECKPOINT_VERSION, "run_id": self.run_id,
+            "runtime_version": self.runtime_version,
             "completed_day": "2026-04-30", "states": states, "pending": pending,
             "lifecycle_registry": lifecycle_registry,
             "terminal_counts": {}, "daily": [], "may_gold_rows": 0,
@@ -335,14 +341,14 @@ class MaySimulationRunner:
 
     def _assert_manifest_compatible(self, manifest: dict[str, Any]) -> None:
         expected = {
-            "run_id": self.run_id, "seed": self.seed,
+            "run_id": self.run_id, "seed": self.seed, "runtime_version": self.runtime_version,
             "artifact_hashes": self.environment.artifact_hashes,
             "initial_limit": self.initial_limit, "arrival_limit": self.arrival_limit,
             "scripted_sends": [asdict(row) for row in self.scripted_sends],
             "send_example": self.send_example,
         }
         for key, value in expected.items():
-            if manifest.get(key) != value:
+            if manifest.get(key, LEGACY if key == "runtime_version" else None) != value:
                 raise ValueError(f"run configuration changed across restart: {key}")
 
     def _commit_initial_checkpoint(self, checkpoint: dict[str, Any]) -> None:
@@ -361,7 +367,10 @@ class MaySimulationRunner:
         path = self.run_dir / commit["checkpoint"]
         if _sha256(path) != commit["checkpoint_sha256"]:
             raise ValueError(f"checkpoint hash mismatch: {path}")
-        return _read_gzip_json(path), commit
+        checkpoint = _read_gzip_json(path)
+        if checkpoint.get("runtime_version", LEGACY) != self.runtime_version:
+            raise ValueError("checkpoint runtime_version mismatch")
+        return checkpoint, commit
 
     def _rules_for(self, application_id: str, start: pd.Timestamp,
                    end: pd.Timestamp) -> list[ScriptedSend]:
@@ -492,6 +501,7 @@ class MaySimulationRunner:
         }
         next_checkpoint = {
             "checkpoint_version": CHECKPOINT_VERSION, "run_id": self.run_id,
+            "runtime_version": self.runtime_version,
             "completed_day": str(day.date()),
             "states": {app: state.payload for app, state in surviving.items()},
             "pending": {app: state.pending_events for app, state in surviving.items()},
@@ -530,6 +540,7 @@ class MaySimulationRunner:
         manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
         summary = {
             "run_id": self.run_id, "status": status, "seed": self.seed,
+            "runtime_version": self.runtime_version,
             "completed_day": checkpoint["completed_day"],
             "historical_rows": manifest["historical_rows"],
             "may_simulated_rows": checkpoint["may_gold_rows"],
@@ -552,7 +563,7 @@ class MaySimulationRunner:
         if not paths:
             raise RuntimeError("run has no historical inputs")
         schema = GOLD_ARROW_SCHEMA
-        self.combined_path.parent.mkdir(parents=True, exist_ok=True)
+        ensure_directory(self.combined_path.parent)
         temporary = self.combined_path.with_suffix(".parquet.tmp")
         rows = 0
         with pq.ParquetWriter(temporary, schema, compression="zstd") as writer:
@@ -566,7 +577,7 @@ class MaySimulationRunner:
                 table = pq.read_table(path, columns=list(GOLD_COLUMNS)).cast(schema, safe=False)
                 writer.write_table(table)
                 rows += table.num_rows
-        temporary.replace(self.combined_path)
+        durable_replace(temporary, self.combined_path)
         expected = manifest["historical_rows"] + sum(
             pq.ParquetFile(path).metadata.num_rows for path in may_paths)
         if rows != expected:
@@ -667,7 +678,7 @@ class MaySimulationRunner:
         if not historical_unchanged:
             violations.append("historical source size or modification time changed")
         report = {
-            "run_id": self.run_id,
+            "run_id": self.run_id, "runtime_version": self.runtime_version,
             "status": "PASS" if not violations and (not require_complete or len(commits) == 31) else "FAIL",
             "committed_days": len(commits), "historical_rows": manifest["historical_rows"],
             "may_rows": may_rows, "combined_rows": combined_rows,

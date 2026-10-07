@@ -19,6 +19,7 @@ from .persistence.postgres_demo import (
 )
 from .reference_inputs import validate_reference_inputs
 from .simulation import MaySimulationRunner, ScriptedSend
+from .runtime.semantics import CORRECTED, RUNTIME_VERSIONS
 
 
 def _load_config(path: str | Path) -> dict[str, Any]:
@@ -43,6 +44,7 @@ def _add_common_run_arguments(parser: argparse.ArgumentParser, *, historical: bo
     parser.add_argument("--output-root")
     parser.add_argument("--artifact-dir")
     parser.add_argument("--seed", type=int)
+    parser.add_argument("--runtime-version", choices=RUNTIME_VERSIONS)
     if historical:
         parser.add_argument("--historical", action="append", default=[],
                             help="Parquet file, directory, or S3 URI; repeat for multiple inputs")
@@ -62,6 +64,7 @@ def _new_runner(args: argparse.Namespace) -> MaySimulationRunner:
         artifact_dir=args.artifact_dir or environment.get("artifact_uri", "artifacts/gold_events_v2"),
         output_root=args.output_root or simulation.get("output_root", "data/output/runs"),
         seed=args.seed if args.seed is not None else int(environment.get("seed", 20260502)),
+        runtime_version=args.runtime_version or environment.get("runtime_version", CORRECTED),
         initial_limit=args.initial_limit, arrival_limit=args.arrival_limit,
         scripted_sends=args.scripted_send, send_example=args.send_example,
     )
@@ -70,7 +73,10 @@ def _new_runner(args: argparse.Namespace) -> MaySimulationRunner:
 def _existing_runner(args: argparse.Namespace) -> MaySimulationRunner:
     config = _load_config(args.config)
     output_root = args.output_root or config.get("simulation", {}).get("output_root", "data/output/runs")
-    return MaySimulationRunner.open(args.run_id, output_root=output_root)
+    runner = MaySimulationRunner.open(args.run_id, output_root=output_root)
+    if args.runtime_version is not None and args.runtime_version != runner.runtime_version:
+        raise ValueError("requested runtime_version differs from saved run")
+    return runner
 
 
 def _print(value: Any) -> None:

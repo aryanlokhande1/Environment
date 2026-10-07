@@ -10,13 +10,16 @@ from environment.models.artifact_loader import ArtifactLoader
 from environment.runtime.base import CampaignAction, PolicyChoice
 from environment.runtime.daily_closed_loop import DailyClosedLoopEnvironment
 from environment.runtime.gold_events_adapter import EventNameMapper, to_gold_row
+from environment.runtime.semantics import CORRECTED, LEGACY, validate_runtime_version
 from .state import EnvironmentState
 from .scheduler import get_decision_opportunities
 
 class Environment:
     """Frozen empirical environment; it never fits or mutates model artifacts."""
     def __init__(self, artifact_dir: str | Path = "artifacts/gold_events_v2", *,
-                 seed: int = 20260502, run_id: str = "environment-local"):
+                 seed: int = 20260502, run_id: str = "environment-local",
+                 runtime_version: str = CORRECTED):
+        self.runtime_version = validate_runtime_version(runtime_version)
         self.loader = ArtifactLoader(artifact_dir)
         self.artifact_hashes = self.loader.validate()
         self.seed, self.run_id = int(seed), str(run_id)
@@ -24,7 +27,8 @@ class Environment:
             EventNameMapper(self.loader.path("event_name_mapping"), seed=self.seed)
             if "event_name_mapping" in self.loader.records else None
         )
-        self._runtime = DailyClosedLoopEnvironment(Path(artifact_dir), seed=self.seed, run_id=self.run_id)
+        self._runtime = DailyClosedLoopEnvironment(Path(artifact_dir), seed=self.seed, run_id=self.run_id,
+                                                     runtime_version=self.runtime_version)
 
     @staticmethod
     def get_decision_opportunities(state: EnvironmentState, start_time: str | pd.Timestamp,
@@ -55,6 +59,10 @@ class Environment:
     def _advance(self, state: EnvironmentState, action: EnvironmentAction | Mapping[str, Any],
                  when: pd.Timestamp, horizon: pd.Timestamp, *, exact_send_time: bool) -> EnvironmentResult:
         action = EnvironmentAction.parse(action)
+        saved_version = state.payload.get("_runtime_version",
+            LEGACY if state.payload.get("_environment_started") else None)
+        if saved_version is not None and saved_version != self.runtime_version:
+            raise ValueError("state runtime_version does not match Environment")
         if state.terminal:
             raise ValueError("terminal application cannot be stepped")
         if when.tzinfo is not None or horizon.tzinfo is not None:
@@ -67,6 +75,7 @@ class Environment:
         current = state.payload.get("_simulation_time")
         if current is not None and when != pd.Timestamp(current):
             raise ValueError("start_time must equal the previously committed simulation time")
+        state.payload["_runtime_version"] = self.runtime_version
         campaign = None if not action.campaign_sent else CampaignAction(
             action.channel_id or "", action.theme or "THEME_PLACEHOLDER", action.time_bucket or "")
         def policy(_: dict[str, Any], __: pd.Timestamp) -> PolicyChoice:

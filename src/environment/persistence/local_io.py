@@ -5,6 +5,7 @@ from typing import Iterable, Mapping, Any
 import pandas as pd
 
 from environment.runtime.gold_events_adapter import GOLD_COLUMNS
+from .checkpoint import durable_replace, ensure_directory
 
 REQUIRED_HISTORY_COLUMNS = frozenset({
     "application_id", "context_id", "event_datetime", "journey_stage", "journey_substage",
@@ -37,10 +38,10 @@ class LocalIO:
     def write_history(self, rows: pd.DataFrame, uri: str | Path) -> None:
         self.validate_history(rows)
         path = Path(uri)
-        path.parent.mkdir(parents=True, exist_ok=True)
+        ensure_directory(path.parent)
         temporary = path.with_suffix(path.suffix + ".tmp")
         rows.to_parquet(temporary, index=False)
-        temporary.replace(path)
+        durable_replace(temporary, path)
 
     def append_history(self, events: Iterable[Mapping[str, Any]], uri: str | Path) -> pd.DataFrame:
         """Atomically append unique, chronological Gold rows to a local history."""

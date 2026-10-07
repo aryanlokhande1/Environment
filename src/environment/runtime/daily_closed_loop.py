@@ -24,6 +24,7 @@ from .event_intensity import EmpiricalEventIntensity
 from .hazard import StageContinuationModel
 from .progression import VALID
 from .campaign_decision import CampaignDecisionPolicy
+from .semantics import CORRECTED, LEGACY, validate_runtime_version
 
 DAY_END = pd.Timestamp("2026-06-01")
 
@@ -39,7 +40,10 @@ def _iso(value: Any) -> str:
 class DailyClosedLoopEnvironment:
     def __init__(self, artifact_dir: Path, *, seed: int, run_id: str,
                  daily_send_probability: float | None = None,
-                 initial_limit: int | None = None, arrival_limit: int | None = None):
+                 initial_limit: int | None = None, arrival_limit: int | None = None,
+                 runtime_version: str = CORRECTED):
+        self.runtime_version = validate_runtime_version(runtime_version)
+        self.corrected = self.runtime_version == CORRECTED
         self.artifact_dir = Path(artifact_dir)
         self.seed = int(seed)
         self.run_id = str(run_id)
@@ -55,6 +59,10 @@ class DailyClosedLoopEnvironment:
         self.continuation = (StageContinuationModel(self.artifact_dir)
                              if (self.artifact_dir / "stage_continuation_manifest.json").exists()
                              else None)
+        if self.continuation is not None:
+            self.continuation.corrected = self.corrected
+        if self.ptp_model is not None:
+            self.ptp_model.corrected = self.corrected
         self.intensity = EmpiricalEventIntensity(self.artifact_dir)
         self.max_events_per_day = int(self.intensity.manifest["max_observed_events_per_active_day"])
         self.max_events_per_ten_minute_bin = int(self.intensity.manifest["max_observed_events_per_ten_minute_bin"])
@@ -109,6 +117,7 @@ class DailyClosedLoopEnvironment:
         if snapshot_substage not in observed:
             observed.append(snapshot_substage)
         return {
+            "_runtime_version": self.runtime_version,
             "context_id": str(raw["snapshot_context_id"]), "application_id": str(raw["application_id"]),
             "creation_datetime": _iso(creation), "activation_datetime": _iso(activation),
             "deadline": _iso(deadline), "journey_stage": str(raw["snapshot_stage"]),
@@ -175,7 +184,13 @@ class DailyClosedLoopEnvironment:
 
     def _schedule_natural(self, state: dict, pending: list[dict], now: pd.Timestamp,
                           horizon: pd.Timestamp) -> None:
+        if self.corrected:
+            if state.get("_natural_evaluated_generation") == state["natural_generation"]:
+                return
+            horizon = _timestamp(state["deadline"])
         state["natural_generation"] += 1
+        if self.corrected:
+            state["_natural_evaluated_generation"] = state["natural_generation"]
         lookup = (self.sim.natural_regime.lookup(state)
                   if self.sim.natural_regime is not None else None)
         options = list(lookup.options if lookup is not None else
@@ -284,6 +299,11 @@ class DailyClosedLoopEnvironment:
         if any(item["kind"] == TRANSACTION_EVENT and item["payload"].get("ptp_outcome")
                and item["payload"].get("ptp_generation") == state["ptp_generation"] for item in pending):
             return
+        if self.corrected:
+            if state.get("_ptp_evaluated_generation") == state["ptp_generation"]:
+                return
+            state["_ptp_evaluated_generation"] = state["ptp_generation"]
+            horizon = _timestamp(state["deadline"])
         rng = self._rng(state, "ptp_hazard")
         if hasattr(self.ptp_model, "sample_window"):
             result = self.ptp_model.sample_window(state, now, horizon, rng)
@@ -357,6 +377,10 @@ class DailyClosedLoopEnvironment:
                     horizon: pd.Timestamp | None = None,
                     action_at_decision_time: bool = False,
                     ) -> tuple[list[dict], list[dict], dict[str, dict]]:
+        version = state.get("_runtime_version", LEGACY if state.get("_environment_started") else None)
+        if version is not None and version != self.runtime_version:
+            raise ValueError("state runtime_version does not match runtime")
+        state["_runtime_version"] = self.runtime_version
         day = day.normalize()
         if not pd.Timestamp("2026-05-01") <= day < DAY_END:
             raise ValueError("daily environment may execute May 1-31 only")
@@ -385,8 +409,8 @@ class DailyClosedLoopEnvironment:
                 events.append(self._emit(state, now, "JOURNEY_EVENT", source_type="arrival",
                                          model_source="PL_EMPIRICAL_MAY_ARRIVAL"))
             self._schedule(state, pending, state["deadline"], "TERMINAL_EVENT")
-        # Reevaluate conditional continuation and PTP risk every active day.
-        # A no-event draw is temporary inactivity, never permanent failure.
+        # Legacy redraws per day. Corrected mode samples once per risk episode
+        # through expiry, retaining both future events and no-event exposure.
         has_natural = any(item["kind"] in {"JOURNEY_EVENT", "ACTION_CONDITIONED_JOURNEY_EVENT"}
                           or item["kind"] == "CAMPAIGN_MOTIF_RELEASE_EVENT" for item in pending)
         if not has_natural:
@@ -485,7 +509,12 @@ class DailyClosedLoopEnvironment:
             _, _, _, index = min(heap)
             item = pending[index]
             when = _timestamp(item["when"])
-            if when >= following:
+            boundary_terminal = (self.corrected and when == following
+                                 and (item["kind"] == "TERMINAL_EVENT"
+                                      or (item["kind"] == TRANSACTION_EVENT
+                                          and item["payload"].get("response") == "Push to Partner"
+                                          and when == _timestamp(state["deadline"]))))
+            if when > following or (when == following and not boundary_terminal):
                 break
             pending.pop(index)
             kind, payload = item["kind"], item["payload"]
@@ -717,6 +746,8 @@ class DailyClosedLoopEnvironment:
                     }, decision_id=suppressed_decision)
                 pending.clear()
                 break
+            if self.corrected:
+                state.pop("_natural_evaluated_generation", None)
             self._schedule_natural(state, pending, when, following)
             if response == "AIP Approved":
                 self._schedule_ptp_outcome(state, pending, when, following)

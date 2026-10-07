@@ -1,4 +1,5 @@
 environment:
+  runtime_version: corrected-v1
   seed: 20260502
   artifact_uri: artifacts/gold_events_v2
   input_uri: data/input/gold_history/gold_events_start.parquet

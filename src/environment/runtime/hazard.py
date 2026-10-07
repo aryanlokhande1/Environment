@@ -31,9 +31,59 @@ class _PiecewiseHazard:
             return 1.0
         return float(1.0 - (1.0 - hazard) ** fraction)
 
+    def _sample_corrected(self, rows: pd.DataFrame, donors: pd.DataFrame, *,
+                          origin: pd.Timestamp, now: pd.Timestamp, horizon: pd.Timestamp,
+                          deadline: pd.Timestamp, rng: np.random.Generator,
+                          model_level: str, support_key: dict[str, str]) -> HazardResult:
+        """Invert the conditional empirical survival distribution once.
+
+        h is events/risk_set conditional on survival to a bin's left edge.
+        Each in-bin timing donor receives h/n conditional mass. Condition on
+        survival to now, including partial bins, and retain no-event mass.
+        The caller schedules through deadline once per episode, not per poll.
+        """
+        origin, now, horizon, deadline = map(pd.Timestamp, (origin, now, horizon, deadline))
+        start = max(0., (now - origin).total_seconds())
+        stop = min((horizon - origin).total_seconds(), (deadline - origin).total_seconds())
+        survival = 1.0
+        survived_to_start = 1.0
+        times, masses = [], []
+        durations = donors.duration_seconds.to_numpy(dtype=float, copy=False)
+        for row in rows.sort_values("elapsed_lower_seconds", kind="stable").itertuples(index=False):
+            lower, upper, h = float(row.elapsed_lower_seconds), float(row.elapsed_upper_seconds), float(row.hazard)
+            if not 0 <= h <= 1 or upper <= lower:
+                raise ValueError("invalid empirical hazard bin")
+            pool = np.sort(durations[(durations >= lower) & (durations < upper)])
+            if h > 0 and not len(pool):
+                raise ValueError("positive empirical hazard has no timing donors")
+            if len(pool):
+                mass = survival * h / len(pool)
+                survived_to_start -= mass * int((pool < start).sum())
+                selected = pool[(pool >= start) & (pool < stop)]
+                times.extend(selected.tolist())
+                masses.extend([mass] * len(selected))
+            survival *= 1 - h
+        draw = float(rng.random())
+        evidence = {"model_level": model_level, "support_key": support_key,
+                    "support_count": int(rows.risk_set.max()) if not rows.empty else 0,
+                    "sampling_semantics": "CONDITIONAL_EMPIRICAL_SURVIVAL",
+                    "survival_at_start": max(0., survived_to_start), "rng_draw": draw}
+        if survived_to_start > 1e-12 and masses:
+            probabilities = np.asarray(masses) / survived_to_start
+            index = int(np.searchsorted(np.cumsum(probabilities), draw, side="right"))
+            if index < len(times):
+                evidence.update(reason="EMPIRICAL_HAZARD_FIRED", sampled_delay_seconds=times[index])
+                return HazardResult(origin + pd.Timedelta(seconds=times[index]), evidence)
+        evidence["reason"] = "EMPIRICAL_INACTIVITY_THIS_EPISODE"
+        return HazardResult(None, evidence)
+
     def _sample(self, rows: pd.DataFrame, donors: pd.DataFrame, *, origin: pd.Timestamp,
                 now: pd.Timestamp, horizon: pd.Timestamp, deadline: pd.Timestamp,
                 rng: np.random.Generator, model_level: str, support_key: dict[str, str]) -> HazardResult:
+        if getattr(self, "corrected", False):
+            return self._sample_corrected(rows, donors, origin=origin, now=now, horizon=horizon,
+                                          deadline=deadline, rng=rng, model_level=model_level,
+                                          support_key=support_key)
         origin, now, horizon, deadline = map(pd.Timestamp, (origin, now, horizon, deadline))
         start = max(0.0, (now - origin).total_seconds())
         stop = min((horizon - origin).total_seconds(), (deadline - origin).total_seconds())

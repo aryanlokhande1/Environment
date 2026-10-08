@@ -18,7 +18,7 @@ import pyarrow.compute as pc
 import pyarrow.parquet as pq
 
 from environment.contracts.action import EnvironmentAction
-from environment.runtime.semantics import CORRECTED, LEGACY, validate_runtime_version
+from environment.runtime.semantics import CORRECTED, LEGACY, FINAL, validate_runtime_version
 from environment.core.environment import Environment
 from environment.core.state import EnvironmentState, active_application_for_context
 from environment.runtime.gold_events_adapter import GOLD_COLUMNS
@@ -165,10 +165,11 @@ class MaySimulationRunner:
                  output_root: str | Path = "data/output/runs", seed: int = 20260502,
                  initial_limit: int | None = None, arrival_limit: int | None = None,
                  scripted_sends: Iterable[ScriptedSend] = (), send_example: bool = False,
-                 runtime_version: str = CORRECTED):
+                 runtime_version: str = CORRECTED, stochastic_namespace: str | None = None):
         if not run_id or any(character in run_id for character in "\\/:*?\"<>|"):
             raise ValueError("run_id must be a non-empty filesystem-safe name")
         self.runtime_version = validate_runtime_version(runtime_version)
+        self.stochastic_namespace = (str(stochastic_namespace) if stochastic_namespace is not None else "corrected-v2-reference-20260502") if self.runtime_version == FINAL else None
         self.run_id = run_id
         self.run_dir = Path(output_root) / run_id
         self.artifact_dir = Path(artifact_dir)
@@ -179,12 +180,12 @@ class MaySimulationRunner:
         self.scripted_sends = tuple(scripted_sends)
         self.send_example = bool(send_example)
         self.environment = Environment(self.artifact_dir, seed=self.seed, run_id=self.run_id,
-                                       runtime_version=self.runtime_version)
+                                       runtime_version=self.runtime_version, stochastic_namespace=self.stochastic_namespace)
         if initial_limit is not None or arrival_limit is not None:
             self.environment._runtime = self.environment._runtime.__class__(
                 self.artifact_dir, seed=self.seed, run_id=self.run_id,
                 initial_limit=initial_limit, arrival_limit=arrival_limit,
-                runtime_version=self.runtime_version)
+                runtime_version=self.runtime_version, stochastic_namespace=self.stochastic_namespace)
 
     @classmethod
     def open(cls, run_id: str, *, output_root: str | Path = "data/output/runs") -> "MaySimulationRunner":
@@ -197,6 +198,7 @@ class MaySimulationRunner:
             historical_sources=[row["source_uri"] for row in manifest["historical_files"]],
             artifact_dir=manifest["artifact_dir"], output_root=output_root,
             runtime_version=manifest.get("runtime_version", LEGACY),
+            stochastic_namespace=manifest.get("stochastic_namespace"),
             seed=int(manifest["seed"]), initial_limit=manifest.get("initial_limit"),
             arrival_limit=manifest.get("arrival_limit"),
             scripted_sends=[ScriptedSend(**row) for row in manifest.get("scripted_sends", [])],
@@ -309,8 +311,21 @@ class MaySimulationRunner:
             states[state["application_id"]] = state
             pending[state["application_id"]] = []
         lifecycle_registry: dict[str, list[dict[str, str]]] = {}
+        if self.runtime_version == FINAL:
+            # Prior historical lifecycles are registry constraints, not active
+            # simulator states. Preserve their original customer identity.
+            historical_life = pd.read_parquet(self.artifact_dir / "application_lifecycle_state.parquet").dropna(subset=["context_id", "application_created_at"])
+            # Register the proven prior lifecycles selected by the identity
+            # builder, rather than treating every historical registry row as a
+            # live world constraint. Immutable source anomalies remain audited.
+            prior_ids = set(self.environment._runtime.arrivals.prior_application_id.dropna())
+            historical_life = historical_life.loc[historical_life.application_id.isin(prior_ids)]
+            for row in historical_life.itertuples(index=False):
+                _register_lifecycle(lifecycle_registry, dict(context_id=str(row.context_id), application_id=str(row.application_id), creation_datetime=row.application_created_at, deadline=row.application_created_at+pd.Timedelta(days=30)))
         for state in states.values():
-            _register_lifecycle(lifecycle_registry, state)
+            records = lifecycle_registry.get(state["context_id"], [])
+            if not any(r["application_id"] == state["application_id"] for r in records):
+                _register_lifecycle(lifecycle_registry, state)
         manifest = {
             "checkpoint_version": CHECKPOINT_VERSION,
             "run_id": self.run_id, "seed": self.seed, "runtime_version": self.runtime_version,
@@ -326,6 +341,8 @@ class MaySimulationRunner:
             "scripted_sends": [asdict(row) for row in self.scripted_sends],
             "send_example": self.send_example,
         }
+        if self.runtime_version == FINAL:
+            manifest["stochastic_namespace"] = self.stochastic_namespace
         _atomic_json(self.manifest_path, manifest)
         checkpoint = {
             "checkpoint_version": CHECKPOINT_VERSION, "run_id": self.run_id,
@@ -335,6 +352,8 @@ class MaySimulationRunner:
             "terminal_counts": {}, "daily": [], "may_gold_rows": 0,
             "arrivals_activated": 0, "arrivals_reused": 0, "scripted_outcomes": [],
         }
+        if self.runtime_version == FINAL:
+            checkpoint["stochastic_namespace"] = self.stochastic_namespace
         self._commit_initial_checkpoint(checkpoint)
         self._write_summary(checkpoint, status="INITIALIZED")
         return manifest
@@ -347,6 +366,8 @@ class MaySimulationRunner:
             "scripted_sends": [asdict(row) for row in self.scripted_sends],
             "send_example": self.send_example,
         }
+        if self.runtime_version == FINAL:
+            expected["stochastic_namespace"] = self.stochastic_namespace
         for key, value in expected.items():
             if manifest.get(key, LEGACY if key == "runtime_version" else None) != value:
                 raise ValueError(f"run configuration changed across restart: {key}")
@@ -370,6 +391,8 @@ class MaySimulationRunner:
         checkpoint = _read_gzip_json(path)
         if checkpoint.get("runtime_version", LEGACY) != self.runtime_version:
             raise ValueError("checkpoint runtime_version mismatch")
+        if self.runtime_version == FINAL and checkpoint.get("stochastic_namespace") != self.stochastic_namespace:
+            raise ValueError("checkpoint stochastic_namespace mismatch")
         return checkpoint, commit
 
     def _rules_for(self, application_id: str, start: pd.Timestamp,
@@ -389,7 +412,7 @@ class MaySimulationRunner:
         for index, rule in enumerate(rules):
             when = rule.timestamp()
             if cursor < when and not state.terminal:
-                result = self.environment.advance(state, EnvironmentAction.no_action(), cursor, when)
+                result = self.environment.advance(state, EnvironmentAction.no_action(), cursor, when, **({"end_inclusive": True} if self.runtime_version == FINAL else {}))
                 events.extend(result.events); decisions.extend(result.decisions)
                 explanations.extend(result.explanations)
             cursor = when
@@ -398,13 +421,15 @@ class MaySimulationRunner:
                 continue
             segment_end = rules[index + 1].timestamp() if index + 1 < len(rules) else end
             result = self.environment.advance(
-                state, EnvironmentAction.campaign(rule.channel, rule.time_bucket), cursor, segment_end)
+                state, EnvironmentAction.campaign(rule.channel, rule.time_bucket), cursor, segment_end,
+                **({"end_inclusive": segment_end < end} if self.runtime_version == FINAL else {}))
             events.extend(result.events); decisions.extend(result.decisions)
             explanations.extend(result.explanations)
             outcomes.append({**asdict(rule), "status": result.decisions[-1]["status"]})
             cursor = segment_end
         if cursor < end and not state.terminal:
-            result = self.environment.advance(state, EnvironmentAction.no_action(), cursor, end)
+            result = self.environment.advance(state, EnvironmentAction.no_action(), cursor, end,
+                **({"end_inclusive": False} if self.runtime_version == FINAL else {}))
             events.extend(result.events); decisions.extend(result.decisions)
             explanations.extend(result.explanations)
         return events, decisions, explanations, outcomes
@@ -481,8 +506,9 @@ class MaySimulationRunner:
             if state.terminal:
                 terminal_counts[state.payload["termination_reason"]] += 1
         surviving = {app: state for app, state in states.items() if not state.terminal}
+        event_order = {row["cumulative_row_key"]: i for i, row in enumerate(gold)} if self.runtime_version == FINAL else {}
         gold.sort(key=lambda row: (pd.Timestamp(row["event_datetime"]), str(row["application_id"]),
-                                   str(row["cumulative_row_key"])))
+                                   event_order[row["cumulative_row_key"]] if self.runtime_version == FINAL else str(row["cumulative_row_key"])))
         event_path = self.run_dir / "may" / str(day.date()) / "gold_events.parquet"
         event_hash = _atomic_parquet(event_path, gold, SIMULATION_COLUMNS)
         decision_columns = sorted({key for row in decisions for key in row})
@@ -513,6 +539,8 @@ class MaySimulationRunner:
             "arrivals_reused": int(checkpoint.get("arrivals_reused", 0)) + reused_arrivals,
             "scripted_outcomes": scripted_outcomes,
         }
+        if self.runtime_version == FINAL:
+            next_checkpoint["stochastic_namespace"] = self.stochastic_namespace
         checkpoint_path = self.run_dir / "checkpoints" / f"{day.date()}.json.gz"
         checkpoint_hash = _atomic_gzip_json(checkpoint_path, next_checkpoint)
         commit = {
@@ -554,6 +582,8 @@ class MaySimulationRunner:
             "scripted_outcomes": checkpoint.get("scripted_outcomes", []),
             "combined_parquet": str(self.combined_path),
         }
+        if self.runtime_version == FINAL:
+            summary["stochastic_namespace"] = self.stochastic_namespace
         _atomic_json(self.summary_path, summary)
 
     def export_combined(self) -> dict[str, Any]:

@@ -371,3 +371,29 @@ lock for cooperating writers sharing its checkpoint; each loop owns its history
 and checkpoint paths. Snapshot directories must remain beside their checkpoint.
 No PostgreSQL transaction is required. Legacy mode retains its old local-loop
 commit semantics solely for replay.
+
+
+### Corrected-v2 training Environment
+
+The new explicit `corrected-v2` runtime uses `artifacts/gold_events_v3/`.
+Existing corrected-v1 defaults and frozen v1/v2 bundles remain available.
+See [the external controller and empirical contract](docs/corrected-v2-contract.md)
+for caller-controlled SEND/WAIT decisions, generic calendar bounds, scoped
+observations, recovery, and stochastic namespaces. `config/corrected-v2.yaml`
+is the explicit CLI configuration; it does not replace the older default.
+
+Historical-only construction is in `tools/build_final_bundle.py`. Validation
+uses `tools/validate_final_history.py`, `tools/validate_final_subpopulations.py`,
+`tools/validate_final_run.py`, and `tools/evaluate_final_run.py`. Raw Phase 2
+comparisons remain separate from the supplementary prerequisite-observability
+audit. A full run requires an accepted medium gate in
+`tools/run_final_validation.py`; rejected development candidates are retained
+under `data/output/finalization-validation/`.
+
+The final materiality-based freeze decision is documented in
+[corrected-v2 certification](docs/corrected-v2-certification.md), with the
+versioned [certification evidence](docs/corrected-v2-certification.json).
+`tools/certify_frozen_candidate.py` evaluates existing full-run evidence;
+it never simulates or refits. The earlier strict gate remains a diagnostic
+record of statistically nonzero differences. Both raw historical comparisons
+and supplementary business-guard comparisons remain disclosed.

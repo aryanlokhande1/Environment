@@ -11,6 +11,8 @@ import pyarrow.parquet as pq
 
 
 REQUIRED_ARTIFACT_COLUMNS = {
+    "joint_continuation": {"model_level", "state", "regime", "journey_stage", "duration_seconds", "labels", "mass", "denominator", "ptp_eligible", "source_age", "customer_kind"},
+    "carried_tail": {"weekday", "model_level", "state", "age_band", "silence_band", "depth_band", "duration_seconds", "labels", "mass", "denominator", "applications"},
     "application_lifecycle_state": {"application_id", "context_id", "application_created_at"},
     "application_observed_substages": {"application_id", "observed_journey_substages"},
     "campaign_decision_policy": {"model_level", "support_count", "send_probability"},
@@ -53,7 +55,7 @@ class ArtifactLoader:
         if not path.is_file():
             raise FileNotFoundError(f"artifact manifest not found: {path}")
         self.manifest = json.loads(path.read_text(encoding="utf-8"))
-        if self.manifest.get("bundle_version") not in {"gold_events_v1", "gold_events_v2"}:
+        if self.manifest.get("bundle_version") not in {"gold_events_v1", "gold_events_v2", "gold_events_v3"}:
             raise ValueError("unsupported artifact bundle version")
         if self.manifest.get("contract_version") != "2.0":
             raise ValueError("unsupported artifact contract version")

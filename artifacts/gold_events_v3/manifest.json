@@ -1,0 +1,658 @@
+{
+  "artifact_loading": "manifest-only",
+  "artifacts": [
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "EXACT_APPLICATION"
+      ],
+      "conditioning_keys": [
+        "application_id"
+      ],
+      "filename": "application_lifecycle_state.parquet",
+      "logical_name": "application_lifecycle_state",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "f8f55e87c55ad9a6bae12e4e37581709249a02e30b7eadfdb898e41fb8e0b742",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "application lifecycle"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "EXACT_APPLICATION"
+      ],
+      "conditioning_keys": [
+        "application_id"
+      ],
+      "filename": "application_observed_substages.parquet",
+      "logical_name": "application_observed_substages",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "dc4f76c4aae5569a75540c1e9732cb34f11dca8caf4582d7a4fd87cdf0cdd6fb",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "application lifecycle"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "stage",
+        "age",
+        "recent sends"
+      ],
+      "filename": "campaign_decision_policy.csv",
+      "logical_name": "campaign_decision_policy",
+      "model_artifact_version": "PL_ACTIVE_DAY_SEND_NO_ACTION_POLICY_V2",
+      "population": "Personal Loan",
+      "sha256": "301df82e2c2ca5a0360cb3a55914ada3a21c91ee91279b30fab09ecb0c34d89a",
+      "source_period": "2026-03-01 through 2026-04-30; no May, simulated, or synthetic rows",
+      "support_count": 890423,
+      "support_unit": "active application-day"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "stage",
+        "age",
+        "recent sends"
+      ],
+      "filename": "campaign_decision_policy_manifest.json",
+      "logical_name": "campaign_decision_policy_provenance",
+      "model_artifact_version": "PL_ACTIVE_DAY_SEND_NO_ACTION_POLICY_V2",
+      "population": "Personal Loan",
+      "sha256": "105b8b5fff9d97484c46ac8ac9e4643785e64d8220b0022ca497434ab8f04e3f",
+      "source_period": "2026-03-01 through 2026-04-30; no May, simulated, or synthetic rows",
+      "support_count": 890423,
+      "support_unit": "active application-day"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_CHANNEL_BUCKET",
+        "STATE_CHANNEL",
+        "STAGE_CHANNEL",
+        "GLOBAL_CHANNEL",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "pre-send state",
+        "channel",
+        "time_bucket",
+        "campaign history"
+      ],
+      "filename": "campaign_response_motif_model.csv",
+      "logical_name": "campaign_response_motif",
+      "model_artifact_version": "PL_JOINT_CAMPAIGN_RESPONSE_MOTIF_V2",
+      "population": "Personal Loan",
+      "sha256": "b99e8645a6881c23350320b583c6430baf66277ae0540c228a33f1e805bdc9c2",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 70035,
+      "support_unit": "uniquely attributed campaign send"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_CHANNEL_BUCKET",
+        "STATE_CHANNEL",
+        "STAGE_CHANNEL",
+        "GLOBAL_CHANNEL",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "pre-send state",
+        "channel",
+        "time_bucket",
+        "campaign history"
+      ],
+      "filename": "campaign_response_motif_donors.parquet",
+      "logical_name": "campaign_response_motif_donors",
+      "model_artifact_version": "PL_JOINT_CAMPAIGN_RESPONSE_MOTIF_V2",
+      "population": "Personal Loan",
+      "sha256": "57b5d7198827b489af7e2dcceaf9b73f4ae144d4a019e81d9b732f51b9f43e3c",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 70035,
+      "support_unit": "uniquely attributed campaign send"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_CHANNEL_BUCKET",
+        "STATE_CHANNEL",
+        "STAGE_CHANNEL",
+        "GLOBAL_CHANNEL",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "pre-send state",
+        "channel",
+        "time_bucket",
+        "campaign history"
+      ],
+      "filename": "campaign_response_motif_manifest.json",
+      "logical_name": "campaign_response_motif_provenance",
+      "model_artifact_version": "PL_JOINT_CAMPAIGN_RESPONSE_MOTIF_V2",
+      "population": "Personal Loan",
+      "sha256": "2506739f719d575680ecdf071db04049892233ad372496e4faa478873b2d4999",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 70035,
+      "support_unit": "uniquely attributed campaign send"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "journey_stage"
+      ],
+      "filename": "empirical_action_propensity.csv",
+      "logical_name": "empirical_action_propensity",
+      "model_artifact_version": "PL_EMPIRICAL_ACTION_PROPENSITY_V1",
+      "population": "Personal Loan",
+      "sha256": "20edf867ec4d8a44f516bfc752c86bc1c449591f49785f963a8db22c3e6de1fb",
+      "source_period": "2026-03-01 through 2026-04-30; no May data",
+      "support_count": 236561,
+      "support_unit": "observed campaign action"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "journey_stage"
+      ],
+      "filename": "empirical_action_propensity_manifest.json",
+      "logical_name": "empirical_action_propensity_provenance",
+      "model_artifact_version": "PL_EMPIRICAL_ACTION_PROPENSITY_V1",
+      "population": "Personal Loan",
+      "sha256": "9a9f2668966d1592dfd5004f00d59da2653bf06efc269ad1a4858d0f9071f7fc",
+      "source_period": "2026-03-01 through 2026-04-30; no May data",
+      "support_count": 236561,
+      "support_unit": "observed campaign action"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_COUNT",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "events already today"
+      ],
+      "filename": "empirical_event_intensity.csv",
+      "logical_name": "empirical_event_intensity",
+      "model_artifact_version": "PL_OBSERVED_OCCURRENCE_AND_GAP_V1",
+      "population": "Personal Loan",
+      "sha256": "2dc129a2e2c2f49c1b2f5a2e48ee564bf82c89846c6ec8614d9f46d495ccd0ca",
+      "source_period": "2026-03-01 through 2026-04-30; no May or simulated rows",
+      "support_count": 525910,
+      "support_unit": "active application-day"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_COUNT",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "events already today"
+      ],
+      "filename": "empirical_event_intensity_manifest.json",
+      "logical_name": "empirical_event_intensity_provenance",
+      "model_artifact_version": "PL_OBSERVED_OCCURRENCE_AND_GAP_V1",
+      "population": "Personal Loan",
+      "sha256": "acfdf8dd4c33af7920bd3a29f7d02cbc87b9307bacc32701b79aca9bf80f5281",
+      "source_period": "2026-03-01 through 2026-04-30; no May or simulated rows",
+      "support_count": 525910,
+      "support_unit": "active application-day"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_COUNT",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "events already today"
+      ],
+      "filename": "empirical_inter_event_gaps.parquet",
+      "logical_name": "empirical_inter_event_gaps",
+      "model_artifact_version": "PL_OBSERVED_OCCURRENCE_AND_GAP_V1",
+      "population": "Personal Loan",
+      "sha256": "52c93c6f8ea8aab9e757f018fa0fae272dbb4aa1d3c6ea3b44c7fbc45df92c66",
+      "source_period": "2026-03-01 through 2026-04-30; no May or simulated rows",
+      "support_count": 525910,
+      "support_unit": "active application-day"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STAGE_SUBSTAGE_SOURCE",
+        "STAGE_SUBSTAGE",
+        "SUBSTAGE_SOURCE",
+        "SUBSTAGE"
+      ],
+      "conditioning_keys": [
+        "journey_stage",
+        "journey_substage",
+        "source_type"
+      ],
+      "filename": "event_name_mapping.csv",
+      "logical_name": "event_name_mapping",
+      "model_artifact_version": "PL_GOLD_EVENT_NAME_CONDITIONAL_V1",
+      "population": "Personal Loan",
+      "sha256": "296426c36d54a2c155fe731653511c4618ee49ebd8c0f864be3988c569e14a00",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 754174,
+      "support_unit": "historical PL application-owned Gold event"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [],
+      "conditioning_keys": [],
+      "filename": "event_name_mapping_manifest.json",
+      "logical_name": "event_name_mapping_manifest",
+      "model_artifact_version": "PL_GOLD_EVENT_NAME_CONDITIONAL_V1",
+      "population": "Personal Loan",
+      "sha256": "bdeafa7416107ddd8f15b98f1d8a4d3e8769a359c81454307bfc185781e9a65b",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 754174,
+      "support_unit": "model manifest"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "MOST_SUPPORTED_STAGE"
+      ],
+      "conditioning_keys": [
+        "journey_substage"
+      ],
+      "filename": "lifecycle_business_mapping.csv",
+      "logical_name": "lifecycle_business_mapping",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "6e675b801c16d4304ad4271a489feebbc52c352192b30d49655bdd7e1bdfdc21",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "observed journey row"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "WEEKDAY",
+        "GLOBAL",
+        "PRIOR_OUTCOME_EXACT_DAY",
+        "PRIOR_OUTCOME_WITHIN_3_DAYS",
+        "PRIOR_OUTCOME_NEAREST_SUPPORTED_RANGE",
+        "ELIGIBLE_OUTCOME_UNAVAILABLE"
+      ],
+      "conditioning_keys": [
+        "weekday",
+        "positive empirical daily residual",
+        "April weekday returner rate",
+        "eligible prior lifecycle gap",
+        "prior PTP outcome",
+        "prior history depth"
+      ],
+      "filename": "may_application_arrivals.parquet",
+      "logical_name": "may_application_arrivals",
+      "model_artifact_version": "PL_EMPIRICAL_MAY_ARRIVAL_V3",
+      "population": "Personal Loan",
+      "sha256": "997e6436275817b646a56d79c6791c220c8421634da8f35b93d6a782413c2ec2",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 48373,
+      "support_unit": "historical PL creation donor"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [],
+      "conditioning_keys": [],
+      "filename": "may_arrival_manifest.json",
+      "logical_name": "may_arrival_provenance",
+      "model_artifact_version": "PL_EMPIRICAL_MAY_ARRIVAL_V3",
+      "population": "Personal Loan",
+      "sha256": "30d7da176d88cc3ca868ebe517d59185c2a9a28f019553bf73565f90c8eb1115",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 81416,
+      "support_unit": "arrival model manifest"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_REGIME",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "FIRST_PASS/REVISIT"
+      ],
+      "filename": "model_manifest.json",
+      "logical_name": "model_provenance",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "3a6638d6f0d1ac10a41b5caec6509aceece2bd68f74f2c36bb1db1294f0dfb17",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "journey state occurrence"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_REGIME",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "FIRST_PASS/REVISIT"
+      ],
+      "filename": "natural_transition_model.csv",
+      "logical_name": "natural_transition",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "34e47f0e39e8d68b230dfab2bb202a3fbb909b9e79ce9f07075ee1665a41ad0f",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "journey state occurrence"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_REGIME",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "FIRST_PASS/REVISIT"
+      ],
+      "filename": "natural_transition_regime_model.csv",
+      "logical_name": "natural_transition_regime",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "823920b3cefde7bb104c44862682cb9bafff19c050bb26f284396deb1b092a1b",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "journey state occurrence"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_REGIME",
+        "STATE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "FIRST_PASS/REVISIT"
+      ],
+      "filename": "natural_transition_regime_manifest.json",
+      "logical_name": "natural_transition_regime_provenance",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "4ab533dce050745f3c7d5e76e231cc3e7d4f5d9f2a50e88c8960287ecd8ee1d1",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "journey state occurrence"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "AIP_AGE",
+        "GLOBAL_ELAPSED"
+      ],
+      "conditioning_keys": [
+        "elapsed since AIP",
+        "application age",
+        "no PTP yet"
+      ],
+      "filename": "ptp_hazard.csv",
+      "logical_name": "ptp_hazard",
+      "model_artifact_version": "PL_APPLICATION_PTP_PIECEWISE_HAZARD_V2",
+      "population": "Personal Loan",
+      "sha256": "282e7269336bc05517eea14495e5237b35ff2b9af4a6b94d4b4cbd34e0a72e67",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 29582,
+      "support_unit": "eligible AIP application at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "AIP_AGE",
+        "GLOBAL_ELAPSED"
+      ],
+      "conditioning_keys": [
+        "elapsed since AIP",
+        "application age",
+        "no PTP yet"
+      ],
+      "filename": "ptp_hazard_event_delays.parquet",
+      "logical_name": "ptp_hazard_event_delays",
+      "model_artifact_version": "PL_APPLICATION_PTP_PIECEWISE_HAZARD_V2",
+      "population": "Personal Loan",
+      "sha256": "02d736ba409e382f5c5bda160237a504bc24be4b0e5c0b3bcae2998ec2692e75",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 29582,
+      "support_unit": "eligible AIP application at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "AIP_AGE",
+        "GLOBAL_ELAPSED"
+      ],
+      "conditioning_keys": [
+        "elapsed since AIP",
+        "application age",
+        "no PTP yet"
+      ],
+      "filename": "ptp_hazard_manifest.json",
+      "logical_name": "ptp_hazard_provenance",
+      "model_artifact_version": "PL_APPLICATION_PTP_PIECEWISE_HAZARD_V2",
+      "population": "Personal Loan",
+      "sha256": "a8dd44c90c3a7cae994f187b5277730c2ac58f9f6ea48ab7d28f008c441864c1",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 29582,
+      "support_unit": "eligible AIP application at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "elapsed interval"
+      ],
+      "filename": "stage_continuation_delays.parquet",
+      "logical_name": "stage_continuation_delays",
+      "model_artifact_version": "PL_STAGE_CONTINUATION_PIECEWISE_HAZARD_V2",
+      "population": "Personal Loan",
+      "sha256": "275fe4f8d84a8cd61d7f304102dfbb615f6cc4eb14197360096dda44c29318a0",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 44125,
+      "support_unit": "state occurrence at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "elapsed interval"
+      ],
+      "filename": "stage_continuation_hazard.csv",
+      "logical_name": "stage_continuation_hazard",
+      "model_artifact_version": "PL_STAGE_CONTINUATION_PIECEWISE_HAZARD_V2",
+      "population": "Personal Loan",
+      "sha256": "80f50ad56eaaa6efb940a6c4e3f6d1dd63346f6cb4c771c2844253a3e82a338c",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 44125,
+      "support_unit": "state occurrence at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "journey_substage",
+        "elapsed interval"
+      ],
+      "filename": "stage_continuation_manifest.json",
+      "logical_name": "stage_continuation_provenance",
+      "model_artifact_version": "PL_STAGE_CONTINUATION_PIECEWISE_HAZARD_V2",
+      "population": "Personal Loan",
+      "sha256": "1edfed9944208f6b4f69a637206b76c6151da88a0692b47f8bc7f5e0eaaee69e",
+      "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+      "support_count": 44125,
+      "support_unit": "state occurrence at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "EXACT_APPLICATION"
+      ],
+      "conditioning_keys": [
+        "application_id"
+      ],
+      "filename": "starting_snapshot.parquet",
+      "logical_name": "starting_snapshot",
+      "model_artifact_version": "2.0",
+      "population": "Personal Loan",
+      "sha256": "e4d0139eff1bc656d8c5c65f36f785c865b9d2b0c0b0f753edc4cca08f26f106",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "application lifecycle"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_REGIME",
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "source",
+        "regime",
+        "ptp_eligible",
+        "source_age",
+        "customer_kind",
+        "destination packet",
+        "exact elapsed time"
+      ],
+      "filename": "joint_continuation.parquet",
+      "logical_name": "joint_continuation",
+      "model_artifact_version": "PL_JOINT_COMPETING_EVENT_SURVIVAL_V2",
+      "population": "Personal Loan",
+      "sha256": "b66a8238e577d20d90a1f5324024e2ddb71b9fa91257e550b688504a51e74046",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "historical source occurrence at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "STATE_REGIME",
+        "STATE",
+        "STAGE",
+        "GLOBAL"
+      ],
+      "conditioning_keys": [
+        "source",
+        "regime",
+        "ptp_eligible",
+        "source_age",
+        "customer_kind",
+        "destination packet",
+        "exact elapsed time"
+      ],
+      "filename": "joint_continuation_manifest.json",
+      "logical_name": "joint_continuation_manifest",
+      "model_artifact_version": "PL_JOINT_COMPETING_EVENT_SURVIVAL_V2",
+      "population": "Personal Loan",
+      "sha256": "a1108a798c406a226022f3f6016ef96518193e853577ee1d7c1057e6b964b6c8",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "historical source occurrence at risk"
+    },
+    {
+      "authoritative_runtime_input": true,
+      "backoff_hierarchy": [
+        "WEEKDAY_SOURCE_AGE_SILENCE_DEPTH",
+        "WEEKDAY_SOURCE_AGE_SILENCE",
+        "WEEKDAY_SOURCE_AGE",
+        "WEEKDAY_SOURCE",
+        "WEEKDAY_AGE_SILENCE",
+        "WEEKDAY_GLOBAL",
+        "POOLED_WEEKDAY"
+      ],
+      "conditioning_keys": [
+        "weekday",
+        "source",
+        "age",
+        "silence",
+        "prior depth"
+      ],
+      "filename": "carried_tail.parquet",
+      "logical_name": "carried_tail",
+      "model_artifact_version": "PL_RESIDUAL_TAIL_SURVIVAL_V2",
+      "population": "Personal Loan",
+      "sha256": "60cb2071bd71d2ddff9878faa16a89f224005d68bcbc05c50f488f1ec3572b88",
+      "source_period": "2026-03-01 through 2026-04-30; immutable historical only",
+      "support_count": 444289,
+      "support_unit": "complete historical lifecycle at a daily landmark"
+    }
+  ],
+  "build_configuration": {
+    "builder": "tools/build_final_bundle.py",
+    "historical_only": true
+  },
+  "bundle_version": "gold_events_v3",
+  "contract_version": "2.0",
+  "fitting_policy": "immutable March-April historical only; simulated and synthetic rows forbidden",
+  "population": "Personal Loan",
+  "runtime_semantics": "corrected-v2",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "2026-03-01 through 2026-04-30",
+  "validation_window": "March training / April validation with source-window censoring"
+}

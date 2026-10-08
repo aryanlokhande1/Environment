@@ -97,7 +97,7 @@ def to_gold_row(event: Mapping[str, Any], event_name_mapper: EventNameMapper | N
         "day_of_week_num": event["event_datetime"].weekday() + 1,
     })
     return {
-        "cumulative_row_key": simulated_row_key(str(event["run_id"]), str(event["event_key"])),
+        "cumulative_row_key": simulated_row_key(str(event.get("stochastic_namespace", event["run_id"])), str(event["event_key"])),
         "run_id": event["run_id"], "is_simulated": True,
         "simulation_event_key": event["event_key"], "source_file": None,
         "source_row": None, **row,

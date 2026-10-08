@@ -1,0 +1,19 @@
+environment:
+  runtime_version: corrected-v2
+  stochastic_namespace: corrected-v2-reference-20260502
+  seed: 20260502
+  artifact_uri: artifacts/gold_events_v3
+  input_uri: data/input/gold_history/gold_events_start.parquet
+  output_uri: data/output/gold_events_cumulative.parquet
+  checkpoint_uri: data/output/checkpoint.json
+  product_scope: PERSONAL_LOAN
+  decision_opportunity_model: EXTERNAL_CALLER_CONTROLLED
+storage:
+  backend: local
+simulation:
+  output_root: data/output/runs
+  historical_inputs:
+    - data/input/gold_history/events_gold_1_bucket_000_20260331.parquet
+    - data/input/gold_history/events_gold_2_bucket_000_20260430.parquet
+postgres:
+  schema_file: sql/environment_schema.sql

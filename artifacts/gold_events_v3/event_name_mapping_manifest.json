@@ -1,0 +1,19 @@
+{
+  "backoff_hierarchy": [
+    "STAGE_SUBSTAGE_SOURCE",
+    "STAGE_SUBSTAGE",
+    "SUBSTAGE_SOURCE",
+    "SUBSTAGE"
+  ],
+  "fitting_rows": 754174,
+  "mapping_rows": 976,
+  "missing_event_name_rows": 0,
+  "model_sha256": "296426c36d54a2c155fe731653511c4618ee49ebd8c0f864be3988c569e14a00",
+  "model_version": "PL_GOLD_EVENT_NAME_CONDITIONAL_V1",
+  "population": "Personal Loan application-owned events",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "2026-03-01 through 2026-04-30; no May data"
+}

@@ -1,0 +1,1076 @@
+{
+  "acceptance_criteria_defined_before_full_run": {
+    "arrival_days": {
+      "actual": 31,
+      "required": 31
+    },
+    "share_by_may_11_max": {
+      "actual": 0.22547702230583178,
+      "required": 0.6
+    },
+    "share_by_may_15_max": {
+      "actual": 0.3292952680214169,
+      "required": 0.75
+    },
+    "share_may_24_31_min": {
+      "actual": 0.3364273458334195,
+      "required": 0.12
+    },
+    "weekend_share_abs_delta_max": {
+      "actual": 0.024061238542803856,
+      "required": 0.03
+    }
+  },
+  "acceptance_status": "PASS",
+  "baseline_profile": {
+    "daily": [
+      {
+        "count": 8342,
+        "date": "2026-05-01",
+        "normalized_share": 0.17245157422529098,
+        "week_of_month": 1,
+        "weekday": "Friday"
+      },
+      {
+        "count": 3580,
+        "date": "2026-05-02",
+        "normalized_share": 0.07400822773034545,
+        "week_of_month": 1,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 594,
+        "date": "2026-05-03",
+        "normalized_share": 0.0122795774502305,
+        "week_of_month": 1,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 7319,
+        "date": "2026-05-04",
+        "normalized_share": 0.15130341306100512,
+        "week_of_month": 1,
+        "weekday": "Monday"
+      },
+      {
+        "count": 4224,
+        "date": "2026-05-05",
+        "normalized_share": 0.08732143964608356,
+        "week_of_month": 1,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 5879,
+        "date": "2026-05-06",
+        "normalized_share": 0.12153474045438571,
+        "week_of_month": 1,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 4560,
+        "date": "2026-05-07",
+        "normalized_share": 0.09426746325429475,
+        "week_of_month": 1,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 647,
+        "date": "2026-05-08",
+        "normalized_share": 0.013375229983668576,
+        "week_of_month": 2,
+        "weekday": "Friday"
+      },
+      {
+        "count": 696,
+        "date": "2026-05-09",
+        "normalized_share": 0.014388191759866041,
+        "week_of_month": 2,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 230,
+        "date": "2026-05-10",
+        "normalized_share": 0.0047547185413350426,
+        "week_of_month": 2,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 7135,
+        "date": "2026-05-11",
+        "normalized_share": 0.14749963822793707,
+        "week_of_month": 2,
+        "weekday": "Monday"
+      },
+      {
+        "count": 825,
+        "date": "2026-05-12",
+        "normalized_share": 0.017054968680875696,
+        "week_of_month": 2,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 877,
+        "date": "2026-05-13",
+        "normalized_share": 0.018129948525003617,
+        "week_of_month": 2,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 841,
+        "date": "2026-05-14",
+        "normalized_share": 0.017385731709838134,
+        "week_of_month": 2,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 159,
+        "date": "2026-05-15",
+        "normalized_share": 0.003286957600314225,
+        "week_of_month": 3,
+        "weekday": "Friday"
+      },
+      {
+        "count": 125,
+        "date": "2026-05-16",
+        "normalized_share": 0.0025840861637690445,
+        "week_of_month": 3,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 41,
+        "date": "2026-05-17",
+        "normalized_share": 0.0008475802617162467,
+        "week_of_month": 3,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 397,
+        "date": "2026-05-18",
+        "normalized_share": 0.008207057656130485,
+        "week_of_month": 3,
+        "weekday": "Monday"
+      },
+      {
+        "count": 484,
+        "date": "2026-05-19",
+        "normalized_share": 0.010005581626113742,
+        "week_of_month": 3,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 172,
+        "date": "2026-05-20",
+        "normalized_share": 0.0035557025613462056,
+        "week_of_month": 3,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 548,
+        "date": "2026-05-21",
+        "normalized_share": 0.011328633741963492,
+        "week_of_month": 3,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 118,
+        "date": "2026-05-22",
+        "normalized_share": 0.002439377338597978,
+        "week_of_month": 4,
+        "weekday": "Friday"
+      },
+      {
+        "count": 88,
+        "date": "2026-05-23",
+        "normalized_share": 0.0018191966592934075,
+        "week_of_month": 4,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 0,
+        "date": "2026-05-24",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 174,
+        "date": "2026-05-25",
+        "normalized_share": 0.0035970479399665104,
+        "week_of_month": 4,
+        "weekday": "Monday"
+      },
+      {
+        "count": 117,
+        "date": "2026-05-26",
+        "normalized_share": 0.002418704649287826,
+        "week_of_month": 4,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 156,
+        "date": "2026-05-27",
+        "normalized_share": 0.0032249395323837677,
+        "week_of_month": 4,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 0,
+        "date": "2026-05-28",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 0,
+        "date": "2026-05-29",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Friday"
+      },
+      {
+        "count": 0,
+        "date": "2026-05-30",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 45,
+        "date": "2026-05-31",
+        "normalized_share": 0.0009302710189568561,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      }
+    ],
+    "total": 48373,
+    "week_of_month": {
+      "1": 34498,
+      "2": 11251,
+      "3": 1926,
+      "4": 698
+    },
+    "weekday": {
+      "Friday": {
+        "count": 9266.0,
+        "days": 5.0,
+        "mean_per_day": 1853.2,
+        "normalized_share": 0.19155313914787175
+      },
+      "Monday": {
+        "count": 15025.0,
+        "days": 4.0,
+        "mean_per_day": 3756.25,
+        "normalized_share": 0.31060715688503915
+      },
+      "Saturday": {
+        "count": 4489.0,
+        "days": 5.0,
+        "mean_per_day": 897.8,
+        "normalized_share": 0.09279970231327393
+      },
+      "Sunday": {
+        "count": 910.0,
+        "days": 5.0,
+        "mean_per_day": 182.0,
+        "normalized_share": 0.018812147272238646
+      },
+      "Thursday": {
+        "count": 5949.0,
+        "days": 4.0,
+        "mean_per_day": 1487.25,
+        "normalized_share": 0.12298182870609638
+      },
+      "Tuesday": {
+        "count": 5650.0,
+        "days": 4.0,
+        "mean_per_day": 1412.5,
+        "normalized_share": 0.11680069460236082
+      },
+      "Wednesday": {
+        "count": 7084.0,
+        "days": 4.0,
+        "mean_per_day": 1771.0,
+        "normalized_share": 0.1464453310731193
+      }
+    },
+    "weekday_to_weekend_ratio": 7.959622152250417,
+    "weekend_share": 0.11161184958551258
+  },
+  "candidate_profile": {
+    "daily": [
+      {
+        "count": 134,
+        "date": "2026-05-01",
+        "normalized_share": 0.002770140367560416,
+        "week_of_month": 1,
+        "weekday": "Friday"
+      },
+      {
+        "count": 1161,
+        "date": "2026-05-02",
+        "normalized_share": 0.02400099228908689,
+        "week_of_month": 1,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 41,
+        "date": "2026-05-03",
+        "normalized_share": 0.0008475802617162467,
+        "week_of_month": 1,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 110,
+        "date": "2026-05-04",
+        "normalized_share": 0.0022739958241167592,
+        "week_of_month": 1,
+        "weekday": "Monday"
+      },
+      {
+        "count": 374,
+        "date": "2026-05-05",
+        "normalized_share": 0.007731585801996982,
+        "week_of_month": 1,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 2961,
+        "date": "2026-05-06",
+        "normalized_share": 0.06121183304736113,
+        "week_of_month": 1,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 158,
+        "date": "2026-05-07",
+        "normalized_share": 0.0032662849110040725,
+        "week_of_month": 1,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 5618,
+        "date": "2026-05-08",
+        "normalized_share": 0.11613916854443594,
+        "week_of_month": 2,
+        "weekday": "Friday"
+      },
+      {
+        "count": 208,
+        "date": "2026-05-09",
+        "normalized_share": 0.00429991937651169,
+        "week_of_month": 2,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 41,
+        "date": "2026-05-10",
+        "normalized_share": 0.0008475802617162467,
+        "week_of_month": 2,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 101,
+        "date": "2026-05-11",
+        "normalized_share": 0.002087941620325388,
+        "week_of_month": 2,
+        "weekday": "Monday"
+      },
+      {
+        "count": 408,
+        "date": "2026-05-12",
+        "normalized_share": 0.008434457238542161,
+        "week_of_month": 2,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 2962,
+        "date": "2026-05-13",
+        "normalized_share": 0.061232505736671286,
+        "week_of_month": 2,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 1106,
+        "date": "2026-05-14",
+        "normalized_share": 0.022863994377028508,
+        "week_of_month": 2,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 546,
+        "date": "2026-05-15",
+        "normalized_share": 0.011287288363343187,
+        "week_of_month": 3,
+        "weekday": "Friday"
+      },
+      {
+        "count": 2834,
+        "date": "2026-05-16",
+        "normalized_share": 0.05858640150497178,
+        "week_of_month": 3,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 104,
+        "date": "2026-05-17",
+        "normalized_share": 0.002149959688255845,
+        "week_of_month": 3,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 5074,
+        "date": "2026-05-18",
+        "normalized_share": 0.10489322555971306,
+        "week_of_month": 3,
+        "weekday": "Monday"
+      },
+      {
+        "count": 1266,
+        "date": "2026-05-19",
+        "normalized_share": 0.026171624666652883,
+        "week_of_month": 3,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 527,
+        "date": "2026-05-20",
+        "normalized_share": 0.010894507266450292,
+        "week_of_month": 3,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 158,
+        "date": "2026-05-21",
+        "normalized_share": 0.0032662849110040725,
+        "week_of_month": 3,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 5618,
+        "date": "2026-05-22",
+        "normalized_share": 0.11613916854443594,
+        "week_of_month": 4,
+        "weekday": "Friday"
+      },
+      {
+        "count": 589,
+        "date": "2026-05-23",
+        "normalized_share": 0.012176214003679738,
+        "week_of_month": 4,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 1238,
+        "date": "2026-05-24",
+        "normalized_share": 0.025592789365968618,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 5205,
+        "date": "2026-05-25",
+        "normalized_share": 0.10760134785934303,
+        "week_of_month": 4,
+        "weekday": "Monday"
+      },
+      {
+        "count": 2158,
+        "date": "2026-05-26",
+        "normalized_share": 0.04461166353130879,
+        "week_of_month": 4,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 527,
+        "date": "2026-05-27",
+        "normalized_share": 0.010894507266450292,
+        "week_of_month": 4,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 6362,
+        "date": "2026-05-28",
+        "normalized_share": 0.1315196493911893,
+        "week_of_month": 4,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 364,
+        "date": "2026-05-29",
+        "normalized_share": 0.007524858908895459,
+        "week_of_month": 4,
+        "weekday": "Friday"
+      },
+      {
+        "count": 132,
+        "date": "2026-05-30",
+        "normalized_share": 0.0027287949889401113,
+        "week_of_month": 4,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 288,
+        "date": "2026-05-31",
+        "normalized_share": 0.005953734521323879,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      }
+    ],
+    "total": 48373,
+    "week_of_month": {
+      "1": 4939,
+      "2": 10444,
+      "3": 10509,
+      "4": 22481
+    },
+    "weekday": {
+      "Friday": {
+        "count": 12280.0,
+        "days": 5.0,
+        "mean_per_day": 2456.0,
+        "normalized_share": 0.25386062472867094
+      },
+      "Monday": {
+        "count": 10490.0,
+        "days": 4.0,
+        "mean_per_day": 2622.5,
+        "normalized_share": 0.21685651086349822
+      },
+      "Saturday": {
+        "count": 4924.0,
+        "days": 5.0,
+        "mean_per_day": 984.8,
+        "normalized_share": 0.10179232216319022
+      },
+      "Sunday": {
+        "count": 1712.0,
+        "days": 5.0,
+        "mean_per_day": 342.4,
+        "normalized_share": 0.03539164409898084
+      },
+      "Thursday": {
+        "count": 7784.0,
+        "days": 4.0,
+        "mean_per_day": 1946.0,
+        "normalized_share": 0.16091621359022595
+      },
+      "Tuesday": {
+        "count": 4206.0,
+        "days": 4.0,
+        "mean_per_day": 1051.5,
+        "normalized_share": 0.08694933123850082
+      },
+      "Wednesday": {
+        "count": 6977.0,
+        "days": 4.0,
+        "mean_per_day": 1744.25,
+        "normalized_share": 0.144233353316933
+      }
+    },
+    "weekday_to_weekend_ratio": 6.289481615430983,
+    "weekend_share": 0.13718396626217105
+  },
+  "generated_returners": 11955,
+  "historical_april_entrants": 37294,
+  "historical_exact_creation_donors": 81416,
+  "historical_profile": {
+    "daily": [
+      {
+        "count": 290,
+        "date": "2026-03-01",
+        "normalized_share": 0.0035619534243883266,
+        "week_of_month": 1,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 7319,
+        "date": "2026-03-02",
+        "normalized_share": 0.08989633487275228,
+        "week_of_month": 1,
+        "weekday": "Monday"
+      },
+      {
+        "count": 4224,
+        "date": "2026-03-03",
+        "normalized_share": 0.051881694015918245,
+        "week_of_month": 1,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 4739,
+        "date": "2026-03-04",
+        "normalized_share": 0.05820723199371131,
+        "week_of_month": 1,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 4560,
+        "date": "2026-03-05",
+        "normalized_share": 0.056008646949002656,
+        "week_of_month": 1,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 6651,
+        "date": "2026-03-06",
+        "normalized_share": 0.081691559398644,
+        "week_of_month": 1,
+        "weekday": "Friday"
+      },
+      {
+        "count": 3580,
+        "date": "2026-03-07",
+        "normalized_share": 0.043971700894173134,
+        "week_of_month": 1,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 1244,
+        "date": "2026-03-08",
+        "normalized_share": 0.015279551930824408,
+        "week_of_month": 2,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 7135,
+        "date": "2026-03-09",
+        "normalized_share": 0.08763633683796797,
+        "week_of_month": 2,
+        "weekday": "Monday"
+      },
+      {
+        "count": 785,
+        "date": "2026-03-10",
+        "normalized_share": 0.009641839441878746,
+        "week_of_month": 2,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 517,
+        "date": "2026-03-11",
+        "normalized_share": 0.006350103173823327,
+        "week_of_month": 2,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 793,
+        "date": "2026-03-12",
+        "normalized_share": 0.009740100225999804,
+        "week_of_month": 2,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 163,
+        "date": "2026-03-13",
+        "normalized_share": 0.002002063476466542,
+        "week_of_month": 2,
+        "weekday": "Friday"
+      },
+      {
+        "count": 79,
+        "date": "2026-03-14",
+        "normalized_share": 0.0009703252431954407,
+        "week_of_month": 2,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 41,
+        "date": "2026-03-15",
+        "normalized_share": 0.0005035865186204186,
+        "week_of_month": 3,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 155,
+        "date": "2026-03-16",
+        "normalized_share": 0.001903802692345485,
+        "week_of_month": 3,
+        "weekday": "Monday"
+      },
+      {
+        "count": 143,
+        "date": "2026-03-17",
+        "normalized_share": 0.001756411516163899,
+        "week_of_month": 3,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 172,
+        "date": "2026-03-18",
+        "normalized_share": 0.002112606858602732,
+        "week_of_month": 3,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 113,
+        "date": "2026-03-19",
+        "normalized_share": 0.0013879335757099342,
+        "week_of_month": 3,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 159,
+        "date": "2026-03-20",
+        "normalized_share": 0.0019529330844060137,
+        "week_of_month": 3,
+        "weekday": "Friday"
+      },
+      {
+        "count": 125,
+        "date": "2026-03-21",
+        "normalized_share": 0.00153532475189152,
+        "week_of_month": 3,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 41,
+        "date": "2026-03-22",
+        "normalized_share": 0.0005035865186204186,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 174,
+        "date": "2026-03-23",
+        "normalized_share": 0.002137172054632996,
+        "week_of_month": 4,
+        "weekday": "Monday"
+      },
+      {
+        "count": 117,
+        "date": "2026-03-24",
+        "normalized_share": 0.0014370639677704629,
+        "week_of_month": 4,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 156,
+        "date": "2026-03-25",
+        "normalized_share": 0.0019160852903606172,
+        "week_of_month": 4,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 101,
+        "date": "2026-03-26",
+        "normalized_share": 0.0012405423995283482,
+        "week_of_month": 4,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 118,
+        "date": "2026-03-27",
+        "normalized_share": 0.001449346565785595,
+        "week_of_month": 4,
+        "weekday": "Friday"
+      },
+      {
+        "count": 88,
+        "date": "2026-03-28",
+        "normalized_share": 0.0010808686253316302,
+        "week_of_month": 4,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 45,
+        "date": "2026-03-29",
+        "normalized_share": 0.0005527169106809472,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 142,
+        "date": "2026-03-30",
+        "normalized_share": 0.0017441289181487668,
+        "week_of_month": 4,
+        "weekday": "Monday"
+      },
+      {
+        "count": 156,
+        "date": "2026-03-31",
+        "normalized_share": 0.0019160852903606172,
+        "week_of_month": 4,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 5879,
+        "date": "2026-04-01",
+        "normalized_share": 0.07220939373096197,
+        "week_of_month": 1,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 7761,
+        "date": "2026-04-02",
+        "normalized_share": 0.0953252431954407,
+        "week_of_month": 1,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 8342,
+        "date": "2026-04-03",
+        "normalized_share": 0.10246143264223248,
+        "week_of_month": 1,
+        "weekday": "Friday"
+      },
+      {
+        "count": 1699,
+        "date": "2026-04-04",
+        "normalized_share": 0.02086813402770954,
+        "week_of_month": 1,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 594,
+        "date": "2026-04-05",
+        "normalized_share": 0.007295863220988503,
+        "week_of_month": 1,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 3701,
+        "date": "2026-04-06",
+        "normalized_share": 0.04545789525400413,
+        "week_of_month": 1,
+        "weekday": "Monday"
+      },
+      {
+        "count": 1219,
+        "date": "2026-04-07",
+        "normalized_share": 0.014972486980446105,
+        "week_of_month": 1,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 877,
+        "date": "2026-04-08",
+        "normalized_share": 0.010771838459270905,
+        "week_of_month": 2,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 841,
+        "date": "2026-04-09",
+        "normalized_share": 0.010329664930726148,
+        "week_of_month": 2,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 647,
+        "date": "2026-04-10",
+        "normalized_share": 0.007946840915790508,
+        "week_of_month": 2,
+        "weekday": "Friday"
+      },
+      {
+        "count": 696,
+        "date": "2026-04-11",
+        "normalized_share": 0.008548688218531985,
+        "week_of_month": 2,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 230,
+        "date": "2026-04-12",
+        "normalized_share": 0.002824997543480397,
+        "week_of_month": 2,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 811,
+        "date": "2026-04-13",
+        "normalized_share": 0.009961186990272182,
+        "week_of_month": 2,
+        "weekday": "Monday"
+      },
+      {
+        "count": 825,
+        "date": "2026-04-14",
+        "normalized_share": 0.010133143362484033,
+        "week_of_month": 2,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 851,
+        "date": "2026-04-15",
+        "normalized_share": 0.010452490910877469,
+        "week_of_month": 3,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 548,
+        "date": "2026-04-16",
+        "normalized_share": 0.006730863712292424,
+        "week_of_month": 3,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 431,
+        "date": "2026-04-17",
+        "normalized_share": 0.0052937997445219615,
+        "week_of_month": 3,
+        "weekday": "Friday"
+      },
+      {
+        "count": 353,
+        "date": "2026-04-18",
+        "normalized_share": 0.004335757099341653,
+        "week_of_month": 3,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 105,
+        "date": "2026-04-19",
+        "normalized_share": 0.0012896727915888769,
+        "week_of_month": 3,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 397,
+        "date": "2026-04-20",
+        "normalized_share": 0.004876191412007467,
+        "week_of_month": 3,
+        "weekday": "Monday"
+      },
+      {
+        "count": 484,
+        "date": "2026-04-21",
+        "normalized_share": 0.005944777439323966,
+        "week_of_month": 3,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-22",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-23",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Thursday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-24",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Friday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-25",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Saturday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-26",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Sunday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-27",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Monday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-28",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Tuesday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-29",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Wednesday"
+      },
+      {
+        "count": 0,
+        "date": "2026-04-30",
+        "normalized_share": 0.0,
+        "week_of_month": 4,
+        "weekday": "Thursday"
+      }
+    ],
+    "total": 81416,
+    "week_of_month": {
+      "1": 60558,
+      "2": 15643,
+      "3": 4077,
+      "4": 1138
+    },
+    "weekday": {
+      "Friday": {
+        "count": 16511.0,
+        "days": 8.0,
+        "mean_per_day": 2063.875,
+        "normalized_share": 0.20279797582784712
+      },
+      "Monday": {
+        "count": 19834.0,
+        "days": 9.0,
+        "mean_per_day": 2203.777777777778,
+        "normalized_share": 0.24361304903213127
+      },
+      "Saturday": {
+        "count": 6620.0,
+        "days": 8.0,
+        "mean_per_day": 827.5,
+        "normalized_share": 0.08131079886017491
+      },
+      "Sunday": {
+        "count": 2590.0,
+        "days": 9.0,
+        "mean_per_day": 287.77777777777777,
+        "normalized_share": 0.0318119288591923
+      },
+      "Thursday": {
+        "count": 14717.0,
+        "days": 9.0,
+        "mean_per_day": 1635.2222222222222,
+        "normalized_share": 0.18076299498870002
+      },
+      "Tuesday": {
+        "count": 7953.0,
+        "days": 9.0,
+        "mean_per_day": 883.6666666666666,
+        "normalized_share": 0.09768350201434607
+      },
+      "Wednesday": {
+        "count": 13191.0,
+        "days": 9.0,
+        "mean_per_day": 1465.6666666666667,
+        "normalized_share": 0.16201975041760833
+      }
+    },
+    "weekday_to_weekend_ratio": 7.839956568946797,
+    "weekend_share": 0.1131227277193672
+  },
+  "historical_valid_returners": 8140,
+  "history_continuity": "Immutable March-April events stay associated with the reused context; fresh synthetic application IDs for May",
+  "identity_model": "empirical April weekday returner fraction; eligible terminal historical context, empirical day-gap/outcome/depth matching with nearest supported eligible gap range; no within-May context reuse",
+  "ineligible_draws_backed_off_to_new": 0,
+  "method": "preserve the exact V1 donor population; remove unsupported month-phase mapping; allocate weekday mass from March-April weekday means and bootstrap positive same-weekday empirical daily residuals; preserve donor time-of-day",
+  "model_version": "PL_EMPIRICAL_MAY_ARRIVAL_V3",
+  "root_cause": "V1 copied the source's severe within-month coverage decay and April 22-30 zero-creation boundary into May through exact month-phase donor matching.",
+  "schedule_sha256": "997e6436275817b646a56d79c6791c220c8421634da8f35b93d6a782413c2ec2",
+  "seed": 20260502,
+  "simulated_may_arrivals": 48373,
+  "simulated_may_contexts": 48373,
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "2026-03-01 through 2026-04-30; no May data"
+}

@@ -1,0 +1,44 @@
+{
+  "backoff_rule": "supported state -> supported stage -> global PL continuation hazard",
+  "conditioning_keys": [
+    "journey_substage",
+    "journey_stage"
+  ],
+  "delay_sha256": "275fe4f8d84a8cd61d7f304102dfbb615f6cc4eb14197360096dda44c29318a0",
+  "denominator_meaning": "state occurrences surviving without next visible journey event to interval start",
+  "fitting_population": "March-created PL applications with complete 30-day follow-up",
+  "global_metrics": {
+    "continuation_count": 234415,
+    "expiry_before_next_journey_probability": 0.057059463983629405,
+    "later_reactivation_probability": 0.002415159113235852,
+    "no_further_observed_before_lifecycle_end": 0.16864974518475434,
+    "one_day_continuation_probability": 0.8289350957020098,
+    "same_day_continuation_probability": 0.8289350957020098,
+    "seven_day_continuation_probability": 0.8300557862743777,
+    "support_count": 281969,
+    "timing_p50_seconds": 14.0,
+    "timing_p90_seconds": 94.0
+  },
+  "hazard_sha256": "80f50ad56eaaa6efb940a6c4e3f6d1dd63346f6cb4c771c2844253a3e82a338c",
+  "lifecycle_end_without_next": 47554,
+  "mature_applications": 44125,
+  "model_version": "PL_STAGE_CONTINUATION_PIECEWISE_HAZARD_V2",
+  "observed_continuations": 234415,
+  "population": "visible non-PTP journey-state occurrences in mature March-created PL applications",
+  "probability_name": "conditional interval visible-continuation hazard",
+  "ptp_transaction_excluded": true,
+  "report_sha256": "1d46834aa2586ed8c3b8ac91974584c6c194f7fb8e5640345bb3d823bc6cf910",
+  "silence_semantics": "temporary inactivity; hazard reevaluated while active, never permanent failure",
+  "source_cohort_sha256": "2c4498b62e6b645904ce8eeaef070fa435b16b078f0c393a0df11f185cb97723",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+  "stage_min_support": 500,
+  "state_min_support": 200,
+  "state_occurrences": 281969,
+  "support_unit": "journey_state_occurrence_at_risk_in_elapsed_interval",
+  "supported_stage_count": 10,
+  "supported_state_count": 27
+}

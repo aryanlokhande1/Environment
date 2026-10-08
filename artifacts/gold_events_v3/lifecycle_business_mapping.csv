@@ -1,0 +1,123 @@
+journey_substage,journey_stage,support_count
+AA Bank Linking,Consent & Linking,303
+AIP Approved,Credit Decision,107889
+AIP Declined,Credit Decision,163
+Academy Engagement,Awareness,9
+Account Approval,Consent & Linking,25
+Account View,Servicing,32
+Address OTP Verification,Onboarding,15
+Address Submission,Onboarding,16669
+App Lifecycle,Tech / Tracking,104
+Application Created,Onboarding,81519
+Application OTP Verification,Acquisition,80378
+Application Resume,Onboarding,15077
+Application Start,Onboarding,2
+Application created/Login,Inprogress,3307
+Bank Account Selection,Consent & Linking,208
+Bank Approval,Consent & Linking,8
+Bank Approval Pending,Credit Decision,17144
+Bank Approved,Credit Decision,27935
+Banner Engagement,Awareness,61
+Bill Reminder,Servicing,6
+Bottom Navigation,Awareness,1075
+CTA Interaction,Awareness,61
+Calculator Tool,Awareness,6
+Card Product Browse,Consideration,25
+Cart Addition,Commerce (ONDC),3
+Chatbot - CTA Interaction,Engagement,13
+Chatbot - Exit,Engagement,1
+Chatbot - Layer 1,Engagement,3
+Chatbot - Layer 2,Engagement,12
+Chatbot - Suggestive Pills,Engagement,29
+Chatbot - Text Input,Engagement,1
+Chatbot Exit,Engagement,28
+Connection Error,Onboarding,9766
+Consent Acceptance,Acquisition,33
+Consent Page Load,Consent & Linking,24
+Content Engagement,Awareness,2
+Coupon Apply,Commerce (ONDC),1
+Credit Account Summary,Servicing,81
+Credit Education,Servicing,10
+Credit Factors,Servicing,255
+Credit Score Check,Consideration,79
+Credit Score Cross-sell,Consideration,1
+Credit-Score OTP,Servicing,12
+Customer Portal Login,Servicing,13
+DNC Preference,Servicing,9
+Dashboard Interaction,Servicing,48
+Deep-link / Attribution,Tech / Tracking,9
+Deep-link Redirection,Servicing,2
+Disb,Disbursed,760
+Ecomm CTA Interaction,Commerce (ONDC),2
+Expense Breakdown,Servicing,34
+FAQ / Help,Awareness,65
+Footer Navigation,Awareness,1
+Form filled,Inprogress,100
+Form filled-Rejected,Rejected,529
+Header Navigation,Awareness,27
+Help / FAQ,Servicing,221
+Help / Tooltip,Awareness,547
+Home Page Interaction,Awareness,3
+Icon Interaction,Awareness,51
+Input Field Interaction,Consideration,86
+Investment Product Browse,Consideration,3
+Journey Close,Onboarding,5702
+Journey Complete,Onboarding,1
+Journey Start,Onboarding,1
+Language Selection,Tech / Tracking,3837
+Legal & Compliance,Servicing,35
+Loan Confirmation,Onboarding,338
+Loan Product Browse,Consideration,643
+Loan Summary View,Onboarding,30
+Login Complete,Acquisition,20
+Login Drawer Close,Acquisition,23
+Login Initiation,Acquisition,35
+Logout,Servicing,48
+Menu / Navigation,Awareness,40
+Menu Navigation,Awareness,92
+ONDC Banner,Awareness,10
+ONDC Category Browse,Awareness,12
+ONDC Product Discovery,Awareness,39
+OTP Initiation,Acquisition,190
+OTP Retry,Acquisition,1
+OTP Verification,Acquisition,141
+Offer Discovery,Consideration,338
+Other,Other,366
+PDP Banner,Consideration,22
+PFM Tab Navigation,Servicing,139
+Partner Discovery,Awareness,63
+Partner Selection,Consideration,13
+Pending Application,Onboarding,225
+Pocket Insurance Browse,Consideration,1
+Post AIP Reject,AIP,46
+Pre-approved Offer,Consideration,176
+Pre-approved Offer Check,Acquisition,2
+Product Browse,Consideration,289
+Product Category Browse,Consideration,1
+Product Comparison,Consideration,1
+Product Detail View,Consideration,144
+Product Discovery,Awareness,24
+Product Selection,Consideration,62270
+Professional Details Submission,Onboarding,57114
+Professional details,Inprogress,4435
+Profile Management,Servicing,491
+Profile Portfolio,Servicing,179
+Push to Partner,AIP,51193
+Quick Action,Awareness,1038
+Report Download,Servicing,11
+SDK Initialization,Tech / Tracking,125
+Score Generation / Refresh,Servicing,504
+Score History,Servicing,8
+Score Improvement,Servicing,3
+Score Refresh,Servicing,26
+Scroll / Depth,Awareness,676
+Search Behaviour,Awareness,4
+Secondary Navigation,Awareness,561
+Social Share,Servicing,4
+Sticky CTA Engagement,Awareness,394
+Stock Market Discovery,Awareness,5
+System / Error Telemetry,Tech / Tracking,148
+Tab Navigation,Awareness,6
+Top Navigation,Awareness,625
+Widget Interaction,Awareness,87
+listing,AIP,19380

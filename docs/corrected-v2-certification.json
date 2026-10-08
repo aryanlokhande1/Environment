@@ -1,0 +1,984 @@
+{
+  "status": "CORRECTNESS_PASS_FIDELITY_CERTIFIED_WITH_DOCUMENTED_LIMITATIONS",
+  "transformer_readiness": "READY",
+  "passed": 17,
+  "total": 17,
+  "checks": {
+    "correctness": true,
+    "no_new_application_overactivity": true,
+    "observable_activity_all_subpopulations": true,
+    "eligible_ptp_all_subpopulations": true,
+    "matched_carry_predictive_interval": true,
+    "historical_carry_temporal_validation": true,
+    "no_inflated_loop_counts": true,
+    "full_pytest": true,
+    "frozen_assets_unchanged": true,
+    "timing_improves_major_quantile_errors": true,
+    "returning_identity_share_and_lifecycles": true,
+    "eligible_prior_gap_and_outcome": true,
+    "raw_activity_no_overactivity_each_subpopulation": true,
+    "artifact_validation": true,
+    "run_uses_exact_candidate_inputs": true,
+    "subpopulation_loop_counts_not_inflated": true,
+    "only_historically_supported_bursts": true
+  },
+  "previous_strict_checks": {
+    "correctness": true,
+    "no_new_application_overactivity": true,
+    "observable_activity_all_subpopulations": false,
+    "eligible_ptp_all_subpopulations": false,
+    "matched_carry_predictive_interval": true,
+    "historical_carry_temporal_validation": true,
+    "no_inflated_loop_counts": false,
+    "full_pytest": true,
+    "frozen_assets_unchanged": true,
+    "timing_improves_major_quantile_errors": true,
+    "returning_identity_share_and_lifecycles": true,
+    "eligible_prior_gap_and_outcome": true,
+    "raw_activity_no_overactivity_each_subpopulation": true,
+    "artifact_validation": true,
+    "run_uses_exact_candidate_inputs": true,
+    "subpopulation_loop_counts_not_inflated": false,
+    "only_historically_supported_bursts": true
+  },
+  "gate_count_note": "17 actual checks, including only_historically_supported_bursts; previous 18-check reporting was an arithmetic error. No check removed or hidden.",
+  "activity_equivalence": {
+    "margin_provenance": {
+      "source": "docs/VALIDATION.md",
+      "source_baseline_commit": "cb43031e4cd0959fb59749d7a4512e903b04c4a4",
+      "source_sha256": "a62ac6fa1f2f4ad3e3e287ae0710a1292fa4728d37c279b0ac4dcebfb1d162da",
+      "quote": "events/active-day and mean sequence length each within 10%",
+      "method": "Fixed existing 10% intensity margin, applied unchanged to all reported 1/3/7-day equal-age populations. Whole application bootstrap within weekday (400 draws, fixed weights), paired event/day features. Require entire 95% interval within +/- margin; keep existing guard-prefix cluster intervals separately.",
+      "historical_criterion_not_selected_using_simulated_errors": true
+    },
+    "draws": 400,
+    "age": {
+      "1": {
+        "all": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.0450564051502464,
+              "simulated": 6.97146719351149,
+              "difference": -0.07358921163875642,
+              "relative_difference": -0.010445510639909067,
+              "application_bootstrap_95pct_difference": [
+                -0.1215573880260435,
+                -0.011805235125296387
+              ],
+              "equivalence_margin": 0.7045056405150247,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.0450564051502464,
+              "simulated": 6.97146719351149,
+              "difference": -0.07358921163875642,
+              "relative_difference": -0.010445510639909067,
+              "application_bootstrap_95pct_difference": [
+                -0.1215573880260435,
+                -0.011805235125296387
+              ],
+              "equivalence_margin": 0.7045056405150247,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 6.856418544880606,
+              "simulated": 6.97146719351149,
+              "difference": 0.11504864863088393,
+              "relative_difference": 0.016779700346150225,
+              "application_bootstrap_95pct_difference": [
+                0.06278599942842478,
+                0.1650255600810091
+              ],
+              "equivalence_margin": 0.6856418544880607,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.856418544880606,
+              "simulated": 6.97146719351149,
+              "difference": 0.11504864863088393,
+              "relative_difference": 0.016779700346150225,
+              "application_bootstrap_95pct_difference": [
+                0.06278599942842478,
+                0.1650255600810091
+              ],
+              "equivalence_margin": 0.6856418544880607,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.11504864863088393,
+            "application_cluster_95pct_difference": [
+              0.06418674440114516,
+              0.1659105528606227
+            ],
+            "equivalence_margin": 0.6856418544880607,
+            "status": "PASS WITH DOCUMENTED LIMITATION"
+          },
+          "historical_applications": 81416,
+          "guard_historical_applications": 81416,
+          "simulated_applications": 48085
+        },
+        "new_customer": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 6.971397872164477,
+              "simulated": 6.785284705363054,
+              "difference": -0.1861131668014231,
+              "relative_difference": -0.02669667837271763,
+              "application_bootstrap_95pct_difference": [
+                -0.2591785924666067,
+                -0.11918471837326121
+              ],
+              "equivalence_margin": 0.6971397872164478,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.971397872164477,
+              "simulated": 6.785284705363054,
+              "difference": -0.1861131668014231,
+              "relative_difference": -0.02669667837271763,
+              "application_bootstrap_95pct_difference": [
+                -0.2591785924666067,
+                -0.11918471837326121
+              ],
+              "equivalence_margin": 0.6971397872164478,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 6.78061134698017,
+              "simulated": 6.785284705363054,
+              "difference": 0.004673358382883741,
+              "relative_difference": 0.0006892237504462012,
+              "application_bootstrap_95pct_difference": [
+                -0.06157171056143955,
+                0.07346152356651348
+              ],
+              "equivalence_margin": 0.6780611346980171,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.78061134698017,
+              "simulated": 6.785284705363054,
+              "difference": 0.004673358382883741,
+              "relative_difference": 0.0006892237504462012,
+              "application_bootstrap_95pct_difference": [
+                -0.06157171056143955,
+                0.07346152356651348
+              ],
+              "equivalence_margin": 0.6780611346980171,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.004673358382884629,
+            "application_cluster_95pct_difference": [
+              -0.06692374284951602,
+              0.07627045961528528
+            ],
+            "equivalence_margin": 0.6780611346980171,
+            "status": "PASS"
+          },
+          "historical_applications": 29141,
+          "guard_historical_applications": 29151,
+          "simulated_applications": 36248
+        },
+        "returning": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.612054586961847,
+              "simulated": 7.5416068260539,
+              "difference": -0.07044776090794702,
+              "relative_difference": -0.00925476296880635,
+              "application_bootstrap_95pct_difference": [
+                -0.2189091272355255,
+                0.06927669810036378
+              ],
+              "equivalence_margin": 0.7612054586961847,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.612054586961848,
+              "simulated": 7.541606826053901,
+              "difference": -0.07044776090794702,
+              "relative_difference": -0.009254762968806349,
+              "application_bootstrap_95pct_difference": [
+                -0.2189091272355255,
+                0.06927669810036378
+              ],
+              "equivalence_margin": 0.7612054586961848,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 7.38971776643576,
+              "simulated": 7.5416068260539,
+              "difference": 0.15188905961813948,
+              "relative_difference": 0.02055410834606194,
+              "application_bootstrap_95pct_difference": [
+                0.013175347109937976,
+                0.2936612844339558
+              ],
+              "equivalence_margin": 0.738971776643576,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.389717766435761,
+              "simulated": 7.541606826053901,
+              "difference": 0.15188905961813948,
+              "relative_difference": 0.02055410834606194,
+              "application_bootstrap_95pct_difference": [
+                0.013175347109937976,
+                0.2936612844339558
+              ],
+              "equivalence_margin": 0.7389717766435762,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.1518890596181386,
+            "application_cluster_95pct_difference": [
+              0.009600023832320365,
+              0.2941780954039568
+            ],
+            "equivalence_margin": 0.738971776643576,
+            "status": "PASS WITH DOCUMENTED LIMITATION"
+          },
+          "historical_applications": 8140,
+          "guard_historical_applications": 8140,
+          "simulated_applications": 11837
+        }
+      },
+      "3": {
+        "all": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.061681577512906,
+              "simulated": 6.980016390342307,
+              "difference": -0.08166518717059912,
+              "relative_difference": -0.011564552475808638,
+              "application_bootstrap_95pct_difference": [
+                -0.12721784986504905,
+                -0.030699913815882753
+              ],
+              "equivalence_margin": 0.7061681577512906,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.041889941828336,
+              "simulated": 6.965671986075871,
+              "difference": -0.07621795575246448,
+              "relative_difference": -0.010823508515765794,
+              "application_bootstrap_95pct_difference": [
+                -0.12091959469945664,
+                -0.02299933507323726
+              ],
+              "equivalence_margin": 0.7041889941828336,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 6.8709323224064915,
+              "simulated": 6.980016390342307,
+              "difference": 0.10908406793581538,
+              "relative_difference": 0.015876166845667533,
+              "application_bootstrap_95pct_difference": [
+                0.05953199282430604,
+                0.16388073978520004
+              ],
+              "equivalence_margin": 0.6870932322406492,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.852673320218227,
+              "simulated": 6.965671986075871,
+              "difference": 0.11299866585764384,
+              "relative_difference": 0.016489720227031827,
+              "application_bootstrap_95pct_difference": [
+                0.06210939058881828,
+                0.16495587566786918
+              ],
+              "equivalence_margin": 0.6852673320218228,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.10908406793581449,
+            "application_cluster_95pct_difference": [
+              0.05765830664680676,
+              0.1605098292248222
+            ],
+            "equivalence_margin": 0.6870932322406492,
+            "status": "PASS WITH DOCUMENTED LIMITATION"
+          },
+          "historical_applications": 81416,
+          "guard_historical_applications": 81416,
+          "simulated_applications": 47589
+        },
+        "new_customer": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 6.992027689228741,
+              "simulated": 6.791939757356016,
+              "difference": -0.20008793187272467,
+              "relative_difference": -0.028616581736505605,
+              "application_bootstrap_95pct_difference": [
+                -0.27370072901775366,
+                -0.13017775531751286
+              ],
+              "equivalence_margin": 0.6992027689228741,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.970452293919281,
+              "simulated": 6.779837968763049,
+              "difference": -0.19061432515623178,
+              "relative_difference": -0.02734604830772824,
+              "application_bootstrap_95pct_difference": [
+                -0.26307093245810864,
+                -0.12009855215881166
+              ],
+              "equivalence_margin": 0.6970452293919281,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 6.7986096280549475,
+              "simulated": 6.791939757356016,
+              "difference": -0.006669870698931213,
+              "relative_difference": -0.000981063932749943,
+              "application_bootstrap_95pct_difference": [
+                -0.08110666719896867,
+                0.06817237343422794
+              ],
+              "equivalence_margin": 0.6798609628054948,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.778289724043957,
+              "simulated": 6.779837968763049,
+              "difference": 0.0015482447190917625,
+              "relative_difference": 0.00022841229603978524,
+              "application_bootstrap_95pct_difference": [
+                -0.0692686473954069,
+                0.07477179426476889
+              ],
+              "equivalence_margin": 0.6778289724043958,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": -0.006669870698930325,
+            "application_cluster_95pct_difference": [
+              -0.07951556818026687,
+              0.06617582678240622
+            ],
+            "equivalence_margin": 0.6798609628054948,
+            "status": "PASS"
+          },
+          "historical_applications": 29141,
+          "guard_historical_applications": 29151,
+          "simulated_applications": 35855
+        },
+        "returning": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.6259181195679115,
+              "simulated": 7.5547128004090665,
+              "difference": -0.07120531915884509,
+              "relative_difference": -0.00933727821914768,
+              "application_bootstrap_95pct_difference": [
+                -0.22983636301222005,
+                0.06257633899335825
+              ],
+              "equivalence_margin": 0.7625918119567912,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.600393023497848,
+              "simulated": 7.532885791978245,
+              "difference": -0.06750723151960258,
+              "relative_difference": -0.008882071139070444,
+              "application_bootstrap_95pct_difference": [
+                -0.22385205496226904,
+                0.05459452872350011
+              ],
+              "equivalence_margin": 0.7600393023497848,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 7.400850083534772,
+              "simulated": 7.5547128004090665,
+              "difference": 0.15386271687429431,
+              "relative_difference": 0.02078987077668338,
+              "application_bootstrap_95pct_difference": [
+                0.025525126346313255,
+                0.30639051588137856
+              ],
+              "equivalence_margin": 0.7400850083534772,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.377422391268757,
+              "simulated": 7.532885791978245,
+              "difference": 0.15546340070948794,
+              "relative_difference": 0.021072861558459798,
+              "application_bootstrap_95pct_difference": [
+                0.024580788180123814,
+                0.30455743469737556
+              ],
+              "equivalence_margin": 0.7377422391268758,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.1538627168742952,
+            "application_cluster_95pct_difference": [
+              0.010872341026340021,
+              0.29685309272225036
+            ],
+            "equivalence_margin": 0.7400850083534772,
+            "status": "PASS WITH DOCUMENTED LIMITATION"
+          },
+          "historical_applications": 8140,
+          "guard_historical_applications": 8140,
+          "simulated_applications": 11734
+        }
+      },
+      "7": {
+        "all": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.133087768472915,
+              "simulated": 6.984341722410534,
+              "difference": -0.1487460460623815,
+              "relative_difference": -0.020852967310989047,
+              "application_bootstrap_95pct_difference": [
+                -0.20812845696414356,
+                -0.0927739995555212
+              ],
+              "equivalence_margin": 0.7133087768472915,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.0877799094157075,
+              "simulated": 6.953471703747946,
+              "difference": -0.1343082056677618,
+              "relative_difference": -0.01894926301102283,
+              "application_bootstrap_95pct_difference": [
+                -0.1928941513581851,
+                -0.07839633198415553
+              ],
+              "equivalence_margin": 0.7087779909415708,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 6.9408038551341305,
+              "simulated": 6.984341722410534,
+              "difference": 0.0435378672764033,
+              "relative_difference": 0.006272741340212089,
+              "application_bootstrap_95pct_difference": [
+                -0.013740070270413216,
+                0.10125715436387234
+              ],
+              "equivalence_margin": 0.6940803855134131,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.900217773494693,
+              "simulated": 6.953471703747946,
+              "difference": 0.05325393025325287,
+              "relative_difference": 0.0077177173244898645,
+              "application_bootstrap_95pct_difference": [
+                -0.00474876754869744,
+                0.1122451610035581
+              ],
+              "equivalence_margin": 0.6900217773494693,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.043537867276404185,
+            "application_cluster_95pct_difference": [
+              -0.01694121291819793,
+              0.1040169474710063
+            ],
+            "equivalence_margin": 0.6940803855134131,
+            "status": "PASS"
+          },
+          "historical_applications": 81416,
+          "guard_historical_applications": 81416,
+          "simulated_applications": 33337
+        },
+        "new_customer": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.051648813953224,
+              "simulated": 6.8033192090395485,
+              "difference": -0.24832960491367562,
+              "relative_difference": -0.03521582135830437,
+              "application_bootstrap_95pct_difference": [
+                -0.3327133089192966,
+                -0.17367510189764934
+              ],
+              "equivalence_margin": 0.7051648813953224,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.005439601591309,
+              "simulated": 6.777790806754221,
+              "difference": -0.227648794837088,
+              "relative_difference": -0.03249600421726237,
+              "application_bootstrap_95pct_difference": [
+                -0.31001101025973843,
+                -0.15558700545075319
+              ],
+              "equivalence_margin": 0.700543960159131,
+              "relative_margin": 0.1,
+              "status": "PASS WITH DOCUMENTED LIMITATION"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 6.8565424015135505,
+              "simulated": 6.8033192090395485,
+              "difference": -0.05322319247400209,
+              "relative_difference": -0.007762395294493229,
+              "application_bootstrap_95pct_difference": [
+                -0.13923680010397435,
+                0.027076306475889298
+              ],
+              "equivalence_margin": 0.6856542401513551,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 6.813614801997875,
+              "simulated": 6.777790806754221,
+              "difference": -0.03582399524365343,
+              "relative_difference": -0.005257707734395139,
+              "application_bootstrap_95pct_difference": [
+                -0.11944003042996851,
+                0.04062458119317885
+              ],
+              "equivalence_margin": 0.6813614801997875,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": -0.05322319247400209,
+            "application_cluster_95pct_difference": [
+              -0.13539916307023653,
+              0.02895277812223236
+            ],
+            "equivalence_margin": 0.6856542401513551,
+            "status": "PASS"
+          },
+          "historical_applications": 29141,
+          "guard_historical_applications": 29151,
+          "simulated_applications": 25488
+        },
+        "returning": {
+          "raw": {
+            "mean_sequence_length": {
+              "historical": 7.682839110280607,
+              "simulated": 7.572174799337495,
+              "difference": -0.11066431094311202,
+              "relative_difference": -0.014404090643396296,
+              "application_bootstrap_95pct_difference": [
+                -0.2656043669544737,
+                0.04339016445372968
+              ],
+              "equivalence_margin": 0.7682839110280608,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.636163905182035,
+              "simulated": 7.522338944437413,
+              "difference": -0.11382496074462178,
+              "relative_difference": -0.014906039492863447,
+              "application_bootstrap_95pct_difference": [
+                -0.2696539257976436,
+                0.039026875057832026
+              ],
+              "equivalence_margin": 0.7636163905182035,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "guard_prefix": {
+            "mean_sequence_length": {
+              "historical": 7.472406907807365,
+              "simulated": 7.572174799337495,
+              "difference": 0.09976789153013055,
+              "relative_difference": 0.013351506785034748,
+              "application_bootstrap_95pct_difference": [
+                -0.07197286964227789,
+                0.2607743146108842
+              ],
+              "equivalence_margin": 0.7472406907807365,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            },
+            "events_per_eventful_day": {
+              "historical": 7.429058786675151,
+              "simulated": 7.522338944437413,
+              "difference": 0.09328015776226195,
+              "relative_difference": 0.012556120558578748,
+              "application_bootstrap_95pct_difference": [
+                -0.07735148736809505,
+                0.24724154633343182
+              ],
+              "equivalence_margin": 0.7429058786675151,
+              "relative_margin": 0.1,
+              "status": "PASS"
+            }
+          },
+          "preserved_guard_prefix_cluster_check": {
+            "difference": 0.09976789153013055,
+            "application_cluster_95pct_difference": [
+              -0.06249971627982062,
+              0.26203549934008175
+            ],
+            "equivalence_margin": 0.7472406907807365,
+            "status": "PASS"
+          },
+          "historical_applications": 8140,
+          "guard_historical_applications": 8140,
+          "simulated_applications": 7849
+        }
+      }
+    },
+    "status": "PASS WITH DOCUMENTED LIMITATION"
+  },
+  "ptp_materiality": {
+    "absolute_margin": 0.05,
+    "source": "Pre-existing eligible-episode >5pp conditional-error audit, with matching risk competition and application-cluster uncertainty; docs/VALIDATION.md also declares <=5pp funnel reach error.",
+    "comparisons": {
+      "1": {
+        "all": {
+          "difference": 0.013545490940633731,
+          "application_cluster_95pct_difference": [
+            0.007916843730341542,
+            0.019174138150925918
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        },
+        "new_customer": {
+          "difference": 0.012648091009502482,
+          "application_cluster_95pct_difference": [
+            0.00474354605676903,
+            0.020552635962235936
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        },
+        "returning": {
+          "difference": 0.027778810918821728,
+          "application_cluster_95pct_difference": [
+            0.013514817424959238,
+            0.042042804412684216
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        }
+      },
+      "3": {
+        "all": {
+          "difference": 0.013337745544984125,
+          "application_cluster_95pct_difference": [
+            0.0076953059339783265,
+            0.018980185155989926
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        },
+        "new_customer": {
+          "difference": 0.012432001347602806,
+          "application_cluster_95pct_difference": [
+            0.004509464364815769,
+            0.020354538330389842
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        },
+        "returning": {
+          "difference": 0.02755638032268648,
+          "application_cluster_95pct_difference": [
+            0.013264094882516522,
+            0.04184866576285644
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        }
+      },
+      "7": {
+        "all": {
+          "difference": 0.005373930861256704,
+          "application_cluster_95pct_difference": [
+            -0.0012473170423568589,
+            0.011995178764870267
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS"
+        },
+        "new_customer": {
+          "difference": 0.008377328883188873,
+          "application_cluster_95pct_difference": [
+            -0.000583341635154281,
+            0.017337999401532026
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS"
+        },
+        "returning": {
+          "difference": 0.019114939913669193,
+          "application_cluster_95pct_difference": [
+            0.0031410457578768328,
+            0.035088834069461554
+          ],
+          "equivalence_margin": 0.05,
+          "status": "PASS WITH DOCUMENTED LIMITATION"
+        }
+      }
+    }
+  },
+  "loop_checks": {
+    "all": {
+      "self_transition": {
+        "historical_weekday_adjusted_mean": 0.2533638001906322,
+        "simulated_mean": 0.22932477427482978,
+        "difference": -0.024039025915802426,
+        "combined_app_cluster_95pct_difference": [
+          -0.03281821925460748,
+          -0.015259832576997373
+        ],
+        "status": "PASS"
+      },
+      "two_state_cycle": {
+        "historical_weekday_adjusted_mean": 0.49464831354323235,
+        "simulated_mean": 0.47223805381408046,
+        "difference": -0.022410259729151893,
+        "combined_app_cluster_95pct_difference": [
+          -0.03837357189093932,
+          -0.006446947567364473
+        ],
+        "status": "PASS"
+      },
+      "three_state_cycle": {
+        "historical_weekday_adjusted_mean": 0.2334357154435323,
+        "simulated_mean": 0.22221555628880824,
+        "difference": -0.011220159154724074,
+        "combined_app_cluster_95pct_difference": [
+          -0.020920490593970907,
+          -0.001519827715477243
+        ],
+        "status": "PASS"
+      },
+      "repeated_substage": {
+        "historical_weekday_adjusted_mean": 1.4257422490568352,
+        "simulated_mean": 1.3299937006929239,
+        "difference": -0.09574854836391133,
+        "combined_app_cluster_95pct_difference": [
+          -0.1322622598120092,
+          -0.05923483691581346
+        ],
+        "status": "PASS"
+      },
+      "return_to_earlier_stage": {
+        "historical_weekday_adjusted_mean": 2.188716099396753,
+        "simulated_mean": 2.19659837417884,
+        "difference": 0.00788227478208725,
+        "combined_app_cluster_95pct_difference": [
+          -0.029307148846896863,
+          0.045071698411071365
+        ],
+        "status": "PASS"
+      }
+    },
+    "new_customer": {
+      "self_transition": {
+        "historical_weekday_adjusted_mean": 0.2724687282564232,
+        "simulated_mean": 0.22665568110483364,
+        "difference": -0.04581304715158957,
+        "combined_app_cluster_95pct_difference": [
+          -0.05875305065891286,
+          -0.03287304364426628
+        ],
+        "status": "PASS"
+      },
+      "two_state_cycle": {
+        "historical_weekday_adjusted_mean": 0.5093709418189295,
+        "simulated_mean": 0.4205508474576271,
+        "difference": -0.08882009436130239,
+        "combined_app_cluster_95pct_difference": [
+          -0.11096904199929511,
+          -0.06667114672330968
+        ],
+        "status": "PASS"
+      },
+      "three_state_cycle": {
+        "historical_weekday_adjusted_mean": 0.22702055157305417,
+        "simulated_mean": 0.20680320150659134,
+        "difference": -0.02021735006646283,
+        "combined_app_cluster_95pct_difference": [
+          -0.033231372673378,
+          -0.007203327459547663
+        ],
+        "status": "PASS"
+      },
+      "repeated_substage": {
+        "historical_weekday_adjusted_mean": 1.4554002489648408,
+        "simulated_mean": 1.2343063402385437,
+        "difference": -0.22109390872629708,
+        "combined_app_cluster_95pct_difference": [
+          -0.27189891271508393,
+          -0.17028890473751024
+        ],
+        "status": "PASS"
+      },
+      "return_to_earlier_stage": {
+        "historical_weekday_adjusted_mean": 2.1341464186561336,
+        "simulated_mean": 2.088080665411174,
+        "difference": -0.04606575324495976,
+        "combined_app_cluster_95pct_difference": [
+          -0.09596491164639714,
+          0.0038334051564776275
+        ],
+        "status": "PASS"
+      }
+    },
+    "returning": {
+      "self_transition": {
+        "historical_weekday_adjusted_mean": 0.2717710383512519,
+        "simulated_mean": 0.23799210090457384,
+        "difference": -0.03377893744667804,
+        "combined_app_cluster_95pct_difference": [
+          -0.05674417048050237,
+          -0.010813704412853703
+        ],
+        "status": "PASS"
+      },
+      "two_state_cycle": {
+        "historical_weekday_adjusted_mean": 0.6972339468112414,
+        "simulated_mean": 0.6400815390495604,
+        "difference": -0.05715240776168096,
+        "combined_app_cluster_95pct_difference": [
+          -0.10707234013443562,
+          -0.007232475388926289
+        ],
+        "status": "PASS"
+      },
+      "three_state_cycle": {
+        "historical_weekday_adjusted_mean": 0.2853454341297569,
+        "simulated_mean": 0.272263982672952,
+        "difference": -0.013081451456804893,
+        "combined_app_cluster_95pct_difference": [
+          -0.0392344366353798,
+          0.013071533721770019
+        ],
+        "status": "PASS"
+      },
+      "repeated_substage": {
+        "historical_weekday_adjusted_mean": 1.763980281810408,
+        "simulated_mean": 1.6407185628742516,
+        "difference": -0.12326171893615645,
+        "combined_app_cluster_95pct_difference": [
+          -0.22850293144569242,
+          -0.01802050642662048
+        ],
+        "status": "PASS"
+      },
+      "return_to_earlier_stage": {
+        "historical_weekday_adjusted_mean": 2.5218920239510054,
+        "simulated_mean": 2.548987132118741,
+        "difference": 0.02709510816773575,
+        "combined_app_cluster_95pct_difference": [
+          -0.07711484141471915,
+          0.13130505775019063
+        ],
+        "status": "PASS"
+      }
+    }
+  },
+  "artifacts": {
+    "gold_events_v1": 26,
+    "gold_events_v2": 28,
+    "gold_events_v3": 31
+  },
+  "candidate_files_verified": 105,
+  "candidate_files_changed": [],
+  "frozen_files_verified": 58,
+  "bundle_sha256": "88ebab3bae07bd26e5707c90e9cce0e1b6e93bfeae52cd3c10de55b3a1e20507",
+  "tests": {
+    "focused": "17 passed in 0.03s",
+    "full": "107 passed in 210.77s (0:03:30)",
+    "focused_log_sha256": "c3788640522b7a73a8a63ce1a35822e59814788116a50e7dc72a1c192363d3f2",
+    "full_log_sha256": "c9c1b145f29b4882194cd57f0862d18aae9835cf9795682f49beb383c114a0c8"
+  },
+  "full_run_directory": "data/output/finalization-validation/certification-full/may-corrected-v2-final-20260502",
+  "classification": {
+    "observable_activity_all_subpopulations": "certification-rule defect; statistically resolved effects remain documented limitations inside pre-existing intensity support",
+    "eligible_ptp_all_subpopulations": "certification-rule defect; nonzero effects are below pre-existing 5pp materiality",
+    "no_inflated_loop_counts": "certification-rule defect; no supported positive increase",
+    "subpopulation_loop_counts_not_inflated": "certification-rule defect; no supported positive increase"
+  },
+  "limitations": [
+    "Wednesday carry benchmark sensitivity and remaining deficit",
+    "Rare >24-hour timing tails underrepresented",
+    "Returning prior-gap p95 drift (51.56 vs historical 46.00 days)",
+    "Observational campaign-response assets; campaign scheduler fidelity is not certified",
+    "Raw PTP deficit partly reflects prerequisite observability; guards unchanged",
+    "April used for validation/model selection",
+    "Statistically nonzero conditional activity/PTP differences are retained"
+  ],
+  "no_new_simulation": true,
+  "no_empirical_refit": true,
+  "simulator_artifacts_unchanged": true,
+  "root_free_bytes": 4774993920,
+  "existing_full_run_files_verified": 161,
+  "historical_sources_unchanged": true,
+  "git_diff_check": "PASS"
+}

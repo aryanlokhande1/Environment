@@ -12,6 +12,8 @@ def get_decision_opportunities(state: object, start_time: str | pd.Timestamp,
     if start >= end or bool(getattr(state, "terminal", False)):
         return []
     payload = getattr(state, "payload", {})
+    if payload.get("_runtime_version") == "corrected-v2":
+        raise ValueError("corrected-v2 decisions are caller-controlled; supply next_decision_time")
     activation_value = payload.get("activation_datetime", payload.get("creation_datetime"))
     deadline_value = payload.get("deadline")
     active_start = max(start, pd.Timestamp(activation_value)) if activation_value else start

@@ -45,6 +45,7 @@ def _add_common_run_arguments(parser: argparse.ArgumentParser, *, historical: bo
     parser.add_argument("--artifact-dir")
     parser.add_argument("--seed", type=int)
     parser.add_argument("--runtime-version", choices=RUNTIME_VERSIONS)
+    parser.add_argument("--stochastic-namespace")
     if historical:
         parser.add_argument("--historical", action="append", default=[],
                             help="Parquet file, directory, or S3 URI; repeat for multiple inputs")
@@ -65,6 +66,7 @@ def _new_runner(args: argparse.Namespace) -> MaySimulationRunner:
         output_root=args.output_root or simulation.get("output_root", "data/output/runs"),
         seed=args.seed if args.seed is not None else int(environment.get("seed", 20260502)),
         runtime_version=args.runtime_version or environment.get("runtime_version", CORRECTED),
+        stochastic_namespace=args.stochastic_namespace or environment.get("stochastic_namespace"),
         initial_limit=args.initial_limit, arrival_limit=args.arrival_limit,
         scripted_sends=args.scripted_send, send_example=args.send_example,
     )
@@ -76,6 +78,8 @@ def _existing_runner(args: argparse.Namespace) -> MaySimulationRunner:
     runner = MaySimulationRunner.open(args.run_id, output_root=output_root)
     if args.runtime_version is not None and args.runtime_version != runner.runtime_version:
         raise ValueError("requested runtime_version differs from saved run")
+    if args.stochastic_namespace is not None and args.stochastic_namespace != runner.stochastic_namespace:
+        raise ValueError("requested namespace differs from saved run")
     return runner
 
 

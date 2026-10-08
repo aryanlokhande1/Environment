@@ -1,0 +1,456 @@
+{
+  "backoff": [
+    "supported source+regime within eligibility/age",
+    "supported source within eligibility/age",
+    "supported source stage within eligibility/age",
+    "global historical within eligibility/age"
+  ],
+  "build_configuration": {
+    "burst_april_min": 25,
+    "burst_march_min": 50,
+    "carry_age_bounds": [
+      7,
+      14,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29
+    ],
+    "carry_expiry": "right censor donor at exact expiry; sample residual event once and compete with target expiry",
+    "carry_landmarks": "daily March1-April30, complete lifecycle deadline <=May1",
+    "carry_min_unique_apps": 30,
+    "customer_kind": "observable prior lifecycle gap >=30d; unobserved prior treated as new",
+    "regime_min": 200,
+    "stage_min": 500,
+    "state_min": 200
+  },
+  "burst_patterns": [
+    {
+      "april": 102,
+      "labels": [
+        "AIP Approved",
+        "Professional Details Submission"
+      ],
+      "march": 129
+    },
+    {
+      "april": 1155,
+      "labels": [
+        "Address Submission",
+        "Bank Approval Pending"
+      ],
+      "march": 1249
+    },
+    {
+      "april": 516,
+      "labels": [
+        "Application Resume",
+        "Bank Approved"
+      ],
+      "march": 331
+    },
+    {
+      "april": 44,
+      "labels": [
+        "Bank Approval Pending",
+        "Bank Approved"
+      ],
+      "march": 73
+    },
+    {
+      "april": 222,
+      "labels": [
+        "Bank Approval Pending",
+        "Product Selection"
+      ],
+      "march": 232
+    },
+    {
+      "april": 4590,
+      "labels": [
+        "Bank Approved",
+        "Product Selection"
+      ],
+      "march": 4222
+    }
+  ],
+  "carried_tail_sha256": "60cb2071bd71d2ddff9878faa16a89f224005d68bcbc05c50f488f1ec3572b88",
+  "carry_backoff": "weekday source+age+silence+depth -> source+age+silence -> source+age -> source -> age+silence -> global, then pooled weekday; >=30 unique applications; complete lifecycle follow-up; residual delay retained exactly",
+  "carry_model_version": "PL_RESIDUAL_TAIL_SURVIVAL_V2",
+  "fit_window": [
+    "2026-03-01",
+    "2026-05-01"
+  ],
+  "historical_subpopulation_validation": {
+    "carry_temporal_validation": {
+      "limitation": "Correlated application landmarks are clustered; April also used for model selection",
+      "observed_incidence": 0.008237194542142588,
+      "observed_minus_predicted_app_cluster_95pct_interval": [
+        -1.457786618746631e-05,
+        0.003490431727099992
+      ],
+      "predicted_incidence": 0.00653607627719255,
+      "source_window": "Complete creation+30d <= May1 lifecycles only; March landmark fit / April landmark validation",
+      "train_landmarks": 394498,
+      "train_unique_applications": 16050,
+      "validation_landmarks": 87287,
+      "validation_unique_applications": 16012
+    },
+    "returning_temporal_validation": {
+      "state_results": [
+        {
+          "cdf_sup_error": 0.02590922036825788,
+          "state": "AIP Approved",
+          "train_continuation_mass": 0.994861471940119,
+          "train_occurrences": 5794,
+          "validation_applications": 3196,
+          "validation_continuation_mass": 0.9910266159695816,
+          "validation_occurrences": 6575
+        },
+        {
+          "cdf_sup_error": 0.04331505418461945,
+          "state": "Address Submission",
+          "train_continuation_mass": 0.9984984984984984,
+          "train_occurrences": 666,
+          "validation_applications": 607,
+          "validation_continuation_mass": 1.0,
+          "validation_occurrences": 736
+        },
+        {
+          "cdf_sup_error": 0.029700149862408987,
+          "state": "Application Created",
+          "train_continuation_mass": 0.9810682012516877,
+          "train_occurrences": 3861,
+          "validation_applications": 4279,
+          "validation_continuation_mass": 0.9969619069876138,
+          "validation_occurrences": 4279
+        },
+        {
+          "cdf_sup_error": 0.08020975942815511,
+          "state": "Application OTP Verification",
+          "train_continuation_mass": 0.9294015107495641,
+          "train_occurrences": 3442,
+          "validation_applications": 3736,
+          "validation_continuation_mass": 0.9937122736418513,
+          "validation_occurrences": 3976
+        },
+        {
+          "cdf_sup_error": 0.040896279356292364,
+          "state": "Application Resume",
+          "train_continuation_mass": 0.9463190184049078,
+          "train_occurrences": 265,
+          "validation_applications": 505,
+          "validation_continuation_mass": 0.9834938101788172,
+          "validation_occurrences": 727
+        },
+        {
+          "cdf_sup_error": 0.07497772019870286,
+          "state": "Bank Approval Pending",
+          "train_continuation_mass": 0.9999999999999998,
+          "train_occurrences": 632,
+          "validation_applications": 567,
+          "validation_continuation_mass": 0.9986962190352024,
+          "validation_occurrences": 767
+        },
+        {
+          "cdf_sup_error": 0.04302903780638495,
+          "state": "Bank Approved",
+          "train_continuation_mass": 0.9902088772845952,
+          "train_occurrences": 1532,
+          "validation_applications": 1420,
+          "validation_continuation_mass": 0.9790171176145785,
+          "validation_occurrences": 1811
+        },
+        {
+          "cdf_sup_error": 0.16022280471821837,
+          "state": "Connection Error",
+          "train_continuation_mass": 0.8214285714285718,
+          "train_occurrences": 224,
+          "validation_applications": 232,
+          "validation_continuation_mass": 0.9816513761467891,
+          "validation_occurrences": 327
+        },
+        {
+          "cdf_sup_error": 0.04458741258741261,
+          "state": "Journey Close",
+          "train_continuation_mass": 0.9922222222222221,
+          "train_occurrences": 500,
+          "validation_applications": 237,
+          "validation_continuation_mass": 0.9580419580419581,
+          "validation_occurrences": 572
+        },
+        {
+          "cdf_sup_error": 0.05211504458756555,
+          "state": "Product Selection",
+          "train_continuation_mass": 0.9999999999999998,
+          "train_occurrences": 2996,
+          "validation_applications": 1953,
+          "validation_continuation_mass": 0.9979246961162171,
+          "validation_occurrences": 3373
+        },
+        {
+          "cdf_sup_error": 0.017453424849418808,
+          "state": "Professional Details Submission",
+          "train_continuation_mass": 0.9931728350700681,
+          "train_occurrences": 2783,
+          "validation_applications": 3139,
+          "validation_continuation_mass": 0.9996918335901385,
+          "validation_occurrences": 3245
+        },
+        {
+          "cdf_sup_error": 0.004294146766985373,
+          "state": "listing",
+          "train_continuation_mass": 0.028184704731021446,
+          "train_occurrences": 426,
+          "validation_applications": 1103,
+          "validation_continuation_mass": 0.029918404351767906,
+          "validation_occurrences": 1103
+        }
+      ],
+      "training_occurrences": 26181,
+      "validation_occurrences": 28823
+    }
+  },
+  "model_sha256": "b66a8238e577d20d90a1f5324024e2ddb71b9fa91257e550b688504a51e74046",
+  "model_version": "PL_JOINT_COMPETING_EVENT_SURVIVAL_V2",
+  "population": {
+    "eligible_applications": 81416,
+    "eligible_ordered_rows": 578323,
+    "exact_duplicates_removed": 1757,
+    "linked_rows": 754174,
+    "raw_source_rows": 9856993
+  },
+  "ptp_audit_evidence": "historical-v3/holdout-detail.json: source-window and AIP-renewal censoring; >5pp conditional frozen CDF error in March and April, unsupported late-age global backoff",
+  "ptp_hazard_changed": false,
+  "ptp_runtime_changed": true,
+  "risk_strata": [
+    "observable PD+AIP eligibility",
+    "source lifecycle age <1d or >=1d",
+    "observed prior lifecycle >=30d"
+  ],
+  "same_time_order": [
+    "Application Created",
+    "Language Selection",
+    "Application Resume",
+    "Application OTP Verification",
+    "Form filled",
+    "Professional details",
+    "Professional Details Submission",
+    "AIP Approved",
+    "Product Selection",
+    "Address Submission",
+    "Bank Approval Pending",
+    "Bank Approved",
+    "listing",
+    "Push to Partner"
+  ],
+  "silence_semantics": "condition exact empirical survival on elapsed silence; one draw per source episode through expiry; no polling redraw",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "Immutable March-April 2026 only; no May, simulated, synthetic or PostgreSQL rows",
+  "terminal_competition": "next journey packet and eligible PTP are mutually exclusive next outcomes; hidden-prerequisite PTP mass becomes inactivity without guard relaxation; frozen PTP files retained for replay but unused in corrected-v2",
+  "validation": {
+    "returning_validation_method": "April1-10 source episodes vs April11-30; source-window censoring",
+    "state_results": [
+      {
+        "cdf_sup_error": 0.032413544286111096,
+        "state": "AIP Approved",
+        "train_continuation_mass": 0.9946626949468449,
+        "train_occurrences": 1182,
+        "validation_applications": 25478,
+        "validation_continuation_mass": 0.9943873611900786,
+        "validation_occurrences": 51327
+      },
+      {
+        "cdf_sup_error": 0.02298941464044102,
+        "state": "Address Submission",
+        "train_continuation_mass": 1.0,
+        "train_occurrences": 7470,
+        "validation_applications": 5351,
+        "validation_continuation_mass": 0.9995431703974418,
+        "validation_occurrences": 6567
+      },
+      {
+        "cdf_sup_error": 0.021165302855430945,
+        "state": "Application Created",
+        "train_continuation_mass": 0.989688385269122,
+        "train_occurrences": 44125,
+        "validation_applications": 37291,
+        "validation_continuation_mass": 0.9991150679788692,
+        "validation_occurrences": 37291
+      },
+      {
+        "cdf_sup_error": 0.08293472148298325,
+        "state": "Application OTP Verification",
+        "train_continuation_mass": 0.9418217045393871,
+        "train_occurrences": 41168,
+        "validation_applications": 33849,
+        "validation_continuation_mass": 0.9972583097684246,
+        "validation_occurrences": 36449
+      },
+      {
+        "cdf_sup_error": 0.14696961882531456,
+        "state": "Application Resume",
+        "train_continuation_mass": 0.9447106477537998,
+        "train_occurrences": 286,
+        "validation_applications": 4065,
+        "validation_continuation_mass": 0.9820744159344139,
+        "validation_occurrences": 5823
+      },
+      {
+        "cdf_sup_error": 0.004266685619735514,
+        "state": "Application created/Login",
+        "train_continuation_mass": 0.0012051826122342203,
+        "train_occurrences": 1660,
+        "validation_applications": 1645,
+        "validation_continuation_mass": 0.0054718682319697355,
+        "validation_occurrences": 1645
+      },
+      {
+        "cdf_sup_error": 0.01901441426385822,
+        "state": "Bank Approval Pending",
+        "train_continuation_mass": 0.999888205701509,
+        "train_occurrences": 8945,
+        "validation_applications": 5436,
+        "validation_continuation_mass": 0.9996196272346901,
+        "validation_occurrences": 7887
+      },
+      {
+        "cdf_sup_error": 0.021555486173286398,
+        "state": "Bank Approved",
+        "train_continuation_mass": 0.9843306863301191,
+        "train_occurrences": 311,
+        "validation_applications": 10757,
+        "validation_continuation_mass": 0.991043703175592,
+        "validation_occurrences": 13619
+      },
+      {
+        "cdf_sup_error": 0.07190170648464211,
+        "state": "Bottom Navigation",
+        "train_continuation_mass": 0.9931740614334472,
+        "train_occurrences": 293,
+        "validation_applications": 318,
+        "validation_continuation_mass": 0.9887999999999999,
+        "validation_occurrences": 625
+      },
+      {
+        "cdf_sup_error": 0.045501452658982866,
+        "state": "Connection Error",
+        "train_continuation_mass": 0.962871287128713,
+        "train_occurrences": 1360,
+        "validation_applications": 2041,
+        "validation_continuation_mass": 0.9902386117136662,
+        "validation_occurrences": 2766
+      },
+      {
+        "cdf_sup_error": 0.05653045213131386,
+        "state": "Disb",
+        "train_continuation_mass": 0.277520950891073,
+        "train_occurrences": 408,
+        "validation_applications": 343,
+        "validation_continuation_mass": 0.2209904987597587,
+        "validation_occurrences": 343
+      },
+      {
+        "cdf_sup_error": 0.032605310785137065,
+        "state": "Form filled-Rejected",
+        "train_continuation_mass": 0.18418126920471567,
+        "train_occurrences": 317,
+        "validation_applications": 212,
+        "validation_continuation_mass": 0.1515759584195785,
+        "validation_occurrences": 212
+      },
+      {
+        "cdf_sup_error": 0.0957693422196465,
+        "state": "Help / Tooltip",
+        "train_continuation_mass": 1.0,
+        "train_occurrences": 203,
+        "validation_applications": 180,
+        "validation_continuation_mass": 0.9848739495798319,
+        "validation_occurrences": 238
+      },
+      {
+        "cdf_sup_error": 0.05129680289913319,
+        "state": "Journey Close",
+        "train_continuation_mass": 0.9368648593472026,
+        "train_occurrences": 484,
+        "validation_applications": 1238,
+        "validation_continuation_mass": 0.9565934094870703,
+        "validation_occurrences": 3194
+      },
+      {
+        "cdf_sup_error": 0.03326497003963147,
+        "state": "Language Selection",
+        "train_continuation_mass": 0.9647572285870163,
+        "train_occurrences": 810,
+        "validation_applications": 1572,
+        "validation_continuation_mass": 0.986590114431024,
+        "validation_occurrences": 1936
+      },
+      {
+        "cdf_sup_error": 0.02736740482105715,
+        "state": "Product Selection",
+        "train_continuation_mass": 0.9978750372800478,
+        "train_occurrences": 497,
+        "validation_applications": 15699,
+        "validation_continuation_mass": 0.9993857729663328,
+        "validation_occurrences": 26049
+      },
+      {
+        "cdf_sup_error": 0.044418472948049015,
+        "state": "Professional Details Submission",
+        "train_continuation_mass": 0.9960505017805116,
+        "train_occurrences": 30112,
+        "validation_applications": 25009,
+        "validation_continuation_mass": 0.9997298861663129,
+        "validation_occurrences": 25915
+      },
+      {
+        "cdf_sup_error": 0.010739733870776633,
+        "state": "Professional details",
+        "train_continuation_mass": 0.032197683725695446,
+        "train_occurrences": 2408,
+        "validation_applications": 1992,
+        "validation_continuation_mass": 0.03489032857054583,
+        "validation_occurrences": 1992
+      },
+      {
+        "cdf_sup_error": 0.04337396866598675,
+        "state": "Quick Action",
+        "train_continuation_mass": 0.9751552795031053,
+        "train_occurrences": 322,
+        "validation_applications": 382,
+        "validation_continuation_mass": 0.9685167910447762,
+        "validation_occurrences": 536
+      },
+      {
+        "cdf_sup_error": 0.09366581861718037,
+        "state": "Scroll / Depth",
+        "train_continuation_mass": 0.9961089494163422,
+        "train_occurrences": 257,
+        "validation_applications": 130,
+        "validation_continuation_mass": 0.9951923076923075,
+        "validation_occurrences": 208
+      },
+      {
+        "cdf_sup_error": 0.005291455416350847,
+        "state": "listing",
+        "train_continuation_mass": 0.034143457406710404,
+        "train_occurrences": 5596,
+        "validation_applications": 8718,
+        "validation_continuation_mass": 0.03615890451263419,
+        "validation_occurrences": 8718
+      }
+    ],
+    "training_occurrences": 274307,
+    "validation_occurrences": 237889
+  },
+  "validation_method": "March source episodes censored April1 fit; April source episodes censored May1 holdout; product-limit CDF by source; application clustering required for inference"
+}

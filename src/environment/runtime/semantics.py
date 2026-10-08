@@ -1,7 +1,8 @@
 """Explicit code semantics, independent of immutable empirical bundle versions."""
 LEGACY = "legacy-v2r2"
 CORRECTED = "corrected-v1"
-RUNTIME_VERSIONS = (LEGACY, CORRECTED)
+FINAL = "corrected-v2"
+RUNTIME_VERSIONS = (LEGACY, CORRECTED, FINAL)
 
 
 def validate_runtime_version(value: str) -> str:

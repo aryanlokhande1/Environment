@@ -37,6 +37,17 @@ class EnvironmentAction:
         return cls(False)
 
     @classmethod
+    def wait(cls) -> "EnvironmentAction":
+        """Explicit external WAIT; organic/pending world behavior still executes."""
+        return cls(False)
+
+    @classmethod
+    def send(cls, channel_id: str, time_bucket: str,
+             theme: str = THEME_PLACEHOLDER) -> "EnvironmentAction":
+        """Explicit external SEND at the caller-selected decision timestamp."""
+        return cls(True, channel_id, theme, time_bucket)
+
+    @classmethod
     def campaign(cls, channel_id: str, time_bucket: str,
                  theme: str = THEME_PLACEHOLDER) -> "EnvironmentAction":
         return cls(True, channel_id, theme, time_bucket)

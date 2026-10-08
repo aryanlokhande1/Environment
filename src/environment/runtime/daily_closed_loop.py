@@ -24,7 +24,7 @@ from .event_intensity import EmpiricalEventIntensity
 from .hazard import StageContinuationModel
 from .progression import VALID
 from .campaign_decision import CampaignDecisionPolicy
-from .semantics import CORRECTED, LEGACY, validate_runtime_version
+from .semantics import CORRECTED, LEGACY, FINAL, validate_runtime_version
 
 DAY_END = pd.Timestamp("2026-06-01")
 
@@ -41,9 +41,13 @@ class DailyClosedLoopEnvironment:
     def __init__(self, artifact_dir: Path, *, seed: int, run_id: str,
                  daily_send_probability: float | None = None,
                  initial_limit: int | None = None, arrival_limit: int | None = None,
-                 runtime_version: str = CORRECTED):
+                 runtime_version: str = CORRECTED, stochastic_namespace: str | None = None):
         self.runtime_version = validate_runtime_version(runtime_version)
-        self.corrected = self.runtime_version == CORRECTED
+        self.corrected = self.runtime_version != LEGACY
+        self.final = self.runtime_version == FINAL
+        self.stochastic_namespace = str(stochastic_namespace if stochastic_namespace is not None else "corrected-v2-reference-20260502") if self.final else None
+        if not self.stochastic_namespace and self.final:
+            raise ValueError("stochastic_namespace must be non-empty")
         self.artifact_dir = Path(artifact_dir)
         self.seed = int(seed)
         self.run_id = str(run_id)
@@ -55,6 +59,8 @@ class DailyClosedLoopEnvironment:
         self.arrival_limit = arrival_limit
         self.sim = PersonalLoanSimulator(self.artifact_dir, seed=self.seed,
                                          start="2026-05-01", end="2026-07-01")
+        if self.final and self.sim.empirical_policy is not None:
+            self.sim.empirical_policy.seed = stable_seed(self.seed, self.stochastic_namespace, "baseline-policy")
         self.ptp_model = self.sim.ptp_hazard or self.sim.ptp_model
         self.continuation = (StageContinuationModel(self.artifact_dir)
                              if (self.artifact_dir / "stage_continuation_manifest.json").exists()
@@ -63,6 +69,12 @@ class DailyClosedLoopEnvironment:
             self.continuation.corrected = self.corrected
         if self.ptp_model is not None:
             self.ptp_model.corrected = self.corrected
+        self.joint = None
+        if self.final:
+            from .joint_continuation import JointContinuationModel
+            from .carried_tail import CarryTailModel
+            self.joint = JointContinuationModel(self.artifact_dir)
+            self.carried_tail = CarryTailModel(self.artifact_dir)
         self.intensity = EmpiricalEventIntensity(self.artifact_dir)
         self.max_events_per_day = int(self.intensity.manifest["max_observed_events_per_active_day"])
         self.max_events_per_ten_minute_bin = int(self.intensity.manifest["max_observed_events_per_ten_minute_bin"])
@@ -117,6 +129,9 @@ class DailyClosedLoopEnvironment:
         if snapshot_substage not in observed:
             observed.append(snapshot_substage)
         return {
+            **({"_stochastic_namespace": self.stochastic_namespace,
+                "customer_kind": str(raw.get("customer_kind", "NEW_CUSTOMER")),
+                "prior_event_count": int(raw.get("prior_event_count", len(observed)))} if self.final else {}),
             "_runtime_version": self.runtime_version,
             "context_id": str(raw["snapshot_context_id"]), "application_id": str(raw["application_id"]),
             "creation_datetime": _iso(creation), "activation_datetime": _iso(activation),
@@ -147,7 +162,8 @@ class DailyClosedLoopEnvironment:
 
     def _rng(self, state: dict, purpose: str) -> np.random.Generator:
         state["random_counter"] += 1
-        value = stable_seed(self.seed, state["application_id"], purpose, state["random_counter"])
+        value = (stable_seed(self.seed, self.stochastic_namespace, state["application_id"], purpose, state["random_counter"])
+                 if self.final else stable_seed(self.seed, state["application_id"], purpose, state["random_counter"]))
         state["last_rng_reference"] = {"purpose": purpose, "counter": state["random_counter"],
                                        "stable_seed": value}
         return np.random.default_rng(value)
@@ -184,6 +200,8 @@ class DailyClosedLoopEnvironment:
 
     def _schedule_natural(self, state: dict, pending: list[dict], now: pd.Timestamp,
                           horizon: pd.Timestamp) -> None:
+        if self.final:
+            return self._schedule_joint(state, pending, now)
         if self.corrected:
             if state.get("_natural_evaluated_generation") == state["natural_generation"]:
                 return
@@ -292,8 +310,49 @@ class DailyClosedLoopEnvironment:
                                 "can_push_to_partner": can_push_to_partner(state)},
         })
 
+    def _schedule_joint(self, state: dict, pending: list[dict], now: pd.Timestamp) -> None:
+        if state.get("_natural_evaluated_generation") == state["natural_generation"]:
+            return
+        state["natural_generation"] += 1
+        state["_natural_evaluated_generation"] = state["natural_generation"]
+        is_carry = pd.Timestamp(state["creation_datetime"]) < pd.Timestamp(state["activation_datetime"])
+        if is_carry and not state.get("_carry_tail_evaluated"):
+            state["_carry_tail_evaluated"] = True
+            outcome = self.carried_tail.sample(state, now, self._rng(state, "carry_tail_episode"))
+        else:
+            outcome = self.joint.sample(state, now, self._rng(state, "joint_natural_episode"))
+        evidence = dict(outcome.evidence)
+        # Preserve blocked mass. Do not renormalize an invalid candidate into a
+        # success; a PD-before-AIP packet is allowed only in that exact order.
+        if "Push to Partner" in outcome.labels and not can_push_to_partner(state):
+            evidence.update(reason="PTP_PREREQUISITE_NOT_OBSERVED")
+            self._audit(state, now, "ORGANIC_CONTINUATION", evidence)
+            return
+        pd_seen = can_approve_aip(state)
+        for label in outcome.labels:
+            if label in {"Professional details", "Professional Details Submission", "Form filled"}:
+                pd_seen = pd_seen or label != "Form filled"
+            if label == "AIP Approved" and not pd_seen:
+                evidence.update(reason="AIP_PREREQUISITE_NOT_OBSERVED", blocked_candidate=label)
+                self._audit(state, now, "ORGANIC_CONTINUATION", evidence)
+                return
+        self._audit(state, now, "ORGANIC_CONTINUATION", evidence)
+        if outcome.when is not None:
+            for index, label in enumerate(outcome.labels):
+                self._schedule(state, pending, outcome.when,
+                               TRANSACTION_EVENT if label == "Push to Partner" else "JOURNEY_EVENT", {
+                    "response": label, "natural_generation": state["natural_generation"],
+                    "support_count": evidence["support_count"], "model_level": evidence["model_level"],
+                    "joint_packet": True, "packet_final": index == len(outcome.labels)-1,
+                    "joint_terminal": label == "Push to Partner",
+                })
+
     def _schedule_ptp_outcome(self, state: dict, pending: list[dict], now: pd.Timestamp,
                               horizon: pd.Timestamp) -> None:
+        # Corrected-v2 samples the next visible journey OR terminal together.
+        # A second independent PTP clock would undo competing-risk incidence.
+        if self.final:
+            return
         if self.ptp_model is None or not can_push_to_partner(state):
             return
         if any(item["kind"] == TRANSACTION_EVENT and item["payload"].get("ptp_outcome")
@@ -347,8 +406,9 @@ class DailyClosedLoopEnvironment:
             if len(recent) > self.max_events_per_ten_minute_bin:
                 raise RuntimeError("simulated ten-minute journey intensity exceeds observed PL maximum")
         return {
-            "event_key": (f"{self.run_id}|{state['context_id']}|"
+            "event_key": (f"{self.stochastic_namespace if self.final else self.run_id}|{state['context_id']}|"
                           f"{state['application_id']}|{state['event_sequence']}"),
+            **({"stochastic_namespace": self.stochastic_namespace} if self.final else {}),
             "run_id": self.run_id, "context_id": state["context_id"],
             "application_id": state["application_id"], "product_scope": PRODUCT_SCOPE,
             "creation_datetime": _timestamp(state["creation_datetime"]), "event_datetime": when,
@@ -376,16 +436,23 @@ class DailyClosedLoopEnvironment:
                     decision_time: pd.Timestamp | None = None,
                     horizon: pd.Timestamp | None = None,
                     action_at_decision_time: bool = False,
+                    decision_enabled: bool = True,
+                    include_horizon_events: bool = False,
                     ) -> tuple[list[dict], list[dict], dict[str, dict]]:
         version = state.get("_runtime_version", LEGACY if state.get("_environment_started") else None)
         if version is not None and version != self.runtime_version:
             raise ValueError("state runtime_version does not match runtime")
+        if self.final:
+            saved_namespace = state.get("_stochastic_namespace")
+            if saved_namespace is not None and saved_namespace != self.stochastic_namespace:
+                raise ValueError("state stochastic_namespace mismatch")
+            state["_stochastic_namespace"] = self.stochastic_namespace
         state["_runtime_version"] = self.runtime_version
         day = day.normalize()
-        if not pd.Timestamp("2026-05-01") <= day < DAY_END:
+        if not self.final and not pd.Timestamp("2026-05-01") <= day < DAY_END:
             raise ValueError("daily environment may execute May 1-31 only")
         following = day + pd.Timedelta(days=1) if horizon is None else _timestamp(horizon)
-        if following.tzinfo is not None or not day < following <= DAY_END:
+        if following.tzinfo is not None or not day < following or (not self.final and following > DAY_END):
             raise ValueError("simulation horizon must be timezone-naive, after day start, and no later than June 1")
         events: list[dict] = []
         decisions: list[dict] = []
@@ -418,13 +485,14 @@ class DailyClosedLoopEnvironment:
         self._schedule_ptp_outcome(state, pending, now, following)
         # Exactly one opportunity decision per active application-day. The
         # callback sees committed visible state, never the pending queue.
-        if now < _timestamp(state["deadline"]):
+        if now < _timestamp(state["deadline"]) and (decision_enabled or not self.final):
             state["decision_sequence"] += 1
             decision_id = f"DAILY|{self.run_id}|{state['context_id']}|{state['decision_sequence']}"
             pending_send = any(item["kind"] == "CAMPAIGN_SEND_EVENT" for item in pending)
             if policy is None:
-                rng = np.random.default_rng(stable_seed(self.seed, state["application_id"],
-                                                        "campaign_decision", day.date().isoformat()))
+                rng = np.random.default_rng(stable_seed(self.seed,
+                    *([self.stochastic_namespace] if self.final else []), state["application_id"],
+                    "campaign_decision", day.date().isoformat()))
                 if pending_send:
                     choice = PolicyChoice(None, policy_source="EMPIRICAL_SEND_NO_ACTION_POLICY")
                     opportunity_evidence = {
@@ -465,8 +533,9 @@ class DailyClosedLoopEnvironment:
             resolved = (None if action is None else now if action_at_decision_time and now < _timestamp(state["deadline"])
                         else resolve_bucket_time(
                             now, action.time_bucket, _timestamp(state["deadline"]),
-                            np.random.default_rng(stable_seed(self.seed, state["application_id"],
-                                                              state["decision_sequence"], "send_bucket"))))
+                            np.random.default_rng(stable_seed(self.seed,
+                                *([self.stochastic_namespace] if self.final else []), state["application_id"],
+                                state["decision_sequence"], "send_bucket"))))
             decision = {
                 "run_id": self.run_id, "decision_id": choice.decision_id or decision_id,
                 "decision_sequence": state["decision_sequence"], "context_id": state["context_id"],
@@ -514,7 +583,8 @@ class DailyClosedLoopEnvironment:
                                       or (item["kind"] == TRANSACTION_EVENT
                                           and item["payload"].get("response") == "Push to Partner"
                                           and when == _timestamp(state["deadline"]))))
-            if when > following or (when == following and not boundary_terminal):
+            if when > following or (when == following and not boundary_terminal
+                                     and not (self.final and include_horizon_events)):
                 break
             pending.pop(index)
             kind, payload = item["kind"], item["payload"]
@@ -726,7 +796,8 @@ class DailyClosedLoopEnvironment:
                 decision_time=_timestamp(payload["decision_time"]) if payload.get("decision_time") else None,
                 resolved_send_time=_timestamp(payload["resolved_send_time"]) if payload.get("resolved_send_time") else None,
                 policy_source=payload.get("policy_source"), source_type="transaction" if state["done"] else "journey",
-                model_source="PL_APPLICATION_PTP_HAZARD" if payload.get("ptp_outcome") else
+                model_source="PL_JOINT_COMPETING_EVENT_SURVIVAL_V2" if payload.get("joint_packet") else
+                             "PL_APPLICATION_PTP_HAZARD" if payload.get("ptp_outcome") else
                              "PL_OBSERVATIONAL_CAMPAIGN_MOTIF" if payload.get("motif") else
                              "PL_OBSERVATIONAL_ACTION_RESPONSE" if conditioned else "PL_EMPIRICAL_NATURAL",
                 model_level=payload.get("model_level"), support_count=payload.get("support_count"),
@@ -746,10 +817,12 @@ class DailyClosedLoopEnvironment:
                     }, decision_id=suppressed_decision)
                 pending.clear()
                 break
+            if self.final and payload.get("joint_packet") and not payload.get("packet_final"):
+                continue
             if self.corrected:
                 state.pop("_natural_evaluated_generation", None)
             self._schedule_natural(state, pending, when, following)
-            if response == "AIP Approved":
+            if response == "AIP Approved" or (self.final and payload.get("packet_final")):
                 self._schedule_ptp_outcome(state, pending, when, following)
         if any(_timestamp(item["when"]) < following for item in pending):
             raise RuntimeError("due pending event escaped its simulation day")

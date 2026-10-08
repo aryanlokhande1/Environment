@@ -1,0 +1,182 @@
+state,regime,response,support_count,unique_applications,outgoing_transition_count,probability,median_seconds,p90_seconds,p95_seconds,p99_seconds,model_level,conditioning_keys
+Application OTP Verification,FIRST_PASS,AIP Approved,530,530,71724,0.0073894372873793985,7.0,62.10000000000002,123.54999999999995,256.5500000000002,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Address Submission,1,1,71724,1.3942334504489432e-05,123.0,123.0,123.0,123.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Application OTP Verification,1041,982,71724,0.014513970219173498,37.0,91.0,172.0,1876.799999999998,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Application Resume,6010,6000,71724,0.08379343037198149,11.0,276.0,545.7500000000009,1317.9099999999999,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Application created/Login,410,410,71724,0.005716357146840667,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Bank Account Selection,2,2,71724,2.7884669008978864e-05,859947.5,1547867.9000000001,1633857.95,1702649.99,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Bank Approval Pending,1,1,71724,1.3942334504489432e-05,1679.0,1679.0,1679.0,1679.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Bank Approved,7,7,71724,9.759634153142602e-05,2.0,5.200000000000003,7.599999999999994,9.519999999999996,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,CTA Interaction,1,1,71724,1.3942334504489432e-05,210.0,210.0,210.0,210.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Calculator Tool,1,1,71724,1.3942334504489432e-05,131.0,131.0,131.0,131.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Connection Error,1919,1723,71724,0.02675533991411522,69.0,661.2,945.6999999999994,1583.3999999999987,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Disb,114,114,71724,0.0015894261335117953,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Form filled,26,26,71724,0.0003625006971167252,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Form filled-Rejected,98,98,71724,0.0013663487814399643,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Header Navigation,1,1,71724,1.3942334504489432e-05,23.0,23.0,23.0,23.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Icon Interaction,2,2,71724,2.7884669008978864e-05,195.5,197.5,197.75,197.95,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Input Field Interaction,1,1,71724,1.3942334504489432e-05,168.0,168.0,168.0,168.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Journey Close,26,25,71724,0.0003625006971167252,94.5,184.5,208.25,384.25,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Language Selection,1268,1260,71724,0.0176788801516926,25.0,181.29999999999995,301.59999999999945,860.2199999999975,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,OTP Initiation,2,2,71724,2.7884669008978864e-05,122.5,174.1,180.54999999999998,185.71,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,OTP Verification,2,2,71724,2.7884669008978864e-05,484.5,784.9,822.4499999999999,852.49,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Post AIP Reject,6,6,71724,8.365400702693659e-05,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Product Browse,1,1,71724,1.3942334504489432e-05,87.0,87.0,87.0,87.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Product Discovery,1,1,71724,1.3942334504489432e-05,88.0,88.0,88.0,88.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Product Selection,3,3,71724,4.1827003513468296e-05,277.0,341.0,349.0,355.4,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Professional Details Submission,48630,48630,71724,0.678015726953321,67.0,156.0,210.0,361.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Professional details,3516,3516,71724,0.04902124811778484,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,SDK Initialization,6,6,71724,8.365400702693659e-05,125.0,472.5,587.25,679.0500000000001,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Scroll / Depth,37,37,71724,0.000515866376666109,27.0,239.79999999999995,450.5999999999988,1006.6000000000004,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,Sticky CTA Engagement,16,16,71724,0.0002230773520718309,21.0,178.0,251.0,334.99999999999994,STATE_REGIME,state+first_pass_revisit_regime
+Application OTP Verification,FIRST_PASS,listing,8045,8045,71724,0.11216608108861748,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,AIP Approved,540,540,6542,0.08254356465912564,6.0,10.0,12.0,44.610000000000014,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,AIP Declined,1,1,6542,0.0001528584530724549,6.0,6.0,6.0,6.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Address Submission,4,4,6542,0.0006114338122898196,130.0,199.6,200.8,201.76,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,App Lifecycle,1,1,6542,0.0001528584530724549,210.0,210.0,210.0,210.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Application OTP Verification,87,81,6542,0.013298685417303576,10.0,44.60000000000002,137.80000000000018,23753.540000000095,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Application Resume,505,405,6542,0.07719351880158973,68.0,595.8000000000001,1377.799999999996,243901.67999999967,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Application created/Login,12,12,6542,0.0018343014368694588,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Bank Account Selection,28,10,6542,0.004280036686028737,61.0,435.3000000000005,4638.999999999992,10544.180000000002,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Bank Approved,9,9,6542,0.0013757260776520942,1.0,1.2000000000000002,1.5999999999999996,1.92,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Banner Engagement,1,1,6542,0.0001528584530724549,92.0,92.0,92.0,92.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Bottom Navigation,1,1,6542,0.0001528584530724549,72.0,72.0,72.0,72.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Connection Error,137,136,6542,0.02094160807092632,81.0,613.6000000000001,882.199999999998,1671.9599999999991,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Disb,12,12,6542,0.0018343014368694588,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Form filled,3,3,6542,0.0004585753592173647,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Form filled-Rejected,19,19,6542,0.002904310608376643,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Journey Close,104,72,6542,0.01589727911953531,33.0,160.10000000000002,206.7,376.5899999999999,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Language Selection,82,81,6542,0.012534393151941303,62.5,212.50000000000009,392.2500000000002,55408.939999999355,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Post AIP Reject,1,1,6542,0.0001528584530724549,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Product Browse,6,4,6542,0.0009171507184347294,405.0,910.5,1112.25,1273.65,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Product Selection,1,1,6542,0.0001528584530724549,103.0,103.0,103.0,103.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Professional Details Submission,3812,3812,6542,0.5826964231121982,59.0,134.0,173.0,329.119999999999,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Professional details,333,333,6542,0.050901864873127485,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Quick Action,3,3,6542,0.0004585753592173647,674.0,818.8,836.9,851.38,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,SDK Initialization,2,2,6542,0.0003057169061449098,311.5,522.3,548.65,569.73,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Scroll / Depth,3,3,6542,0.0004585753592173647,357.0,1043.4,1129.1999999999998,1197.84,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Secondary Navigation,1,1,6542,0.0001528584530724549,818.0,818.0,818.0,818.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Sticky CTA Engagement,3,3,6542,0.0004585753592173647,27.0,115.80000000000001,126.89999999999999,135.78,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,Top Navigation,1,1,6542,0.0001528584530724549,145.0,145.0,145.0,145.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,FIRST_PASS,listing,830,830,6542,0.12687251605013758,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,AIP Approved,2489,1895,6336,0.39283459595959597,6.0,9.0,12.0,52.599999999999454,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,AIP Declined,27,18,6336,0.004261363636363636,5.0,6.400000000000002,7.699999999999999,12.43999999999999,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Academy Engagement,1,1,6336,0.00015782828282828284,211.0,211.0,211.0,211.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Address Submission,96,95,6336,0.015151515151515152,104.5,220.0,291.25,885.5499999999996,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,App Lifecycle,14,12,6336,0.0022095959595959595,914.5,1389.3,1471.85,1581.57,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Application OTP Verification,206,166,6336,0.032512626262626264,11.5,1388.0,73340.0,1025035.799999997,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Application Resume,793,487,6336,0.1251578282828283,115.0,8443.600000000046,131488.99999999985,1328861.0000000012,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Bank Account Selection,22,15,6336,0.003472222222222222,21.0,42.7,66.74999999999999,83.00999999999999,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Bank Approval Pending,39,36,6336,0.00615530303030303,2.0,16.0,16.1,17.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Bank Approved,1457,1039,6336,0.2299558080808081,1.0,2.0,3.0,8.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Banner Engagement,1,1,6336,0.00015782828282828284,16.0,16.0,16.0,16.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Bottom Navigation,1,1,6336,0.00015782828282828284,96.0,96.0,96.0,96.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,CTA Interaction,1,1,6336,0.00015782828282828284,17.0,17.0,17.0,17.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Cart Addition,1,1,6336,0.00015782828282828284,211.0,211.0,211.0,211.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Chatbot - CTA Interaction,1,1,6336,0.00015782828282828284,5536.0,5536.0,5536.0,5536.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Connection Error,74,47,6336,0.01167929292929293,70.0,651.7,5371.19999999999,248090.9599999965,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Customer Portal Login,2,2,6336,0.0003156565656565657,45.5,57.1,58.55,59.71,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Disb,46,46,6336,0.00726010101010101,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Form filled-Rejected,14,14,6336,0.0022095959595959595,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Help / Tooltip,4,4,6336,0.0006313131313131314,35.5,281.30000000000007,330.64999999999986,370.12999999999994,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Icon Interaction,1,1,6336,0.00015782828282828284,10.0,10.0,10.0,10.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Journey Close,819,446,6336,0.12926136363636365,21.0,140.60000000000014,228.1999999999989,757.9799999999943,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Language Selection,96,80,6336,0.015151515151515152,97.5,1261.0,2664.0,19435.249999999996,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Loan Product Browse,2,2,6336,0.0003156565656565657,24.5,28.1,28.55,28.91,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Loan Summary View,8,8,6336,0.0012626262626262627,216.5,23427.499999999985,50214.749999999956,71644.54999999997,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,OTP Initiation,2,2,6336,0.0003156565656565657,273.5,354.7,364.84999999999997,372.96999999999997,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,OTP Verification,2,2,6336,0.0003156565656565657,24.0,41.6,43.8,45.56,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Offer Discovery,1,1,6336,0.00015782828282828284,128.0,128.0,128.0,128.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Partner Discovery,2,2,6336,0.0003156565656565657,90.5,153.3,161.15,167.43,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Pending Application,4,2,6336,0.0006313131313131314,251.0,552.0,604.4999999999999,646.4999999999999,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Post AIP Reject,1,1,6336,0.00015782828282828284,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Product Browse,20,20,6336,0.0031565656565656565,118.0,959.3000000000003,1161.3,1181.06,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Professional Details Submission,24,24,6336,0.003787878787878788,87.0,176.39999999999998,231.44999999999987,1082302.5199999993,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Quick Action,20,14,6336,0.0031565656565656565,80.5,359.1000000000005,681.6500000000002,919.5299999999996,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Score Generation / Refresh,1,1,6336,0.00015782828282828284,135.0,135.0,135.0,135.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Scroll / Depth,9,8,6336,0.0014204545454545455,649.0,1219.8000000000002,1519.3999999999996,1759.08,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Secondary Navigation,6,6,6336,0.000946969696969697,813.5,1494.5,1542.75,1581.3500000000001,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Sticky CTA Engagement,1,1,6336,0.00015782828282828284,45.0,45.0,45.0,45.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,Top Navigation,1,1,6336,0.00015782828282828284,84.0,84.0,84.0,84.0,STATE_REGIME,state+first_pass_revisit_regime
+Application Resume,REVISIT,listing,27,27,6336,0.004261363636363636,60.0,60.0,60.0,60.0,STATE_REGIME,state+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,AIP Approved,1070,1070,78266,0.013671325990851711,7.0,26.0,68.09999999999991,196.33999999999924,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,AIP Declined,1,1,78266,1.2776940178366085e-05,6.0,6.0,6.0,6.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Address Submission,5,5,78266,6.388470089183043e-05,123.0,198.8,200.4,201.68,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,App Lifecycle,1,1,78266,1.2776940178366085e-05,210.0,210.0,210.0,210.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Application OTP Verification,1128,1045,78266,0.014412388521196943,37.0,89.0,172.0,1879.7900000000004,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Application Resume,6515,6038,78266,0.08324176526205504,12.0,290.60000000000036,595.0,1467.7199999999993,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Application created/Login,422,422,78266,0.005391868755270488,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Bank Account Selection,30,11,78266,0.00038330820535098254,61.0,1515.0000000000082,9578.299999999985,1224570.0500000014,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Bank Approval Pending,1,1,78266,1.2776940178366085e-05,1679.0,1679.0,1679.0,1679.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Bank Approved,16,16,78266,0.00020443104285385735,1.0,2.0,4.0,8.799999999999997,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Banner Engagement,1,1,78266,1.2776940178366085e-05,92.0,92.0,92.0,92.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Bottom Navigation,1,1,78266,1.2776940178366085e-05,72.0,72.0,72.0,72.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,CTA Interaction,1,1,78266,1.2776940178366085e-05,210.0,210.0,210.0,210.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Calculator Tool,1,1,78266,1.2776940178366085e-05,131.0,131.0,131.0,131.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Connection Error,2056,1839,78266,0.02626938900672067,69.0,657.0,946.75,1606.8500000000006,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Disb,126,126,78266,0.0016098944624741267,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Form filled,29,29,78266,0.00037053126517261646,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Form filled-Rejected,117,117,78266,0.001494902000868832,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Header Navigation,1,1,78266,1.2776940178366085e-05,23.0,23.0,23.0,23.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Icon Interaction,2,2,78266,2.555388035673217e-05,195.5,197.5,197.75,197.95,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Input Field Interaction,1,1,78266,1.2776940178366085e-05,168.0,168.0,168.0,168.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Journey Close,130,95,78266,0.001661002223187591,34.0,169.0,209.2,423.4399999999996,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Language Selection,1350,1338,78266,0.017248869240794214,26.0,184.3000000000004,305.54999999999995,1147.7599999999993,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,OTP Initiation,2,2,78266,2.555388035673217e-05,122.5,174.1,180.54999999999998,185.71,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,OTP Verification,2,2,78266,2.555388035673217e-05,484.5,784.9,822.4499999999999,852.49,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Post AIP Reject,7,7,78266,8.94385812485626e-05,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Product Browse,7,5,78266,8.94385812485626e-05,387.0,829.8000000000003,1071.8999999999994,1265.5799999999997,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Product Discovery,1,1,78266,1.2776940178366085e-05,88.0,88.0,88.0,88.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Product Selection,4,3,78266,5.110776071346434e-05,190.0,333.0,345.0,354.59999999999997,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Professional Details Submission,52442,52440,78266,0.6700482968338742,66.0,154.0,207.0,358.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Professional details,3849,3849,78266,0.04917844274653106,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Quick Action,3,3,78266,3.8330820535098255e-05,674.0,818.8,836.9,851.38,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,SDK Initialization,8,8,78266,0.00010221552142692868,125.0,613.1,657.55,693.11,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Scroll / Depth,40,40,78266,0.0005110776071346434,29.5,360.70000000000005,702.7499999999985,1206.03,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Secondary Navigation,1,1,78266,1.2776940178366085e-05,818.0,818.0,818.0,818.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Sticky CTA Engagement,19,19,78266,0.0002427618633889556,24.0,155.19999999999993,229.99999999999972,330.80000000000007,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,Top Navigation,1,1,78266,1.2776940178366085e-05,145.0,145.0,145.0,145.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,FIRST_PASS,listing,8875,8875,78266,0.113395344082999,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,AIP Approved,3516,2700,9813,0.3583002140018343,6.0,9.0,13.0,48.84999999999991,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,AIP Declined,31,21,9813,0.0031590746968307346,5.0,7.0,7.5,12.199999999999996,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Academy Engagement,1,1,9813,0.00010190563538163661,211.0,211.0,211.0,211.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Address Submission,140,139,9813,0.014266788953429125,79.0,216.40000000000003,267.4499999999998,707.1799999999935,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,App Lifecycle,14,12,9813,0.0014266788953429125,914.5,1389.3,1471.85,1581.57,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Application Created,1,1,9813,0.00010190563538163661,156992.0,156992.0,156992.0,156992.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Application OTP Verification,293,209,9813,0.029858351166819525,17.0,1963.4000000000012,111296.1999999991,1189449.9199999976,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Application Resume,972,583,9813,0.09905227759095078,103.5,7901.099999999997,123574.44999999931,1314411.7099999993,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Bank Account Selection,27,18,9813,0.0027514521553041885,24.0,57.20000000000004,81.29999999999998,95.13999999999999,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Bank Approval Pending,136,130,9813,0.013859166411902579,3.0,17.0,37.75,92.45000000000019,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Bank Approved,2046,1517,9813,0.2084989299908285,1.0,6.0,8.0,12.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Banner Engagement,1,1,9813,0.00010190563538163661,16.0,16.0,16.0,16.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Bottom Navigation,2,2,9813,0.00020381127076327322,208.0,297.6,308.8,317.76,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,CTA Interaction,1,1,9813,0.00010190563538163661,17.0,17.0,17.0,17.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Cart Addition,1,1,9813,0.00010190563538163661,211.0,211.0,211.0,211.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Chatbot - CTA Interaction,1,1,9813,0.00010190563538163661,5536.0,5536.0,5536.0,5536.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Connection Error,1372,748,9813,0.13981453174360542,2.0,14.0,64.35000000000014,390.29999999999745,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Customer Portal Login,2,2,9813,0.00020381127076327322,45.5,57.1,58.55,59.71,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Disb,91,91,9813,0.00927341281972893,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Form filled-Rejected,14,14,9813,0.0014266788953429125,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Help / Tooltip,4,4,9813,0.00040762254152654643,35.5,281.30000000000007,330.64999999999986,370.12999999999994,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Icon Interaction,1,1,9813,0.00010190563538163661,10.0,10.0,10.0,10.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Journey Close,839,459,9813,0.08549882808519312,21.0,146.20000000000005,239.0,843.4400000000003,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Language Selection,134,107,9813,0.013655355141139304,95.5,1416.3000000000002,4159.849999999996,20343.54999999998,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Loan Product Browse,2,2,9813,0.00020381127076327322,24.5,28.1,28.55,28.91,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Loan Summary View,10,10,9813,0.0010190563538163661,194.5,8120.499999999973,42561.24999999992,70113.85,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,OTP Initiation,2,2,9813,0.00020381127076327322,273.5,354.7,364.84999999999997,372.96999999999997,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,OTP Verification,2,2,9813,0.00020381127076327322,24.0,41.6,43.8,45.56,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Offer Discovery,1,1,9813,0.00010190563538163661,128.0,128.0,128.0,128.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Partner Discovery,2,2,9813,0.00020381127076327322,90.5,153.3,161.15,167.43,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Pending Application,4,2,9813,0.00040762254152654643,251.0,552.0,604.4999999999999,646.4999999999999,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Post AIP Reject,6,6,9813,0.0006114338122898196,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Product Browse,22,22,9813,0.002241923978396005,118.0,936.7,1148.85,1180.54,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Product Discovery,1,1,9813,0.00010190563538163661,24.0,24.0,24.0,24.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Product Selection,2,2,9813,0.00020381127076327322,391.0,615.0,643.0,665.4,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Professional Details Submission,41,41,9813,0.004178131050647101,67.0,146.0,183.0,843405.600000002,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Quick Action,22,16,9813,0.002241923978396005,80.5,317.90000000000015,648.9499999999997,913.2699999999998,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Score Generation / Refresh,1,1,9813,0.00010190563538163661,135.0,135.0,135.0,135.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Scroll / Depth,14,13,9813,0.0014266788953429125,34.5,1594.3000000000009,1922.9499999999998,2077.39,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Secondary Navigation,6,6,9813,0.0006114338122898196,813.5,1494.5,1542.75,1581.3500000000001,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Sticky CTA Engagement,2,2,9813,0.00020381127076327322,33.0,42.6,43.8,44.76,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,Top Navigation,2,2,9813,0.00020381127076327322,51.0,77.4,80.7,83.34,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime
+__FOCUS__,REVISIT,listing,31,31,9813,0.0031590746968307346,60.0,60.0,60.0,60.0,FOCUS_REGIME,focus_state_group+first_pass_revisit_regime

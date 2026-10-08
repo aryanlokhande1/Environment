@@ -1,0 +1,68 @@
+{
+  "accepted_conditioning_groups": {
+    "CHANNEL": 3,
+    "CHANNEL_TIME_PRIOR": 9,
+    "GLOBAL": 1,
+    "STAGE_CHANNEL": 7,
+    "STATE_CHANNEL": 10,
+    "STATE_CHANNEL_TIME": 18,
+    "STATE_CHANNEL_TIME_PRIOR": 25
+  },
+  "backoff_order": [
+    "STATE_CHANNEL_TIME_PRIOR",
+    "STATE_CHANNEL_TIME",
+    "STATE_CHANNEL",
+    "STAGE_CHANNEL",
+    "CHANNEL_TIME_PRIOR",
+    "CHANNEL",
+    "GLOBAL"
+  ],
+  "causal_interpretation": "NONE_OBSERVATIONAL_ASSOCIATION_ONLY",
+  "conditioning_keys": [
+    "pre_send_state",
+    "channel",
+    "time_bucket",
+    "prior_send_bucket"
+  ],
+  "denominator_meaning": "retained sends in the selected conditioning/backoff cell",
+  "donor_sha256": "57b5d7198827b489af7e2dcceaf9b73f4ae144d4a019e81d9b732f51b9f43e3c",
+  "exclusions": {
+    "NO_RESPONSE_BEFORE_COMPETING_SEND": 158881,
+    "RETAINED_MOTIF": 70035,
+    "RIGHT_CENSORED_AT_SOURCE_END": 7632,
+    "SEND_OUTSIDE_LIVE_LIFECYCLE": 13
+  },
+  "fit_counts": {
+    "clicked_motifs": 5226,
+    "next_journey_response": 6393,
+    "no_observed_response": 34336,
+    "no_response_before_competing_send": 0,
+    "open_read_motifs": 27606,
+    "response_timing_p50_seconds": 51.0,
+    "response_timing_p90_seconds": 8008.400000000026,
+    "retained_motifs": 70035,
+    "send_count": 236561
+  },
+  "horizon_days": 7,
+  "model_sha256": "b99e8645a6881c23350320b583c6430baf66277ae0540c228a33f1e805bdc9c2",
+  "model_version": "PL_JOINT_CAMPAIGN_RESPONSE_MOTIF_V2",
+  "population": "uniquely application-owned historical campaign sends with observable exposure windows",
+  "probability_name": "joint engagement-sequence and next-visible-journey motif probability",
+  "ptp_excluded_from_journey_response": true,
+  "rejected_conditioning_groups": {
+    "CHANNEL_TIME_PRIOR": 27,
+    "STAGE_CHANNEL": 34,
+    "STATE_CHANNEL": 151,
+    "STATE_CHANNEL_TIME": 372,
+    "STATE_CHANNEL_TIME_PRIOR": 719
+  },
+  "source_campaign_sha256": "422055f0ad9be43f2d2ce206227481cfc28091b10b6a8fde1ef5b4460a4cdb13",
+  "source_cohort_sha256": "2c4498b62e6b645904ce8eeaef070fa435b16b078f0c393a0df11f185cb97723",
+  "source_files_sha256": {
+    "events_gold_1_bucket_000_20260331.parquet": "be321119e240ab62781751258b958160dbf51d10b36a51527b7074900cdbd2fa",
+    "events_gold_2_bucket_000_20260430.parquet": "957cc2adaa480ac98055848b21ebfe0d4c2659e641d4e703556f4e384367d0b8"
+  },
+  "source_period": "IMMUTABLE_MARCH_APRIL_ONLY",
+  "summary_sha256": "88cee47b8ffbc2a16d5b593b40534eab21631aafb07e0469cea1afff7a4308c4",
+  "support_unit": "campaign_send_exposure_motif"
+}

@@ -16,7 +16,7 @@ from environment.contracts.result import EnvironmentResult
 from environment.core.environment import Environment
 from environment.core.state import EnvironmentState, reconstruct_state_from_gold
 from environment.persistence.checkpoint import CheckpointStore, file_hash, atomic_bytes, ensure_directory
-from environment.runtime.semantics import LEGACY, CORRECTED
+from environment.runtime.semantics import LEGACY, CORRECTED, FINAL
 from environment.persistence.local_io import LocalIO
 
 
@@ -48,13 +48,13 @@ class LocalClosedLoop:
         self.checkpoints = CheckpointStore()
 
     def _history(self) -> pd.DataFrame:
-        if self.environment.runtime_version == CORRECTED and self.checkpoint.exists():
+        if self.environment.runtime_version != LEGACY and self.checkpoint.exists():
             stored = self.checkpoints.load(self.checkpoint)
             self._validate_identity(stored)
             self.checkpoints.recover_history(self.checkpoint, self.cumulative_history)
         if self.cumulative_history.exists():
             history = self.io.load_history(self.cumulative_history)
-            if self.environment.runtime_version == CORRECTED and not self.checkpoint.exists():
+            if self.environment.runtime_version != LEGACY and not self.checkpoint.exists():
                 if not history.equals(self.io.load_history(self.input_history)):
                     raise ValueError("cumulative history has no committed checkpoint")
             return history
@@ -67,6 +67,10 @@ class LocalClosedLoop:
                     "runtime_version": self.environment.runtime_version,
                     "seed": self.environment.seed,
                     "artifact_hashes": self.environment.artifact_hashes}
+        if self.environment.runtime_version == FINAL:
+            expected["stochastic_namespace"] = self.environment.stochastic_namespace
+            expected["simulation_start"] = None if self.environment.simulation_start is None else self.environment.simulation_start.isoformat()
+            expected["simulation_end"] = None if self.environment.simulation_end is None else self.environment.simulation_end.isoformat()
         for key, value in expected.items():
             actual = stored.get(key, LEGACY if key == "runtime_version" else None)
             if actual != value:
@@ -91,6 +95,8 @@ class LocalClosedLoop:
 
     def run_step(self, application_id: str, decision_time: str | pd.Timestamp,
                  transformer: Transformer, policy: RLPolicy) -> ClosedLoopStep:
+        if self.environment.runtime_version == FINAL:
+            raise ValueError("corrected-v2 uses ExternalAgentSession.decide(action, next_decision_time)")
         # Serialize cooperating writers for the single-application local loop.
         self.checkpoint.parent.mkdir(parents=True, exist_ok=True)
         with self.checkpoint.with_suffix(self.checkpoint.suffix + ".lock").open("a") as lock:
@@ -104,7 +110,7 @@ class LocalClosedLoop:
             raise ValueError("decision_time must be timezone-naive")
         history = self._history()
         state = self._state(history, application_id, when)
-        if self.environment.runtime_version == CORRECTED and self.checkpoint.exists():
+        if self.environment.runtime_version != LEGACY and self.checkpoint.exists():
             stored = self.checkpoints.load(self.checkpoint)
             if stored["decision_time"] == when.isoformat():
                 # This boundary already committed. Do not call either model or
@@ -136,7 +142,7 @@ class LocalClosedLoop:
             "pending_events": result.pending_events,
             "artifact_hashes": self.environment.artifact_hashes,
         }
-        if self.environment.runtime_version == CORRECTED:
+        if self.environment.runtime_version != LEGACY:
             self._commit(stored, result.events)
         else:
             if result.events:

@@ -11,3 +11,4 @@ logs/
 *.sql.gz
 data/output/*
 !data/output/.gitkeep
+old_code/
